@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <title>Khondoker Moin Hossain | Software Engineer</title>
+
+    <!-- SEO / Social -->
+    <meta
+      name="description"
+      content="Khondoker Moin Hossain — Software Engineer & Network Associate (Dhaka). Android (Kotlin), Web Development, Cisco Networking."
+    />
+    <meta name="theme-color" content="#020617" />
+    <meta
+      property="og:title"
+      content="Khondoker Moin Hossain | Software Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Android (Kotlin) • Web • Cisco Networking — projects, experience, education, certifications."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Khondoker Moin Hossain | Software Engineer"
+    />
+    <meta
+      name="twitter:description"
+      content="Android (Kotlin) • Web • Cisco Networking — projects, experience, education, certifications."
+    />
+    <meta name="twitter:image" content="assets/og-image.png" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/favicon.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/tailwind.min.css" />
+    <style>
+      body {
+        background-color: #020617;
+        color: #f8fafc;
+      }
+      .glass-nav {
+        background: rgba(15, 23, 42, 0.7);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .glass-card {
+        background: rgba(30, 41, 59, 0.4);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease;
+      }
+      .glass-card:hover {
+        transform: translateY(-5px);
+        border-color: #06b6d4;
+        box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.3);
+      }
+      .text-glow {
+        text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+      }
+
+      /* Cursor blinking */
+      .cursor {
+        display: inline-block;
+        width: 3px;
+        height: 1.1em;
+        vertical-align: -0.15em;
+        background-color: #22d3ee;
+        animation: blink 1s infinite;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* Tailwind-missing helpers (BUGFIX) */
+      .animation-delay-2000 {
+        animation-delay: 2s;
+      }
+      .animation-delay-4000 {
+        animation-delay: 4s;
+      }
+      .perspective-1000 {
+        perspective: 1000px;
+      }
+
+      /* Simple focus style */
+      :focus-visible {
+        outline: 2px solid rgba(34, 211, 238, 0.8);
+        outline-offset: 3px;
+        border-radius: 10px;
+      }
+
+      /* Animated RGB line (footer divider) */
+      .rgb-divider {
+        height: 2px;
+        width: 100%;
+        background: linear-gradient(
+          90deg,
+          #ff004c,
+          #ff7a00,
+          #ffe600,
+          #00ff88,
+          #00c2ff,
+          #8b5cf6,
+          #ff004c
+        );
+        background-size: 400% 100%;
+        animation: rgbMove 6s linear infinite;
+        box-shadow: 0 0 18px rgba(0, 194, 255, 0.35);
+      }
+      @keyframes rgbMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 400% 50%;
+        }
+      }
+
+      /* Anchor offset for fixed navbar */
+      html {
+        scroll-behavior: smooth;
+      }
+      section {
+        scroll-margin-top: 96px;
+      }
+
+      /* Active nav link */
+      .nav-link.active {
+        color: #22d3ee !important;
+      }
+
+      /* Back to top button (chat-widget style, right side) */
+      .back-to-top-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 24px;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        border-radius: 9999px;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        color: rgba(226, 232, 240, 0.95);
+        cursor: pointer;
+
+        opacity: 0;
+        transform: translateY(16px);
+        pointer-events: none;
+        transition: opacity 250ms ease, transform 250ms ease,
+          border-color 250ms ease, background 250ms ease;
+      }
+      .back-to-top-btn.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .back-to-top-btn:hover {
+        border-color: rgba(34, 211, 238, 0.7);
+        background: rgba(2, 6, 23, 0.88);
+      }
+      .back-to-top-btn:active {
+        transform: translateY(1px);
+      }
+      .btt-icon {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+        opacity: 0.95;
+      }
+      .btt-text {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+      }
+
+      /* Mobile: keep it on the right but slightly smaller */
+      @media (max-width: 480px) {
+        .back-to-top-btn {
+          right: 14px;
+          bottom: 18px;
+          padding: 10px 12px;
+          gap: 8px;
+        }
+        .btt-text {
+          font-size: 13px;
+        }
+      }
+      @media (min-width: 640px) {
+        .sm\:inline-flex {
+          display: inline-flex !important;
+        }
+      }
+
+      /* md: (>= 768px) */
+      @media (min-width: 768px) {
+        .md\:hidden {
+          display: none !important;
+        }
+      }
+
+      /* Respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto !important;
+        }
+        .cursor {
+          animation: none !important;
+        }
+        .glass-card,
+        .back-to-top-btn {
+          transition: none !important;
+        }
+      }
+
+      /* ===== Navbar spacing fallback (if tailwind utilities missing) ===== */
+      .gap-10 {
+        gap: 2.5rem !important;
+      }
+
+      .gap-x-8 {
+        column-gap: 2rem !important;
+      }
+      .gap-y-2 {
+        row-gap: 0.5rem !important;
+      }
+
+      .ml-10 {
+        margin-left: 2.5rem !important;
+      }
+      .pl-8 {
+        padding-left: 2rem !important;
+      }
+
+      .border-l {
+        border-left-width: 1px !important;
+      }
+      .border-slate-700\/50 {
+        border-left-color: rgba(51, 65, 85, 0.5) !important;
+      }
+      /* Fixed textarea size */
+#message{
+  width: 100%;
+  height: 160px;      /* তুমি চাইলে 180px/200px করে দাও */
+  min-height: 160px;
+  max-height: 160px;  /* min=max => height locked */
+  resize: none;       /* user resize বন্ধ */
+  box-sizing: border-box;
+}
+
+/* ===== Typewriter layout-shift fix (mobile stable) ===== */
+.type-line{
+  height: 40px;
+  min-height: 40px;
+  overflow: hidden;         /* height fixed থাকলেও safe */
+  white-space: nowrap;      /* wrap বন্ধ */
+}
+
+.type-prefix{
+  flex: 0 0 auto;
+}
+
+.typewriter{
+  display: inline-block;
+  width: 18ch;                           /* width reserve */
+  max-width: calc(100vw - 170px);        /* ছোট স্ক্রিনে overflow আটকায় */
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 700;
+  color: #f8fafc;
+  border-right: 2px solid #22d3ee;       /* cursor line */
+}
+
+/* extra small phones */
+@media (max-width: 420px){
+  .typewriter{ width: 14ch; max-width: calc(100vw - 155px); }
+}
+@media (max-width: 360px){
+  .typewriter{ width: 12ch; max-width: calc(100vw - 145px); }
+}
+
+    </style>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Khondoker Moin Hossain",
+        "jobTitle": "Software Engineer",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Dhaka",
+          "addressCountry": "BD"
+        },
+        "email": "mailto:khondokermoin2k23@gmail.com",
+        "image": "profile.jpg",
+        "sameAs": [
+          "https://github.com/khondokermoin",
+          "https://bd.linkedin.com/in/khondoker-moin-hossain",
+          "https://www.facebook.com/khondokermoinhossain1",
+          "https://www.instagram.com/khondokermoinhossain"
+        ]
+      }
+    </script>
+  </head>
+
+  <body id="home" class="antialiased overflow-x-hidden">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-cyan-500 focus:text-black"
+      >Skip to content</a
+    >
+
+    <!-- NAV -->
+    <nav class="fixed top-0 inset-x-0 w-full z-50 glass-nav">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center"
+      >
+        <!-- Left group: Logo + Desktop links -->
+        <div class="flex items-center gap-10 min-w-0">
+          <a
+            aria-label="Go to top"
+            class="text-2xl font-bold font-mono tracking-tighter text-cyan-400"
+            href="#home"
+          >
+            KMH<span class="text-white">.DEV</span>
+          </a>
+
+          <!-- Desktop links -->
+          <div
+            class="hidden md:flex flex-wrap gap-x-8 gap-y-2 text-sm font-medium text-slate-300 border-l border-slate-700/50 pl-8 ml-2"
+          >
+            <a class="nav-link hover:text-cyan-400 transition" href="#about"
+              >About</a
+            >
+            <a class="nav-link hover:text-cyan-400 transition" href="#skills"
+              >Stack</a
+            >
+            <a class="nav-link hover:text-cyan-400 transition" href="#projects"
+              >Projects</a
+            >
+            <a
+              class="nav-link hover:text-cyan-400 transition"
+              href="#experience"
+              >Experience</a
+            >
+            <a class="nav-link hover:text-cyan-400 transition" href="#education"
+              >Education</a
+            >
+            <a
+              class="nav-link hover:text-cyan-400 transition"
+              href="#certificates"
+              >Certificates</a
+            >
+            <a class="nav-link hover:text-cyan-400 transition" href="#contact"
+              >Contact</a
+            >
+          </div>
+        </div>
+
+        <!-- Right group: language + CTA + mobile menu -->
+        <div class="flex items-center gap-3 shrink-0">
+          <button
+            id="langToggle"
+            type="button"
+            aria-label="Toggle language"
+            aria-pressed="false"
+            class="px-3 py-2 rounded-full border border-slate-700 text-slate-200 text-xs font-mono hover:border-cyan-500/60 hover:text-cyan-400 transition"
+          >
+            EN | BN
+          </button>
+
+          <!-- Desktop primary CTA -->
+          <a
+            href="mailto:khondokermoin2k23@gmail.com"
+            class="hidden sm:inline-flex px-5 py-2 rounded-full border border-cyan-500/30 text-cyan-400 text-sm font-semibold hover:bg-cyan-500 hover:text-black transition duration-300"
+          >
+            Hire Me
+          </a>
+
+          <!-- Mobile menu toggle -->
+          <button
+            id="navToggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+            class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-slate-700 text-slate-200 hover:border-cyan-500/60 hover:text-cyan-400 transition"
+          >
+            <svg
+              role="img"
+              aria-hidden="true"
+              focusable="false"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <title>Menu</title>
+              <line x1="4" y1="6" x2="20" y2="6"></line>
+              <line x1="4" y1="12" x2="20" y2="12"></line>
+              <line x1="4" y1="18" x2="20" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        id="mobileMenu"
+        class="md:hidden hidden border-t border-slate-800/60 bg-slate-950/80 backdrop-blur"
+      >
+        <div
+          class="px-4 sm:px-6 py-4 flex flex-col gap-3 text-sm font-medium text-slate-200"
+        >
+          <a
+            class="nav-link py-2 rounded-lg hover:bg-white/5 hover:text-cyan-300 transition"
+            href="#about"
+            >About</a
+          >
+          <a
+            class="nav-link py-2 rounded-lg hover:bg-white/5 hover:text-cyan-300 transition"
+            href="#skills"
+            >Stack</a
+          >
+          <a
+            class="nav-link py-2 rounded-lg hover:bg-white/5 hover:text-cyan-300 transition"
+            href="#projects"
+            >Projects</a
+          >
+          <a
+            class="nav-link py-2 rounded-lg hover:bg-white/5 hover:text-cyan-300 transition"
+            href="#experience"
+            >Experience</a
+          >
+          <a
+            class="nav-link py-2 rounded-lg hover:bg-white/5 hover:text-cyan-300 transition"
+            href="#education"
+            >Education</a
+          >
+          <a
+            class="nav-link py-2 rounded-lg hover:bg-white/5 hover:text-cyan-300 transition"
+            href="#certificates"
+            >Certificates</a
+          >
+          <a
+            class="nav-link py-2 rounded-lg hover:bg-white/5 hover:text-cyan-300 transition"
+            href="#contact"
+            >Contact</a
+          >
+
+          <a
+            href="mailto:khondokermoin2k23@gmail.com"
+            class="mt-2 inline-flex items-center justify-center px-5 py-2 rounded-full border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500 hover:text-black transition duration-300"
+          >
+            Hire Me
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main id="main">
+      <!-- HERO / ABOUT -->
+      <section id="about" class="relative min-h-screen flex items-center pt-20">
+        <div
+          class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"
+        ></div>
+        <div
+          class="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"
+        ></div>
+
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center w-full"
+        >
+          <div class="space-y-6 z-10">
+            <div
+              class="inline-block px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-cyan-400 text-xs font-mono mb-2"
+            >
+              Available for Work
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
+              Khondoker <br />
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600"
+                >Moin Hossain</span
+              >
+            </h1>
+
+            <div class="type-line text-xl md:text-2xl text-slate-400 font-mono flex items-center">
+  <span class="type-prefix">&gt;&nbsp;I am a&nbsp;</span>
+  <span id="typewriter" class="typewriter"></span>
+</div>
+
+
+            <p
+              class="text-slate-400 max-w-lg leading-relaxed"
+              data-i18n="hero_sub"
+            >
+              Software Engineer & Network Associate based in Dhaka. Focused on
+              <span class="text-cyan-400">Android (Kotlin)</span>,
+              <span class="text-cyan-400">Web Development</span>, and
+              <span class="text-cyan-400">Cisco Networking</span>.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+              <a
+                href="#projects"
+                class="bg-cyan-500 text-black px-8 py-3 rounded-lg font-bold hover:bg-cyan-400 transition shadow-[0_0_20px_rgba(6,182,212,0.4)] text-center"
+              >
+                View Projects
+              </a>
+
+              <!-- CV dropdown trigger -->
+              <div class="relative" id="cvDropdown">
+                <button
+                  id="cvBtn"
+                  type="button"
+                  class="w-full sm:w-auto border border-slate-600 px-8 py-3 rounded-lg font-bold hover:border-white transition flex items-center justify-center gap-2"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                >
+                  Download CV <i class="fa-solid fa-chevron-down text-xs"></i>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div
+                  id="cvMenu"
+                  class="hidden absolute z-50 mt-2 w-48 rounded-xl border border-slate-700 bg-slate-900/95 backdrop-blur p-2 shadow-xl"
+                  role="menu"
+                  aria-label="Download CV options"
+                >
+                  <a
+                    href="assets/cv/cv.docx"
+                    class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-slate-800"
+                    role="menuitem"
+                  >
+                    <span class="font-mono text-sm">DOCX</span>
+                    <i class="fa-solid fa-file-word text-blue-400"></i>
+                  </a>
+                  <a
+                    href="assets/cv/cv.pdf"
+                    class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-slate-800"
+                    role="menuitem"
+                  >
+                    <span class="font-mono text-sm">PDF</span>
+                    <i class="fa-solid fa-file-pdf text-red-400"></i>
+                  </a>
+                  <p class="px-3 pt-2 text-xs text-slate-400">
+                    Upload your files to
+                    <span class="font-mono">assets/cv/</span> and keep names
+                    <span class="font-mono">cv.pdf</span> /
+                    <span class="font-mono">cv.docx</span>.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-5 pt-3 text-slate-400">
+              <a
+                class="hover:text-cyan-400 transition"
+                href="#contact"
+                aria-label="Go to contact"
+                ><i class="fa-solid fa-paper-plane"></i
+              ></a>
+              <a
+                class="hover:text-cyan-400 transition"
+                href="https://github.com/khondokermoin"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                class="hover:text-cyan-400 transition"
+                href="https://bd.linkedin.com/in/khondoker-moin-hossain"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="relative flex justify-center z-10">
+            <div class="relative w-80 h-96 group perspective-1000">
+              <div
+                class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-500"
+              ></div>
+              <img
+                src="profile.jpg"
+                alt="Khondoker Moin Hossain"
+                loading="lazy"
+                class="relative rounded-2xl w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500 border border-slate-700"
+              />
+
+              <div
+                class="absolute -bottom-6 -left-6 glass-card p-4 rounded-xl flex items-center gap-3"
+              >
+                <div class="bg-green-500/20 p-2 rounded-lg text-green-400">
+                  <i class="fas fa-code"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-400">Experience</p>
+                  <p class="font-bold">Hands-on since 2020</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="py-24 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <h2 class="text-3xl font-bold mb-12 flex items-center gap-3">
+            <span class="text-cyan-400 font-mono text-xl">01.</span> Technical
+            Arsenal
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card p-6 sm:p-8 rounded-2xl">
+              <div class="text-4xl text-cyan-400 mb-6">
+                <i class="fab fa-android"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-4">Mobile & Software</h3>
+              <ul class="space-y-2 text-slate-400 font-mono text-sm">
+                <li>
+                  <i class="fas fa-check text-cyan-500 mr-2"></i>Kotlin
+                  (Android)
+                </li>
+                <li>
+                  <i class="fas fa-check text-cyan-500 mr-2"></i>Java SE/EE
+                </li>
+                <li>
+                  <i class="fas fa-check text-cyan-500 mr-2"></i>Python &
+                  Arduino
+                </li>
+              </ul>
+            </div>
+
+            <div class="glass-card p-6 sm:p-8 rounded-2xl">
+              <div class="text-4xl text-blue-400 mb-6">
+                <i class="fab fa-react"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-4">Web Development</h3>
+              <ul class="space-y-2 text-slate-400 font-mono text-sm">
+                <li>
+                  <i class="fas fa-check text-cyan-500 mr-2"></i>React.js &
+                  Node.js
+                </li>
+                <li>
+                  <i class="fas fa-check text-cyan-500 mr-2"></i>HTML5 / CSS3 /
+                  Bootstrap
+                </li>
+                <li>
+                  <i class="fas fa-check text-cyan-500 mr-2"></i>MySQL &
+                  Firebase
+                </li>
+              </ul>
+            </div>
+
+            <div class="glass-card p-6 sm:p-8 rounded-2xl">
+              <div class="text-4xl text-purple-400 mb-6">
+                <i class="fas fa-network-wired"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-4">Networking & Tools</h3>
+              <ul class="space-y-2 text-slate-400 font-mono text-sm">
+                <li>
+                  <i class="fas fa-check text-cyan-500 mr-2"></i>CCNA (Routing &
+                  Switching)
+                </li>
+                <li>
+                  <i class="fas fa-check text-cyan-500 mr-2"></i>Ubuntu /
+                  Windows
+                </li>
+                <li>
+                  <i class="fas fa-check text-cyan-500 mr-2"></i>Hardware
+                  Diagnostics
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-10 text-slate-400 leading-relaxed max-w-3xl">
+            <p>
+              <span class="text-cyan-400 font-mono">Pro tip:</span> recruiters
+              scan fast. Keep your stack focused, back each skill with a
+              project, and show proof with certificates + links.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services" class="py-20 bg-slate-950/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <div class="flex items-end justify-between gap-6 mb-10">
+            <div>
+              <h2 class="text-3xl md:text-4xl font-extrabold">Services</h2>
+              <p class="text-slate-300 mt-2 max-w-2xl" data-i18n="services_sub">
+                Practical solutions for businesses — from inventory sync to
+                Android tools.
+              </p>
+            </div>
+            <a
+              href="#contact"
+              class="hidden md:inline-flex px-5 py-2 rounded-full border border-cyan-500/30 text-cyan-400 text-sm font-semibold hover:bg-cyan-500 hover:text-black transition duration-300"
+            >
+              Get a Quote
+            </a>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="glass-card rounded-2xl p-6">
+              <h3 class="text-lg font-bold">ERP / POS Integration</h3>
+              <p class="text-slate-300 mt-2">
+                Stock, order, and customer sync across systems using secure APIs
+                and reliable data flows.
+              </p>
+              <ul
+                class="mt-4 text-slate-300 text-sm space-y-2 list-disc list-inside"
+              >
+                <li>Laravel / PHP APIs</li>
+                <li>WordPress + WooCommerce sync</li>
+                <li>MySQL data consistency</li>
+              </ul>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6">
+              <h3 class="text-lg font-bold">Android Business Apps</h3>
+              <p class="text-slate-300 mt-2">
+                Invoice, inventory, and admin tools designed for speed, offline
+                use, and clean UX.
+              </p>
+              <ul
+                class="mt-4 text-slate-300 text-sm space-y-2 list-disc list-inside"
+              >
+                <li>Kotlin + MVVM</li>
+                <li>Room (SQLite) offline-first</li>
+                <li>PDF export + sharing</li>
+              </ul>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6">
+              <h3 class="text-lg font-bold">Web Apps & Dashboards</h3>
+              <p class="text-slate-300 mt-2">
+                Responsive, fast web apps with modern UI and best-practice
+                engineering.
+              </p>
+              <ul
+                class="mt-4 text-slate-300 text-sm space-y-2 list-disc list-inside"
+              >
+                <li>Auth + role-based access</li>
+                <li>Performance & SEO basics</li>
+                <li>Deployment-ready static builds</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <div
+            class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10"
+          >
+            <div>
+              <h2 class="text-3xl font-bold flex items-center gap-3">
+                <span class="text-cyan-400 font-mono text-xl">02.</span>
+                Projects
+              </h2>
+              <p class="text-slate-400 mt-2 max-w-2xl">
+                Data-driven project cards with filtering, search, and a
+                case-study modal. Replace the example data in the script with
+                your real projects.
+              </p>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex flex-col sm:flex-row gap-3">
+              <label class="sr-only" for="projectSearch">Search projects</label>
+              <input
+                id="projectSearch"
+                type="search"
+                placeholder="Search (e.g., Kotlin, Firebase, API)…"
+                class="w-full sm:w-72 px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-cyan-400 transition"
+                autocomplete="off"
+              />
+
+              <label class="sr-only" for="projectFilter">Filter</label>
+              <select
+                id="projectFilter"
+                class="px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-cyan-400 transition"
+              >
+                <option value="all">All</option>
+                <option value="mobile">Mobile</option>
+                <option value="web">Web</option>
+                <option value="creative">Creative</option>
+                <option value="network">Networking</option>
+              </select>
+
+              <label class="sr-only" for="projectSort">Sort</label>
+              <select
+                id="projectSort"
+                class="px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-cyan-400 transition"
+              >
+                <option value="featured">Featured</option>
+                <option value="newest">Newest</option>
+                <option value="impact">Impact</option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            id="projectGrid"
+            class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          ></div>
+
+          <p class="text-slate-500 text-sm mt-6">
+            Pro tip: include <span class="font-mono">live demo</span>,
+            <span class="font-mono">GitHub</span>,
+            <span class="font-mono">screenshots</span>, and
+            <span class="font-mono">impact metrics</span> (users, latency,
+            uptime, revenue, etc).
+          </p>
+        </div>
+      </section>
+
+      <!-- Project Modal -->
+      <div
+        id="projectModal"
+        class="fixed inset-0 z-[60] hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+        aria-hidden="true"
+      >
+        <!-- Backdrop (click to close) -->
+        <div id="modalBackdrop" class="absolute inset-0 bg-black/70"></div>
+
+        <div class="relative max-w-3xl mx-auto mt-10 sm:mt-16 px-4">
+          <div
+            class="glass-card rounded-2xl overflow-hidden max-h-[85vh] overflow-y-auto"
+          >
+            <div
+              class="p-6 sm:p-8 border-b border-white/5 flex items-start justify-between gap-4"
+            >
+              <div>
+                <h3 id="modalTitle" class="text-2xl font-bold"></h3>
+                <p id="modalSubtitle" class="text-slate-400 mt-1"></p>
+                <div id="modalBadges" class="flex flex-wrap gap-2 mt-4"></div>
+              </div>
+
+              <button
+                id="modalClose"
+                class="p-2 rounded-xl border border-slate-700 hover:border-white"
+                aria-label="Close"
+              >
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+
+            <div class="p-6 sm:p-8">
+              <div class="grid sm:grid-cols-5 gap-6">
+                <div class="sm:col-span-2">
+                  <div
+                    class="rounded-xl overflow-hidden border border-white/5 bg-slate-900/30 aspect-[4/3]"
+                  >
+                    <img
+                      id="modalImage"
+                      src="assets/projects/placeholder.svg"
+                      alt="Project screenshot"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div class="mt-4 flex flex-wrap gap-3">
+                    <a
+                      id="modalGithub"
+                      class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i class="fa-brands fa-github mr-2"></i> Code
+                    </a>
+                    <a
+                      id="modalDemo"
+                      class="px-4 py-2 rounded-lg border border-slate-700 hover:border-white text-sm"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i
+                        class="fa-solid fa-arrow-up-right-from-square mr-2"
+                      ></i>
+                      Demo
+                    </a>
+                  </div>
+                </div>
+
+                <div class="sm:col-span-3">
+                  <h4 class="font-bold text-white mb-3">Case Study</h4>
+                  <ul
+                    id="modalBullets"
+                    class="space-y-2 text-slate-300 leading-relaxed"
+                  ></ul>
+
+                  <div class="mt-6">
+                    <h4 class="font-bold text-white mb-3">Stack</h4>
+                    <div id="modalStack" class="flex flex-wrap gap-2"></div>
+                  </div>
+
+                  <div class="mt-6">
+                    <h4 class="font-bold text-white mb-3">Impact</h4>
+                    <div
+                      id="modalImpact"
+                      class="grid sm:grid-cols-3 gap-3"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="p-6 sm:p-8 border-t border-white/5 flex items-center justify-between"
+            >
+              <p class="text-slate-500 text-sm">
+                Press <span class="font-mono">Esc</span> to close.
+              </p>
+              <button
+                id="modalPrimary"
+                class="bg-cyan-500 text-black px-5 py-2.5 rounded-lg font-bold hover:bg-cyan-400 transition"
+              >
+                View Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="py-24 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <h2 class="text-3xl font-bold mb-16 flex items-center gap-3">
+            <span class="text-cyan-400 font-mono text-xl">03.</span>
+            Professional History
+          </h2>
+
+          <div class="grid lg:grid-cols-3 gap-10">
+            <!-- Timeline -->
+            <div class="lg:col-span-2">
+              <div class="relative border-l-2 border-slate-800 ml-4 space-y-12">
+                <div class="relative pl-8 group">
+                  <span
+                    class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-cyan-500 ring-4 ring-slate-900 group-hover:ring-cyan-500/30 transition"
+                  ></span>
+                  <h3 class="text-2xl font-bold text-white">Executive IT</h3>
+                  <div
+                    class="flex items-center flex-wrap gap-2 text-cyan-400 font-mono text-sm mb-2"
+                  >
+                    <span>@ SteadFast Courier</span>
+                    <span class="text-slate-600">|</span>
+                    <span>Jan 2025 – Apr 2025</span>
+                  </div>
+                  <p class="text-slate-400 text-sm italic mb-4">
+                    Zigatola, Dhaka
+                  </p>
+
+                  <ul class="text-slate-300 text-sm list-disc pl-5 space-y-2">
+                    <li>
+                      Maintained office IT infrastructure (LAN/Wi‑Fi,
+                      routers/switches, printers) and ensured smooth daily
+                      operations.
+                    </li>
+                    <li>
+                      Handled user support: OS/software setup, troubleshooting,
+                      performance tuning, and preventive maintenance.
+                    </li>
+                    <li>
+                      Supported logistics workflow tools and devices
+                      (barcode/label printers, scanning workflow, branch
+                      connectivity).
+                    </li>
+                    <li>
+                      Performed basic network troubleshooting (IP/DNS, cabling,
+                      access points), escalated complex issues, and coordinated
+                      with vendors.
+                    </li>
+                    <li>
+                      Created simple documentation/SOPs (checklists, common
+                      fixes, inventory notes) to keep support consistent and
+                      fast.
+                    </li>
+                  </ul>
+
+                  <div class="mt-5 flex flex-wrap gap-2">
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-mono border border-slate-700 text-slate-300"
+                      >IT Support</span
+                    >
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-mono border border-slate-700 text-slate-300"
+                      >Networking</span
+                    >
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-mono border border-slate-700 text-slate-300"
+                      >Troubleshooting</span
+                    >
+                  </div>
+                </div>
+
+                <div class="relative pl-8 group">
+                  <span
+                    class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-slate-600 ring-4 ring-slate-900 group-hover:ring-slate-500/30 transition"
+                  ></span>
+                  <h3 class="text-2xl font-bold text-white">
+                    Junior Executive IT
+                  </h3>
+                  <div
+                    class="flex items-center flex-wrap gap-2 text-cyan-400 font-mono text-sm mb-2"
+                  >
+                    <span>@ KaruPalli</span>
+                    <span class="text-slate-600">|</span>
+                    <span>Nov 2023 – Jun 2024</span>
+                  </div>
+
+                  <ul class="text-slate-300 text-sm list-disc pl-5 space-y-2">
+                    <li>
+                      Provided helpdesk support for day‑to‑day issues:
+                      hardware/software troubleshooting, OS installation, and
+                      device setup.
+                    </li>
+                    <li>
+                      Assisted with network & office setup (routers, switches,
+                      Wi‑Fi, cabling) and basic connectivity troubleshooting.
+                    </li>
+                    <li>
+                      Maintained documentation for common issues, device
+                      inventory, and handover notes for recurring tasks.
+                    </li>
+                    <li>
+                      Supported staff with productivity tools and ensured data
+                      safety practices (basic backup / file organization
+                      support).
+                    </li>
+                  </ul>
+
+                  <div class="mt-5 flex flex-wrap gap-2">
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-mono border border-slate-700 text-slate-300"
+                      >Helpdesk</span
+                    >
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-mono border border-slate-700 text-slate-300"
+                      >Office Network</span
+                    >
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-mono border border-slate-700 text-slate-300"
+                      >Documentation</span
+                    >
+                  </div>
+                </div>
+
+                <div class="relative pl-8 group">
+                  <span
+                    class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-slate-600 ring-4 ring-slate-900 group-hover:ring-slate-500/30 transition"
+                  ></span>
+                  <h3 class="text-2xl font-bold text-white">
+                    Hardware Engineer
+                  </h3>
+                  <div
+                    class="flex items-center flex-wrap gap-2 text-cyan-400 font-mono text-sm mb-2"
+                  >
+                    <span>@ KM Computer</span>
+                    <span class="text-slate-600">|</span>
+                    <span>Jan 2020 – Nov 2023</span>
+                  </div>
+
+                  <ul class="text-slate-300 text-sm list-disc pl-5 space-y-2">
+                    <li>
+                      Diagnosed and repaired desktops/laptops: component
+                      testing, replacements, BIOS/driver issues, and stability
+                      checks.
+                    </li>
+                    <li>
+                      Built and upgraded PCs based on customer requirements
+                      (budget, performance, workload) and ensured proper cable
+                      management.
+                    </li>
+                    <li>
+                      Performed software setup (Windows, essential tools), basic
+                      security hardening, and troubleshooting for performance
+                      issues.
+                    </li>
+                    <li>
+                      Delivered customer support: explaining issues clearly,
+                      recommending solutions, and ensuring devices were ready
+                      for use.
+                    </li>
+                  </ul>
+
+                  <div class="mt-5 flex flex-wrap gap-2">
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-mono border border-slate-700 text-slate-300"
+                      >PC Build</span
+                    >
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-mono border border-slate-700 text-slate-300"
+                      >Diagnostics</span
+                    >
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-mono border border-slate-700 text-slate-300"
+                      >Customer Support</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right-side summary -->
+            <aside class="lg:col-span-1">
+              <div class="glass-card p-6 sm:p-8 rounded-2xl sticky top-28">
+                <h3 class="text-xl font-bold text-white mb-4">
+                  What I’m strong at
+                </h3>
+                <ul class="text-slate-300 text-sm list-disc pl-5 space-y-2">
+                  <li>
+                    Fast troubleshooting mindset (root cause → fix → prevent).
+                  </li>
+                  <li>Clear communication with non‑technical teams.</li>
+                  <li>Documentation + checklists to reduce repeated issues.</li>
+                  <li>
+                    Networking fundamentals (IP/DNS, switching, Wi‑Fi, cabling).
+                  </li>
+                </ul>
+
+                <div class="mt-6">
+                  <h4 class="text-sm font-mono text-slate-400 mb-3">
+                    // Toolbox
+                  </h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-mono border border-slate-700 text-slate-300"
+                      >Windows</span
+                    >
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-mono border border-slate-700 text-slate-300"
+                      >Networking</span
+                    >
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-mono border border-slate-700 text-slate-300"
+                      >Hardware</span
+                    >
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-mono border border-slate-700 text-slate-300"
+                      >Documentation</span
+                    >
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-mono border border-slate-700 text-slate-300"
+                      >Customer Support</span
+                    >
+                  </div>
+                </div>
+
+                <p class="text-slate-500 text-xs mt-6 leading-relaxed">
+                  Tip: if you want this section to look even more “senior”, add
+                  1–2 measurable outcomes (e.g., devices supported, branches
+                  covered, reduced downtime) — only if you can confirm the
+                  numbers.
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <h2 class="text-3xl font-bold mb-12 flex items-center gap-3">
+            <span class="text-cyan-400 font-mono text-xl">04.</span> Education
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <h3 class="text-xl font-mono text-slate-400">// Academic</h3>
+
+              <div class="glass-card p-6 rounded-xl border-l-4 border-cyan-500">
+                <h4 class="text-lg font-bold">
+                  B.Sc. in Computer Science & Engineering
+                </h4>
+                <p class="text-cyan-400 text-sm">
+                  Canadian University of Bangladesh
+                </p>
+                <p class="text-slate-500 text-sm">Ongoing</p>
+              </div>
+
+              <div
+                class="glass-card p-6 rounded-xl border-l-4 border-slate-600"
+              >
+                <h4 class="text-lg font-bold">Diploma in Engineering (CSE)</h4>
+                <p class="text-cyan-400 text-sm">
+                  Daffodil Technical Institute
+                </p>
+                <p class="text-slate-500 text-sm">Result: 3.12 / 4.00 (2024)</p>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <h3 class="text-xl font-mono text-slate-400">
+                // Quick Highlights
+              </h3>
+              <div class="glass-card p-6 rounded-xl">
+                <ul class="text-slate-300 text-sm list-disc pl-5 space-y-2">
+                  <li>Android development with Kotlin + Firebase.</li>
+                  <li>Full-stack basics: React, Node.js, REST APIs.</li>
+                  <li>Networking: routing/switching labs + troubleshooting.</li>
+                </ul>
+              </div>
+
+              <div class="glass-card p-6 rounded-xl">
+                <p class="text-slate-400 text-sm leading-relaxed">
+                  If you want a stronger “Pro++++” impression, include:
+                  <span class="text-white">impact</span> (numbers),
+                  <span class="text-white">links</span> (GitHub + live demos),
+                  and <span class="text-white">proof</span> (certificates) per
+                  skill.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATES (BY SKILL) -->
+      <section id="certificates" class="py-24 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <h2 class="text-3xl font-bold mb-10 flex items-center gap-3">
+            <span class="text-cyan-400 font-mono text-xl">05.</span>
+            Certificates by Skill
+          </h2>
+
+          <div
+            class="flex flex-wrap gap-3 mb-8"
+            role="tablist"
+            aria-label="Certificate categories"
+          >
+            <button
+              class="cert-tab px-4 py-2 rounded-full border border-slate-700 hover:border-white text-sm font-mono"
+              data-category="all"
+              role="tab"
+              aria-selected="true"
+            >
+              All
+            </button>
+            <button
+              class="cert-tab px-4 py-2 rounded-full border border-slate-700 hover:border-white text-sm font-mono"
+              data-category="mobile"
+              role="tab"
+              aria-selected="false"
+            >
+              Mobile
+            </button>
+            <button
+              class="cert-tab px-4 py-2 rounded-full border border-slate-700 hover:border-white text-sm font-mono"
+              data-category="web"
+              role="tab"
+              aria-selected="false"
+            >
+              Web
+            </button>
+            <button
+              class="cert-tab px-4 py-2 rounded-full border border-slate-700 hover:border-white text-sm font-mono"
+              data-category="network"
+              role="tab"
+              aria-selected="false"
+            >
+              Networking
+            </button>
+          </div>
+
+          <div
+            id="certGrid"
+            class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          ></div>
+
+          <p class="text-slate-500 text-sm mt-6">
+            Put your certificate files (images/PDF) in
+            <span class="font-mono">assets/certificates/</span> and update the
+            data in the script.
+          </p>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <!-- NOTES -->
+      <section id="notes" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <h2 class="text-3xl md:text-4xl font-extrabold">
+            Notes & Problem Solving
+          </h2>
+          <p class="text-slate-300 mt-2 max-w-2xl" data-i18n="notes_sub">
+            Short write-ups to show how I think — concepts, tradeoffs, and clean
+            explanations.
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-6 mt-10">
+            <article class="glass-card rounded-2xl p-6">
+              <h3 class="font-bold text-lg">
+                API Sync: Avoiding Duplicate Orders
+              </h3>
+              <p class="text-slate-300 text-sm mt-2">
+                Idempotency keys, retries, and safe reprocessing patterns for
+                ERP/POS integrations.
+              </p>
+              <a
+                href="#contact"
+                class="inline-flex mt-4 text-cyan-400 font-semibold hover:underline"
+                >Request full write-up →</a
+              >
+            </article>
+            <article class="glass-card rounded-2xl p-6">
+              <h3 class="font-bold text-lg">Offline-First Android Data</h3>
+              <p class="text-slate-300 text-sm mt-2">
+                Room caching, sync queues, and UI states that feel instant even
+                with poor network.
+              </p>
+              <a
+                href="#contact"
+                class="inline-flex mt-4 text-cyan-400 font-semibold hover:underline"
+                >Request full write-up →</a
+              >
+            </article>
+            <article class="glass-card rounded-2xl p-6">
+              <h3 class="font-bold text-lg">Networking Basics for Real Jobs</h3>
+              <p class="text-slate-300 text-sm mt-2">
+                Subnetting, VLAN design, and troubleshooting workflow —
+                explained simply.
+              </p>
+              <a
+                href="#contact"
+                class="inline-flex mt-4 text-cyan-400 font-semibold hover:underline"
+                >Request full write-up →</a
+              >
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+            <span class="text-cyan-400 font-mono text-xl">06.</span> Contact
+          </h2>
+
+          <div class="grid lg:grid-cols-5 gap-6">
+            <!-- Left: pitch -->
+            <div class="lg:col-span-2 glass-card p-6 sm:p-8 rounded-2xl">
+              <h3 class="text-xl font-bold">Let’s talk</h3>
+              <p class="text-slate-300 leading-relaxed mt-3">
+                Hiring, freelance, or collaboration — send a message with what
+                you need. I’ll reply as soon as possible.
+              </p>
+
+              <div class="mt-6 space-y-3 text-sm">
+                <div class="flex items-center gap-3 min-w-0">
+                  <span
+                    class="w-9 h-9 rounded-xl bg-slate-900/60 border border-slate-700 flex items-center justify-center"
+                  >
+                    <i class="fa-solid fa-envelope text-cyan-400"></i>
+                  </span>
+                  <a
+                    class="text-cyan-400 hover:underline font-mono break-all"
+                    href="mailto:khondokermoin2k23@gmail.com"
+                    >khondokermoin2k23@gmail.com</a
+                  >
+                </div>
+
+                <div class="flex items-center gap-3 min-w-0">
+                  <span
+                    class="w-9 h-9 rounded-xl bg-slate-900/60 border border-slate-700 flex items-center justify-center"
+                  >
+                    <i class="fa-brands fa-github text-cyan-400"></i>
+                  </span>
+                  <a
+                    class="text-slate-300 hover:underline font-mono break-all"
+                    href="https://github.com/khondokermoin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >github.com/khondokermoin</a
+                  >
+                </div>
+
+                <div class="flex items-center gap-3 min-w-0">
+                  <span
+                    class="w-9 h-9 rounded-xl bg-slate-900/60 border border-slate-700 flex items-center justify-center"
+                  >
+                    <i class="fa-brands fa-linkedin text-cyan-400"></i>
+                  </span>
+                  <a
+                    class="text-slate-300 hover:underline font-mono break-all"
+                    href="https://bd.linkedin.com/in/khondoker-moin-hossain"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >linkedin.com/in/khondoker-moin-hossain</a
+                  >
+                </div>
+              </div>
+
+              <div class="mt-6 flex flex-wrap gap-3">
+                <button
+                  id="copyEmail"
+                  class="px-5 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 transition text-sm"
+                >
+                  <i class="fa-regular fa-copy mr-2"></i> Copy email
+                </button>
+                <a
+                  href="https://wa.me/8801341853018"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-5 py-2.5 rounded-lg border border-slate-700 hover:border-cyan-500/60 transition text-sm text-center text-slate-200 hover:text-cyan-300"
+                >
+                  WhatsApp
+                </a>
+              </div>
+
+              <p
+                id="copyToast"
+                class="text-slate-500 text-sm mt-4 hidden"
+                aria-live="polite"
+              >
+                Copied!
+              </p>
+            </div>
+
+            <!-- Right: form -->
+            <div class="lg:col-span-3 glass-card p-6 sm:p-8 rounded-2xl">
+              <form id="contactForm" class="space-y-4" novalidate>
+                <noscript>
+                  <p class="text-amber-300 text-sm">
+                    JavaScript is disabled. Please email me directly at
+                    <a
+                      class="underline"
+                      href="mailto:khondokermoin2k23@gmail.com"
+                      >khondokermoin2k23@gmail.com</a
+                    >.
+                  </p>
+                </noscript>
+                <div class="sr-only" aria-hidden="true">
+                  <label for="website">Website</label>
+                  <input
+                    id="website"
+                    name="website"
+                    type="text"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </div>
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-sm text-slate-300" for="name"
+                      >Name</label
+                    >
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      autocomplete="name"
+                      required
+                      class="mt-2 w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-cyan-400 transition"
+                    />
+                    <p
+                      class="text-red-400 text-xs mt-2 hidden"
+                      data-err-for="name"
+                    >
+                      Please enter your name.
+                    </p>
+                  </div>
+                  <div>
+                    <label class="text-sm text-slate-300" for="email"
+                      >Email</label
+                    >
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      autocomplete="email"
+                      required
+                      class="mt-2 w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-cyan-400 transition"
+                    />
+                    <p
+                      class="text-red-400 text-xs mt-2 hidden"
+                      data-err-for="email"
+                    >
+                      Please enter a valid email.
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="text-sm text-slate-300" for="subject"
+                    >Subject</label
+                  >
+                  <input
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Job, freelance, collaboration…"
+                    required
+                    class="mt-2 w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-cyan-400 transition"
+                  />
+                  <p
+                    class="text-red-400 text-xs mt-2 hidden"
+                    data-err-for="subject"
+                  >
+                    Please enter a subject.
+                  </p>
+                </div>
+
+                <div>
+                  <label class="text-sm text-slate-300" for="message"
+                    >Message</label
+                  >
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    autocomplete="off"
+                    required
+                    class="mt-2 w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-cyan-400 transition"
+                    placeholder="Tell me what you're building and what you need…"
+                  ></textarea>
+                  <p
+                    class="text-red-400 text-xs mt-2 hidden"
+                    data-err-for="message"
+                  >
+                    Please enter a message.
+                  </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                  <button
+                    type="submit"
+                    class="bg-cyan-500 text-black px-6 py-3 rounded-lg font-bold hover:bg-cyan-400 transition"
+                  >
+                    Send
+                  </button>
+
+                  <button
+                    type="button"
+                    id="downloadVcard"
+                    class="px-6 py-3 rounded-lg border border-slate-700 hover:border-white transition"
+                  >
+                    Download vCard
+                  </button>
+                </div>
+
+                <p
+                  id="contactStatus"
+                  class="text-sm text-slate-300 hidden"
+                  aria-live="polite"
+                ></p>
+
+                <p class="text-slate-500 text-sm">
+                  By default, this opens your email client (no backend needed).
+                  Optionally, set up Formspree in the form
+                  <span class="font-mono">action</span> to send without an email
+                  app.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="pt-0 pb-12">
+      <!-- Gradient divider (premium touch) -->
+      <div class="rgb-divider"></div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-12">
+        <div class="text-center">
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">
+            Let's Build Something Amazing
+          </h2>
+          <p class="text-slate-400">
+            Available for Freelance & Full-time opportunities.
+          </p>
+          <p class="text-slate-400 mt-2">
+            Based in Dhaka • Open to remote work
+          </p>
+
+          <div class="mt-6">
+            <a
+              href="mailto:khondokermoin2k23@gmail.com"
+              class="text-cyan-400 font-mono text-lg hover:underline"
+              >khondokermoin2k23@gmail.com</a
+            >
+          </div>
+        </div>
+
+        <div class="mt-10 grid gap-8 md:grid-cols-3 text-left">
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-white font-semibold mb-3">Quick Links</h3>
+            <ul class="space-y-2 text-slate-400">
+              <li>
+                <a href="#home" class="hover:text-cyan-300 transition">Home</a>
+              </li>
+              <li>
+                <a href="#projects" class="hover:text-cyan-300 transition"
+                  >Projects</a
+                >
+              </li>
+              <li>
+                <a href="#skills" class="hover:text-cyan-300 transition"
+                  >Skills</a
+                >
+              </li>
+              <li>
+                <a href="#contact" class="hover:text-cyan-300 transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Social -->
+          <div>
+            <h3 class="text-white font-semibold mb-3">Social</h3>
+            <div class="flex flex-wrap gap-2">
+              <a
+                href="https://github.com/khondokermoin"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-700 bg-slate-900/40 text-slate-300 hover:border-cyan-500/60 hover:text-cyan-300 transition"
+                >GitHub</a
+              >
+              <a
+                href="https://bd.linkedin.com/in/khondoker-moin-hossain"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-700 bg-slate-900/40 text-slate-300 hover:border-cyan-500/60 hover:text-cyan-300 transition"
+                >LinkedIn</a
+              >
+              <a
+                href="https://www.instagram.com/khondokermoinhossain"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-700 bg-slate-900/40 text-slate-300 hover:border-cyan-500/60 hover:text-cyan-300 transition"
+                >Instagram</a
+              >
+              <a
+                href="https://www.facebook.com/khondokermoinhossain1"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-700 bg-slate-900/40 text-slate-300 hover:border-cyan-500/60 hover:text-cyan-300 transition"
+                >Facebook</a
+              >
+              <a
+                href="https://wa.me/8801341853018"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-700 bg-slate-900/40 text-slate-300 hover:border-cyan-500/60 hover:text-cyan-300 transition"
+                >WhatsApp</a
+              >
+
+              <!-- Placeholders (add your links later) -->
+              <span
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-800 bg-slate-900/20 text-slate-500 cursor-not-allowed"
+                aria-disabled="true"
+                title="Add your Behance link"
+                >Behance</span
+              >
+              <span
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-800 bg-slate-900/20 text-slate-500 cursor-not-allowed"
+                aria-disabled="true"
+                title="Add your Dribbble link"
+                >Dribbble</span
+              >
+            </div>
+          </div>
+
+          <!-- Details -->
+          <div>
+            <h3 class="text-white font-semibold mb-3">Details</h3>
+            <p class="text-slate-400">
+              Built with <span class="text-slate-300">HTML</span> •
+              <span class="text-slate-300">Tailwind</span> •
+              <span class="text-slate-300">JavaScript</span>
+            </p>
+            <p class="text-slate-400 mt-3">
+              Prefer WhatsApp? Message me directly.
+            </p>
+            <a
+              href="https://wa.me/8801341853018"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-3 inline-flex items-center justify-center px-4 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/15 hover:border-cyan-500/50 transition"
+              >Chat on WhatsApp</a
+            >
+          </div>
+        </div>
+
+        <div
+          class="mt-10 pt-6 border-t border-slate-800 w-full flex flex-col items-center justify-between gap-3 text-sm text-slate-400 md:flex-row md:items-center"
+        >
+          <div class="text-center md:text-left">
+            &copy; <span id="year"></span> Khondoker Moin Hossain. All rights
+            reserved.
+          </div>
+          <div class="text-center md:text-right text-xs text-slate-500">
+            Thanks for visiting ✨
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Back to top (floating like chat widget) -->
+    <button
+      id="backToTop"
+      class="back-to-top-btn"
+      type="button"
+      aria-label="Back to top"
+    >
+      <svg class="btt-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M12 5l7 7-1.41 1.41L13 8.83V20h-2V8.83L6.41 13.41 5 12l7-7z"
+        ></path>
+      </svg>
+      <span class="btt-text">Back to top</span>
+    </button>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

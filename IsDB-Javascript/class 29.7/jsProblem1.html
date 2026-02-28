@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let data = [4, 4, -4, -1, 0, -8, 0, 45, 9, 79];
+      let even = 0;
+      let odd = 0;
+      let zero = 0;
+      let sum = 0;
+
+      for (let num of data) {
+        // let num = data[i];
+        sum += num;
+        if (num === 0) {
+          zero++;
+        } else if (num > 0) {
+          even++;
+        } else if (num < 0) {
+          odd++;
+        }
+      }
+      console.log('Even:', even);
+      console.log('Odd:', odd);
+      console.log('Zero:', zero);
+      console.log('Sum:', sum);
+    </script>
+  </body>
+</html>

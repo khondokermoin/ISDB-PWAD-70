@@ -1,0 +1,247 @@
+OOP
+ ├── Object
+ ├── Class
+ ├── Constructor
+ ├── Encapsulation
+ ├── Abstraction
+ ├── Inheritance
+ ├── Polymorphism
+ ├── Association
+ ├── Aggregation
+ └── Composition
+
+✅ OOP কী?
+
+OOP হলো programming করার একটা style যেখানে:
+
+আমরা object বানাই
+
+object-এর ভিতরে থাকে properties (data) + methods (function)
+
+🔹 1️⃣ Object
+const person = {
+  name: "Rahim",
+  age: 25,
+  greet() {
+    console.log("Hello " + this.name);
+  }
+};
+
+person.greet();
+
+👉 এখানে:
+
+name, age = property
+
+greet() = method
+
+🔹 2️⃣ Class (Blueprint)
+
+Class হলো object বানানোর factory 🏭
+
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log("Hello " + this.name);
+  }
+}
+
+const p1 = new Person("Rahim", 25);
+🔥 এখন আসল ৪টা OOP Pillar
+🧱 1️⃣ Encapsulation (ডাটা লুকানো)
+
+Data বাইরে থেকে সরাসরি change করা যাবে না।
+
+class BankAccount {
+  #balance = 0; // private property
+
+  deposit(amount) {
+    this.#balance += amount;
+  }
+
+  getBalance() {
+    return this.#balance;
+  }
+}
+
+const acc = new BankAccount();
+acc.deposit(1000);
+console.log(acc.getBalance());
+
+👉 #balance বাইরে থেকে access করা যাবে না।
+
+🧬 2️⃣ Abstraction (জটিলতা লুকানো)
+
+User শুধু দরকারি জিনিস দেখবে, ভিতরের logic না।
+
+উদাহরণ:
+
+acc.deposit(1000);
+
+User জানে না ভিতরে কীভাবে হিসাব হচ্ছে — এটাই abstraction।
+
+👨‍👦 3️⃣ Inheritance (বাবা থেকে ছেলে)
+
+একটা class আরেকটা class-এর property পেতে পারে।
+
+class Animal {
+  speak() {
+    console.log("Animal makes sound");
+  }
+}
+
+class Dog extends Animal {
+  bark() {
+    console.log("Woof!");
+  }
+}
+
+const d = new Dog();
+d.speak();
+d.bark();
+🎭 4️⃣ Polymorphism (এক নাম, ভিন্ন কাজ)
+class Animal {
+  speak() {
+    console.log("Animal sound");
+  }
+}
+
+class Cat extends Animal {
+  speak() {
+    console.log("Meow");
+  }
+}
+
+const c = new Cat();
+c.speak(); // Meow
+
+👉 একই speak() method কিন্তু আলাদা behavior।
+
+🔗 Prototype (Important JS Concept)
+
+JavaScript class-based না, এটা prototype-based।
+
+console.log(p1.__proto__);
+
+সব method prototype-এ থাকে → memory save হয়।
+
+🏗 OOP Structure Summary
+Class → Object তৈরি করে
+Object → Property + Method
+Inheritance → extends
+Encapsulation → private (#)
+Polymorphism → method override
+Abstraction → hidden logic
+
+✅ OOP এর মূল ধারণা
+
+OOP মানে এমনভাবে প্রোগ্রাম করা যেখানে:
+
+প্রোগ্রামকে Object আকারে ভাগ করা হয়
+
+Object = Data (Property) + Behavior (Method)
+
+🧱 OOP এর ৪টি প্রধান স্তম্ভ (Four Pillars)
+1️⃣ Object
+
+Object হলো বাস্তব জিনিসের প্রোগ্রামিং রূপ।
+
+উদাহরণ:
+
+মানুষ
+
+গাড়ি
+
+ব্যাংক একাউন্ট
+
+Object এর ভিতরে থাকে:
+
+Property (data)
+
+Method (function)
+
+2️⃣ Encapsulation (ডাটা সুরক্ষা)
+
+👉 Data + Method একসাথে রাখা
+👉 Data বাইরে থেকে সরাসরি modify করা না দেওয়া
+
+উদ্দেশ্য:
+
+Security
+
+Controlled access
+
+3️⃣ Abstraction (জটিলতা লুকানো)
+
+👉 User শুধু দরকারি অংশ দেখবে
+👉 ভিতরের implementation লুকানো থাকবে
+
+বাস্তব উদাহরণ:
+
+গাড়ি চালাতে ইঞ্জিনের ভিতর জানতে হয় না
+
+ATM ব্যবহার করতে ভিতরের banking logic জানা লাগে না
+
+4️⃣ Inheritance (বংশগত সম্পর্ক)
+
+👉 একটি class অন্য class-এর বৈশিষ্ট্য পেতে পারে
+
+উদ্দেশ্য:
+
+Code reuse
+
+Structure maintain
+
+5️⃣ Polymorphism (এক নাম, ভিন্ন আচরণ)
+
+👉 একই method নাম
+👉 আলাদা class-এ আলাদা কাজ
+
+উদ্দেশ্য:
+
+Flexibility
+
+Dynamic behavior
+
+🧠 OOP এর আরও গুরুত্বপূর্ণ ধারণা
+
+এগুলোও খুব গুরুত্বপূর্ণ 👇
+
+🔹 Class
+
+Blueprint বা নকশা
+Object তৈরির কারখানা
+
+🔹 Constructor
+
+Object তৈরি হওয়ার সময় initial setup করে।
+
+🔹 Method
+
+Object-এর ভিতরের function।
+
+🔹 Message Passing
+
+এক object আরেক object-এর method call করে যোগাযোগ করা।
+
+🔹 Association
+
+এক object আরেক object-এর সাথে সম্পর্কিত।
+
+উদাহরণ:
+Teacher — Student
+
+🔹 Aggregation
+
+Weak relationship
+একটা object delete হলেও অন্যটা থাকে।
+
+🔹 Composition
+
+Strong relationship
+Parent delete হলে child-ও delete হয়।
+

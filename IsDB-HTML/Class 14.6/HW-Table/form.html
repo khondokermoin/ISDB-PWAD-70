@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Form</title>
+  </head>
+
+  <body>
+    <form>
+      <fieldset>
+        <table cellpadding="6">
+          <tr>
+            <td><label for="name">Name:</label></td>
+            <td>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="please enter your name"
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td><label for="sid">ID:</label></td>
+            <td><input type="text" id="sid" name="sid" /></td>
+          </tr>
+
+          <tr>
+            <td><label for="email">Email:</label></td>
+            <td><input type="email" id="email" name="email" /></td>
+          </tr>
+
+          <tr>
+            <td valign="top"><label for="address">Address:</label></td>
+            <td>
+              <textarea
+                id="address"
+                name="address"
+                rows="5"
+                cols="22"
+                placeholder="please enter your address"
+              ></textarea>
+            </td>
+          </tr>
+
+          <tr>
+            <td><label for="city">City:</label></td>
+            <td>
+              <select id="city" name="city">
+                <option>Dhaka</option>
+                <option>Barishal</option>
+                <option>Rajsha</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <fieldset>
+                <legend>Gender:</legend>
+                <label
+                  ><input type="radio" name="gender" value="Male" checked />
+                  Male</label
+                >
+                <label
+                  ><input type="radio" name="gender" value="Female" />
+                  Female</label
+                >
+                <label
+                  ><input type="radio" name="gender" value="Others" />
+                  others</label
+                >
+              </fieldset>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <label>Subject:</label>
+              <label
+                ><input type="checkbox" name="sub_php" checked /> PHP</label
+              >
+              <label
+                ><input type="checkbox" name="sub_java" checked /> JAVA</label
+              >
+              <label><input type="checkbox" name="sub_cpp" /> C++</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <input type="submit" value="save" />
+              <input type="reset" value="reset" />
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+    </form>
+  </body>
+</html>

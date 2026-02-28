@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap-icons.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <table class="table table-striped">
+        <tr class="table-primary">
+          <th>ID</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Actions</th>
+        </tr>
+        <tr>
+          <td>01</td>
+          <td>Sumi</td>
+          <td>0193564616</td>
+          <td>Edit | Delete | View</td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>Sumi</td>
+          <td>0193564616</td>
+
+          <td>
+            <button
+              type="button"
+              class="btn btn-success"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              data-bs-title="Edit"
+            >
+              <i class="bi bi-pencil-square"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-toggle="tooltip"
+              data-bs-placement="right"
+              data-bs-title="Delete"
+            >
+              <i class="bi bi-archive"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-info"
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
+              data-bs-title="view"
+            >
+              <i class="bi bi-eye-fill"></i>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>Sumi</td>
+          <td>0193564616</td>
+          <td>Edit | Delete | View</td>
+        </tr>
+      </table>
+    </div>
+    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const tooltipTriggerList = document.querySelectorAll(
+        '[data-bs-toggle="tooltip"]'
+      );
+      const tooltipList = [...tooltipTriggerList].map(
+        tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl)
+      );
+    </script>
+  </body>
+</html>

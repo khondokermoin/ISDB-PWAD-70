@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="number" id="mark" placeholder="Enter your Marks" />
+    <button onclick="getData()">Submit</button>
+    <script>
+      function getData() {
+        var marks = document.getElementById('mark').value;
+        marks = Number(marks);
+        if (marks >= 80) {
+          document.write('A+');
+        } else if (marks >= 70) {
+          document.write('A');
+        } else if (marks >= 60) {
+          document.write('A-');
+        } else {
+          document.write('Fail');
+        }
+      }
+    </script>
+  </body>
+</html>

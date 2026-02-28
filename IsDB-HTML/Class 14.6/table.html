@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table</title>
+    <style>
+  .table, .th, .td {
+    border: 2px solid black;
+  }
+</style>
+  </head>
+  <body>
+    <h2>Table 001</h2>
+    <table border="1" style="border-collapse: collapse;width: 80%;text-align: center;">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+      <tr>
+        <td>01</td>
+        <td>meem</td>
+        <td>meem@gmail.com</td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td>CR</td>
+        <td>cr@gmail.com</td></td>
+      </tr>
+    </table>
+    <h2>Table 002 </h2>
+    <table border="1" style="border-collapse: collapse;width: 50%;">
+        <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th rowspan="4">Contact</th>
+        </tr>
+        <tr><td>01</td><td rowspan="3">Cr</td><td>goru@gmail.com</td></tr>
+        <tr><td>02</td><td>sagol@gmail.com</td></tr>
+        <tr><td>03</td><td>vera@gmail.com</td></tr>
+        <tr><th>Vip</th>
+        <th>Gorib</th>
+        <th colspan="2">both</th></tr>
+        <tr><td>1</td>
+        <td>0</td>
+        <td colspan="2">1</td></tr>
+    </table>
+    </h2>
+
+    <h2>Exam</h2>
+
+    <table border="2" style="border-collapse: collapse;width: 50%;text-align: center;">
+    <tr ><th class="th"><u>ID</u> </th>
+    <th class="th"><u>Name</u></th>
+    <th class="th"><u>Subject</u></th>
+    <th class="th"><u>Marks</u></th>
+</tr>
+<tr>
+    <td rowspan="3" class="td">1</td>
+    <td rowspan="3" class="td">David</td>
+    <td class="td">Maths</td><td class="td">80</td>
+    
+    
+</tr>
+<tr><td class="td">Physics</td><td class="td">90</td class="td"></tr>
+<tr><td class="td">Computer</td><td class="td">70</td class="td"></tr>
+<tr>
+    <td rowspan="3" class="td">2</td>
+    <td rowspan="3" class="td">Alex</td>
+    <td class="td">Maths</td><td class="td">80</td>
+</tr>
+<tr><td class="td">Physics</td><td class="td">70</td></tr>
+<tr><td class="td">Computer</td><td class="td">90</td></tr>
+
+    </table>
+  </body>
+</html>

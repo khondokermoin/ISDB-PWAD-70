@@ -1,0 +1,824 @@
+<!-- ✅ WayMoreBD Full-Width About/Landing (FINAL Single Paste) -->
+
+<!-- Tailwind (Preflight OFF to avoid Astra/theme conflicts) -->
+<script>
+  tailwind = window.tailwind || {};
+  tailwind.config = { corePlugins: { preflight: false } };
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  :root {
+    --brand-navy: #0f172a;
+    --brand-navy-2: #111827;
+    --brand-orange: #f97316;
+    --brand-orange-h: #ea580c;
+    --brand-green: #22c55e;
+    --brand-green-h: #16a34a;
+    --brand-bg: #f8fafc;
+    --brand-border: #e2e8f0;
+    --brand-muted: #64748b;
+  }
+
+  /* Wrapper */
+  .wm-landing {
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
+    --wm-header-offset: 0px; /* auto set by JS */
+    scroll-padding-top: calc(var(--wm-header-offset) + 12px);
+  }
+
+  /* Full width even inside Astra container */
+  .wm-landing.alignfull {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  /* Neutralize Astra default p margins ONLY inside our wrapper */
+  .wm-landing p {
+    margin: 0 !important;
+  }
+  .wm-landing .wm-tight p {
+    margin: 0 !important;
+  }
+  .wm-landing .wm-tight p + p {
+    margin-top: 6px !important;
+  }
+
+  /* Soft glow */
+  .wm-landing .soft-glow {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Sticky header overlap fix (first section) */
+  .wm-landing > section:first-of-type {
+    padding-top: calc(
+      5rem + var(--wm-header-offset)
+    ) !important; /* 5rem = py-20 */
+  }
+
+  /* Reveal */
+  .wm-reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.75s ease,
+      transform 0.75s ease;
+    will-change: opacity, transform;
+  }
+  .wm-reveal.wm-show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wm-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<div class="wm-landing alignfull" id="wm-landing-root">
+  <!-- HERO -->
+  <section
+    class="relative overflow-hidden bg-gradient-to-br from-[#0F172A] via-[#1F2937] to-[#0B1220] text-white py-20 px-6 text-center"
+  >
+    <!-- Grid overlay (unique id) -->
+    <div
+      class="absolute inset-0 opacity-[0.10] pointer-events-none"
+      aria-hidden="true"
+    >
+      <svg width="100%" height="100%">
+        <pattern
+          id="wm-grid-5564"
+          width="40"
+          height="40"
+          patternUnits="userSpaceOnUse"
+        >
+          <path
+            d="M 40 0 L 0 0 0 40"
+            fill="none"
+            stroke="white"
+            stroke-width="0.5"
+          ></path>
+        </pattern>
+        <rect width="100%" height="100%" fill="url(#wm-grid-5564)"></rect>
+      </svg>
+    </div>
+
+    <div class="relative max-w-4xl mx-auto wm-reveal">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 bg-white/10 text-sm mb-6"
+      >
+        <i class="fa-solid fa-shield-heart text-[#22C55E]"></i>
+        <span>Trusted kitchen &amp; home essentials in Dhaka</span>
+      </div>
+
+      <h1
+        class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight text-white"
+      >
+        Upgrade Your Kitchen.<br />
+        <span class="text-[#F97316]">Save Time Every Day.</span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-gray-200/90 leading-relaxed">
+        Way More BD is a Dhaka-based kitchen &amp; home essentials store—built
+        for people who want smarter cooking, cleaner routines, and reliable
+        products with a smooth shopping experience.
+      </p>
+
+      <div class="mt-10 flex flex-wrap justify-center gap-3 text-sm">
+        <span
+          class="px-4 py-2 rounded-full border border-white/15 bg-white/10 inline-flex items-center gap-2"
+        >
+          <i class="fa-solid fa-kitchen-set text-[#F97316]"></i> Kitchen
+          Appliances
+        </span>
+        <span
+          class="px-4 py-2 rounded-full border border-white/15 bg-white/10 inline-flex items-center gap-2"
+        >
+          <i class="fa-solid fa-utensils text-[#F97316]"></i> Cookware &amp;
+          Steamers
+        </span>
+        <span
+          class="px-4 py-2 rounded-full border border-white/15 bg-white/10 inline-flex items-center gap-2"
+        >
+          <i class="fa-solid fa-location-dot text-[#F97316]"></i> New Market,
+          Dhaka
+        </span>
+        <span
+          class="px-4 py-2 rounded-full border border-white/15 bg-white/10 inline-flex items-center gap-2"
+        >
+          <i class="fa-solid fa-credit-card text-[#F97316]"></i> COD • bKash •
+          Nagad • Visa/Mastercard
+        </span>
+      </div>
+
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a
+          href="/shop/"
+          class="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3 rounded-full font-bold transition inline-flex items-center gap-2"
+        >
+          <i class="fa-solid fa-cart-shopping"></i> Shop Now
+        </a>
+        <a
+          href="https://wa.me/8801868662477"
+          target="_blank"
+          rel="noopener"
+          class="bg-[#22C55E] hover:bg-[#16A34A] text-white px-8 py-3 rounded-full font-bold transition inline-flex items-center gap-2"
+        >
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp Support
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT + STORE DETAILS -->
+  <section class="py-16 px-6 bg-[#F8FAFC]">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10 items-start">
+      <div class="lg:col-span-7 wm-reveal">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-5 text-[#111827]">
+          About Way More BD
+        </h2>
+
+        <p class="text-slate-600 leading-relaxed text-lg">
+          Way More BD (waymorebd.com) is a Dhaka-based store focused on
+          practical kitchen appliances, stainless-steel essentials, steamers,
+          cookware, and everyday kitchen tools. We curate products that are easy
+          to use, durable, and value-driven—so your daily cooking becomes
+          faster, simpler, and more efficient.
+        </p>
+
+        <div
+          class="mt-6 p-5 rounded-2xl bg-white border border-slate-200 soft-glow"
+        >
+          <div class="flex items-start gap-3">
+            <div
+              class="w-10 h-10 rounded-xl flex items-center justify-center bg-orange-50 text-[#F97316] shrink-0"
+            >
+              <i class="fa-solid fa-lightbulb"></i>
+            </div>
+            <div class="wm-tight">
+              <p class="font-semibold text-[#111827]">
+                We don’t try to sell “everything.”
+              </p>
+              <p class="text-slate-600 text-sm md:text-base">
+                We curate what actually helps—so you can shop smarter, not
+                harder.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ✅ FIXED GRID (no misalignment / no “niche niche”) -->
+        <div
+          class="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-fr"
+        >
+          <div
+            class="bg-white border border-slate-200 rounded-2xl p-4 flex items-start gap-3 h-full"
+          >
+            <div
+              class="w-10 h-10 rounded-xl flex items-center justify-center bg-green-50 text-[#22C55E] shrink-0"
+            >
+              <i class="fa-solid fa-check-double"></i>
+            </div>
+            <div class="wm-tight min-w-0">
+              <p class="font-semibold leading-tight">Less confusion</p>
+              <p class="text-slate-500 text-sm leading-snug">
+                Curated selection
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-white border border-slate-200 rounded-2xl p-4 flex items-start gap-3 h-full"
+          >
+            <div
+              class="w-10 h-10 rounded-xl flex items-center justify-center bg-orange-50 text-[#F97316] shrink-0"
+            >
+              <i class="fa-solid fa-list-check"></i>
+            </div>
+            <div class="wm-tight min-w-0">
+              <p class="font-semibold leading-tight">Clear details</p>
+              <p class="text-slate-500 text-sm leading-snug">Buy confidently</p>
+            </div>
+          </div>
+
+          <div
+            class="bg-white border border-slate-200 rounded-2xl p-4 flex items-start gap-3 h-full"
+          >
+            <div
+              class="w-10 h-10 rounded-xl flex items-center justify-center bg-slate-100 text-[#0F172A] shrink-0"
+            >
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <div class="wm-tight min-w-0">
+              <p class="font-semibold leading-tight">Human support</p>
+              <p class="text-slate-500 text-sm leading-snug">Phone/WhatsApp</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 wm-reveal">
+        <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+          <h3 class="text-xl font-bold mb-4 inline-flex items-center gap-2">
+            <i class="fa-solid fa-store text-[#F97316]"></i> Quick Store Details
+          </h3>
+
+          <div class="space-y-4 text-slate-700">
+            <div class="flex gap-3">
+              <i class="fa-solid fa-location-dot text-[#F97316] mt-1"></i>
+              <span
+                >Shop - 131, Ground Floor, Chandrima Super Market, New Market,
+                Dhaka, Bangladesh</span
+              >
+            </div>
+            <div class="flex gap-3">
+              <i class="fa-solid fa-phone text-[#F97316] mt-1"></i>
+              <span
+                >Phone/WhatsApp:
+                <a class="font-bold hover:underline" href="tel:+8801868662477"
+                  >01868-662477</a
+                ></span
+              >
+            </div>
+            <div class="flex gap-3">
+              <i class="fa-solid fa-envelope text-[#F97316] mt-1"></i>
+              <span
+                >Email:
+                <a
+                  class="font-bold hover:underline"
+                  href="mailto:info.waymore.bd@gmail.com"
+                  >info.waymore.bd@gmail.com</a
+                ></span
+              >
+            </div>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-slate-200">
+            <p
+              class="text-sm text-slate-600 mb-3 font-semibold inline-flex items-center gap-2"
+            >
+              <i class="fa-solid fa-lock text-[#0F172A]"></i> Payments we accept
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-sm flex items-center gap-2"
+              >
+                <i class="fa-solid fa-hand-holding-dollar text-[#22C55E]"></i>
+                COD
+              </span>
+              <span
+                class="px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-sm flex items-center gap-2"
+              >
+                <i class="fa-solid fa-mobile-screen-button text-[#0F172A]"></i>
+                bKash
+              </span>
+              <span
+                class="px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-sm flex items-center gap-2"
+              >
+                <i class="fa-solid fa-wallet text-[#0F172A]"></i> Nagad
+              </span>
+              <span
+                class="px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-sm flex items-center gap-2"
+              >
+                <i class="fa-brands fa-cc-visa text-blue-600"></i> Visa
+              </span>
+              <span
+                class="px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-sm flex items-center gap-2"
+              >
+                <i class="fa-brands fa-cc-mastercard text-red-600"></i>
+                Mastercard
+              </span>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <a
+              href="/refund-returns-policy/"
+              class="inline-flex items-center gap-2 text-[#F97316] font-semibold hover:underline"
+            >
+              <i class="fa-solid fa-shield-halved"></i> View Return &amp; Refund
+              Policy
+              <i class="fa-solid fa-arrow-right text-sm"></i>
+            </a>
+            <p
+              class="text-xs mt-2 text-slate-500 inline-flex items-center gap-2"
+            >
+              <i class="fa-solid fa-circle-info"></i> Eligible cases:
+              damaged/defective/wrong items (terms apply).
+            </p>
+          </div>
+
+          <div class="mt-6">
+            <a
+              href="https://wa.me/8801868662477"
+              target="_blank"
+              rel="noopener"
+              class="bg-[#22C55E] hover:bg-[#16A34A] text-white w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold transition"
+            >
+              <i class="fa-brands fa-whatsapp"></i> Get Help on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION + VISION -->
+  <section class="py-16 px-6 bg-white border-t border-slate-200">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+      <div
+        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm wm-reveal"
+      >
+        <div class="text-3xl mb-4 text-[#F97316]">
+          <i class="fa-solid fa-bullseye"></i>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">Mission</h2>
+        <p class="text-slate-600 leading-relaxed">
+          To make everyday kitchen and home living easier and more efficient by
+          offering practical, modern, value-driven products—backed by reliable
+          service, clear product information, and customer-first support.
+        </p>
+      </div>
+
+      <div
+        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm wm-reveal"
+      >
+        <div class="text-3xl mb-4 text-[#F97316]">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">Vision</h2>
+        <p class="text-slate-600 leading-relaxed">
+          To become one of Bangladesh’s most trusted destinations for kitchen
+          appliances, cookware, and home essentials—known for smart product
+          selection, consistent quality, and a seamless shopping experience both
+          online and in-store.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE OFFER -->
+  <section class="bg-white py-16 px-6 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto text-center mb-12 wm-reveal">
+      <h2 class="text-3xl font-extrabold mb-4">What You’ll Find Here</h2>
+      <p class="text-slate-600">
+        Practical, daily-use products that make cooking easier and faster.
+      </p>
+    </div>
+
+    <div
+      class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 wm-reveal"
+    >
+      <div
+        class="p-7 border border-slate-200 rounded-2xl hover:shadow-md transition-shadow bg-white"
+      >
+        <i class="fa-solid fa-fire-burner text-2xl text-[#F97316] mb-3"></i>
+        <h3 class="font-bold mb-2 text-lg">Air Fryers</h3>
+        <p class="text-sm text-slate-600">
+          Smart cooking with less oil and less mess.
+        </p>
+      </div>
+
+      <div
+        class="p-7 border border-slate-200 rounded-2xl hover:shadow-md transition-shadow bg-white"
+      >
+        <i class="fa-solid fa-bowl-food text-2xl text-[#F97316] mb-3"></i>
+        <h3 class="font-bold mb-2 text-lg">Food Choppers</h3>
+        <p class="text-sm text-slate-600">Quick prep for everyday cooking.</p>
+      </div>
+
+      <div
+        class="p-7 border border-slate-200 rounded-2xl hover:shadow-md transition-shadow bg-white"
+      >
+        <i class="fa-solid fa-blender text-2xl text-[#F97316] mb-3"></i>
+        <h3 class="font-bold mb-2 text-lg">Hand Blenders</h3>
+        <p class="text-sm text-slate-600">
+          Smooth blending for sauces, shakes, and more.
+        </p>
+      </div>
+
+      <div
+        class="p-7 border border-slate-200 rounded-2xl hover:shadow-md transition-shadow bg-white"
+      >
+        <i class="fa-solid fa-mug-hot text-2xl text-[#F97316] mb-3"></i>
+        <h3 class="font-bold mb-2 text-lg">Kettles &amp; Grinders</h3>
+        <p class="text-sm text-slate-600">
+          Daily convenience—fast boiling and easy grinding.
+        </p>
+      </div>
+
+      <div
+        class="p-7 border border-slate-200 rounded-2xl hover:shadow-md transition-shadow bg-white"
+      >
+        <i class="fa-solid fa-utensils text-2xl text-[#F97316] mb-3"></i>
+        <h3 class="font-bold mb-2 text-lg">Steamers &amp; Cookware</h3>
+        <p class="text-sm text-slate-600">
+          Stainless-steel steamers/steam cookers and cookware essentials.
+        </p>
+      </div>
+
+      <div
+        class="p-7 border border-slate-200 rounded-2xl hover:shadow-md transition-shadow bg-white"
+      >
+        <i
+          class="fa-solid fa-screwdriver-wrench text-2xl text-[#F97316] mb-3"
+        ></i>
+        <h3 class="font-bold mb-2 text-lg">Kitchen Tools</h3>
+        <p class="text-sm text-slate-600">
+          Simple tools that improve speed and control.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE + TRUST -->
+  <section class="relative overflow-hidden py-16 px-6 text-white bg-[#111827]">
+    <div
+      class="absolute inset-0 opacity-[0.07] pointer-events-none"
+      aria-hidden="true"
+    >
+      <svg width="100%" height="100%">
+        <pattern
+          id="wm-grid2-5564"
+          width="40"
+          height="40"
+          patternUnits="userSpaceOnUse"
+        >
+          <path
+            d="M 40 0 L 0 0 0 40"
+            fill="none"
+            stroke="white"
+            stroke-width="0.5"
+          ></path>
+        </pattern>
+        <rect width="100%" height="100%" fill="url(#wm-grid2-5564)"></rect>
+      </svg>
+    </div>
+
+    <div
+      class="relative max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 items-start"
+    >
+      <div class="wm-reveal">
+        <h2 class="text-3xl font-extrabold mb-6 text-white">
+          Why People Choose Way More BD
+        </h2>
+        <p class="text-gray-200/90 mb-8 leading-relaxed">
+          We design the shopping experience to reduce decision fatigue and
+          increase confidence—so you feel secure before and after you order.
+        </p>
+
+        <div class="space-y-4">
+          <div class="flex gap-3">
+            <i class="fa-solid fa-circle-check text-[#22C55E] mt-1"></i>
+            <p>
+              <strong>Curated choices, less stress:</strong> We shortlist
+              practical items so you don’t waste time comparing endless options.
+            </p>
+          </div>
+          <div class="flex gap-3">
+            <i class="fa-solid fa-circle-check text-[#22C55E] mt-1"></i>
+            <p>
+              <strong>Clear details, confident buying:</strong> Straightforward
+              product information—so there are fewer surprises after delivery.
+            </p>
+          </div>
+          <div class="flex gap-3">
+            <i class="fa-solid fa-circle-check text-[#22C55E] mt-1"></i>
+            <p>
+              <strong>Value that makes sense:</strong> Products selected for
+              usability and durability—so you feel the difference in daily use.
+            </p>
+          </div>
+          <div class="flex gap-3">
+            <i class="fa-solid fa-circle-check text-[#22C55E] mt-1"></i>
+            <p>
+              <strong>Support that feels human:</strong> Quick help via
+              Phone/WhatsApp before and after you order.
+            </p>
+          </div>
+          <div class="flex gap-3">
+            <i class="fa-solid fa-circle-check text-[#22C55E] mt-1"></i>
+            <p>
+              <strong>Risk-reduction approach:</strong> If an item arrives
+              damaged/defective or incorrect, we follow a structured
+              return/refund process (eligible cases).
+            </p>
+          </div>
+          <div class="flex gap-3">
+            <i class="fa-solid fa-circle-check text-[#22C55E] mt-1"></i>
+            <p>
+              <strong>Flexible payments:</strong> Cash on Delivery (COD), bKash,
+              Nagad, and Card Payments (Visa/Mastercard).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="wm-reveal">
+        <div class="p-8 rounded-2xl border border-white/10 bg-white/5">
+          <h3
+            class="text-xl font-bold mb-6 inline-flex items-center gap-2 text-white"
+          >
+            <i class="fa-solid fa-shield-halved text-[#F97316]"></i> Trust
+            Signals (Shop With Confidence)
+          </h3>
+
+          <div class="space-y-3">
+            <div class="flex items-start gap-4">
+              <div
+                class="w-11 h-11 rounded-xl bg-orange-500/20 text-[#F97316] flex items-center justify-center shrink-0"
+              >
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <div class="wm-tight">
+                <p class="font-semibold">Physical Store Location</p>
+                <p class="text-gray-200 text-sm">
+                  Visit us at New Market, Dhaka for in-person shopping and
+                  support.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div
+                class="w-11 h-11 rounded-xl bg-orange-500/20 text-[#F97316] flex items-center justify-center shrink-0"
+              >
+                <i class="fa-solid fa-headset"></i>
+              </div>
+              <div class="wm-tight">
+                <p class="font-semibold">Direct Support</p>
+                <p class="text-gray-200 text-sm">
+                  Call/WhatsApp for product guidance and order support.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div
+                class="w-11 h-11 rounded-xl bg-orange-500/20 text-[#F97316] flex items-center justify-center shrink-0"
+              >
+                <i class="fa-solid fa-credit-card"></i>
+              </div>
+              <div class="wm-tight">
+                <p class="font-semibold">Flexible &amp; Secure Payments</p>
+                <p class="text-gray-200 text-sm">
+                  COD, bKash, Nagad, Visa, Mastercard—choose what feels
+                  comfortable.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div
+                class="w-11 h-11 rounded-xl bg-orange-500/20 text-[#F97316] flex items-center justify-center shrink-0"
+              >
+                <i class="fa-solid fa-rotate-left"></i>
+              </div>
+              <div class="wm-tight">
+                <p class="font-semibold">Structured Return/Refund Policy</p>
+                <p class="text-gray-200 text-sm">
+                  Clear process for damaged/defective/wrong items (terms apply).
+                </p>
+                <a
+                  href="/refund-returns-policy/"
+                  class="inline-flex items-center gap-2 font-semibold mt-2 text-orange-200 hover:underline"
+                >
+                  View policy <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-white/10">
+            <p class="text-gray-200 text-sm inline-flex items-center gap-2">
+              <i class="fa-solid fa-comment-dots text-[#22C55E]"></i> Want help
+              choosing the right item? We’ll guide you quickly on WhatsApp.
+            </p>
+            <a
+              href="https://wa.me/8801868662477"
+              target="_blank"
+              rel="noopener"
+              class="mt-4 bg-[#22C55E] hover:bg-[#16A34A] text-white inline-flex items-center justify-center gap-2 w-full px-6 py-3 rounded-full font-bold transition"
+            >
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp Support
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="py-16 px-6 bg-white border-t border-slate-200">
+    <div class="max-w-6xl mx-auto text-center wm-reveal">
+      <h2 class="text-3xl font-extrabold mb-10">Visit or Reach Out</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-8 rounded-2xl border border-slate-200 bg-slate-50">
+          <i class="fas fa-map-marker-alt text-[#F97316] text-2xl mb-4"></i>
+          <h4 class="font-bold">Location</h4>
+          <p class="text-slate-600">
+            Shop - 131, Ground Floor, Chandrima Super Market, New Market, Dhaka,
+            Bangladesh
+          </p>
+        </div>
+
+        <div class="p-8 rounded-2xl border border-slate-200 bg-slate-50">
+          <i class="fab fa-whatsapp text-[#F97316] text-2xl mb-4"></i>
+          <h4 class="font-bold">WhatsApp / Phone</h4>
+          <p class="text-slate-600">
+            <a class="font-bold hover:underline" href="tel:+8801868662477"
+              >01868-662477</a
+            >
+          </p>
+        </div>
+
+        <div class="p-8 rounded-2xl border border-slate-200 bg-slate-50">
+          <i class="fas fa-envelope text-[#F97316] text-2xl mb-4"></i>
+          <h4 class="font-bold">Email</h4>
+          <p class="text-slate-600">
+            <a
+              class="font-bold hover:underline"
+              href="mailto:info.waymore.bd@gmail.com"
+              >info.waymore.bd@gmail.com</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 text-center bg-[#F8FAFC]">
+    <div class="max-w-6xl mx-auto wm-reveal">
+      <h2 class="text-3xl font-extrabold mb-4">
+        Ready to upgrade your kitchen?
+      </h2>
+      <p class="text-slate-600 mb-8">
+        Explore our latest arrivals and best-selling essentials today.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="/shop/"
+          class="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3 rounded-full font-bold transition inline-flex items-center gap-2"
+        >
+          <i class="fa-solid fa-cart-shopping"></i> Shop Now
+        </a>
+
+        <a
+          href="/shop/"
+          class="bg-[#0F172A] hover:brightness-110 text-white px-8 py-3 rounded-full font-bold transition inline-flex items-center gap-2"
+        >
+          <i class="fa-solid fa-layer-group"></i> Explore Products
+        </a>
+
+        <a
+          href="https://wa.me/8801868662477"
+          target="_blank"
+          rel="noopener"
+          class="bg-[#22C55E] hover:bg-[#16A34A] text-white px-8 py-3 rounded-full font-bold transition inline-flex items-center gap-2"
+        >
+          <i class="fa-brands fa-whatsapp"></i> Contact on WhatsApp
+        </a>
+      </div>
+
+      <div
+        class="mt-8 text-sm text-slate-600 flex flex-wrap justify-center gap-4"
+      >
+        <span class="inline-flex items-center gap-2"
+          ><i class="fa-solid fa-lock text-[#0F172A]"></i> Secure payment
+          options</span
+        >
+        <span class="inline-flex items-center gap-2"
+          ><i class="fa-solid fa-shield-halved text-[#0F172A]"></i> Clear return
+          policy (eligible cases)</span
+        >
+        <span class="inline-flex items-center gap-2"
+          ><i class="fa-solid fa-store text-[#0F172A]"></i> Physical store
+          support</span
+        >
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ✅ Auto-detect Astra Sticky Header height + Reveal (single) -->
+<script>
+  (function () {
+    const root = document.getElementById('wm-landing-root');
+    if (!root) return;
+
+    // 1) Reveal
+    const targets = root.querySelectorAll('.wm-reveal');
+    const showAll = () => targets.forEach(el => el.classList.add('wm-show'));
+
+    if (!('IntersectionObserver' in window)) {
+      showAll();
+    } else {
+      const io = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('wm-show');
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -120px 0px' }
+      );
+
+      targets.forEach(el => io.observe(el));
+    }
+
+    // 2) Header offset (Astra + common headers)
+    function setHeaderOffset() {
+      const adminBar = document.getElementById('wpadminbar');
+      const adminH = adminBar ? adminBar.offsetHeight : 0;
+
+      const candidates = [
+        '.ast-primary-header-bar',
+        '.ast-site-header-wrap',
+        '#masthead',
+        'header.site-header',
+        '.site-header',
+        'header',
+      ];
+
+      let headerH = 0;
+      for (const sel of candidates) {
+        const el = document.querySelector(sel);
+        if (!el) continue;
+        const cs = window.getComputedStyle(el);
+        if (cs.position === 'fixed' || cs.position === 'sticky') {
+          headerH = Math.max(headerH, el.offsetHeight);
+        }
+      }
+
+      const offset = headerH + adminH;
+      root.style.setProperty('--wm-header-offset', (offset || 0) + 'px');
+    }
+
+    setHeaderOffset();
+    window.addEventListener('resize', setHeaderOffset, { passive: true });
+    setTimeout(setHeaderOffset, 350);
+  })();
+</script>

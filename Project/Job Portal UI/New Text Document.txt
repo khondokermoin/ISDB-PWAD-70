@@ -1,0 +1,287 @@
+🧩 Job Portal UI – Full A to Z Diagram (Bootstrap only)
+1️⃣ Overall Page Structure
+<body>
+ ├── Navbar
+ ├── Hero / Search Section
+ ├── Main Content
+ │    ├── Filter Sidebar (Left)
+ │    └── Job Listings (Right)
+ ├── Apply Job Modal
+ └── Footer
+</body>
+
+2️⃣ Navbar (Top)
+
+Purpose: Branding + Navigation
+
+Components:
+
+Logo / Site Name (JobPortal)
+
+Menu items:
+
+Home
+
+Jobs
+
+Companies
+
+About
+
+Login / Sign Up (button)
+
+Responsive hamburger menu
+
+👉 Bootstrap:
+
+navbar
+
+navbar-expand-lg
+
+dropdown (optional)
+
+3️⃣ Hero / Job Search Section
+
+Purpose: User এখান থেকেই job খুঁজবে
+
+Elements:
+
+Big heading: “Find Your Dream Job”
+
+Search input:
+
+Job title / keyword
+
+Location
+
+Search button
+
+UI:
+[ Job title ] [ Location ] [ Search ]
+
+
+👉 Bootstrap:
+
+container
+
+row
+
+input-group
+
+form-control
+
+btn
+
+4️⃣ Main Content Area (Core Part)
+Main Content
+ ├── Filter Sidebar (col-3)
+ └── Job Cards Section (col-9)
+
+
+👉 Bootstrap Grid:
+
+row
+
+col-lg-3 + col-lg-9
+
+5️⃣ Filter Sidebar (Left Panel)
+
+Purpose: Job filter করা
+
+Sections inside Sidebar:
+🔹 Job Type
+
+Checkbox:
+
+Full Time
+
+Part Time
+
+Internship
+
+Remote
+
+🔹 Experience Level
+
+Fresher
+
+1–3 Years
+
+3–5 Years
+
+5+ Years
+
+🔹 Location
+
+Dhaka
+
+Chittagong
+
+Remote
+
+🔹 Salary Range
+
+Dropdown / radio
+
+10k–20k
+
+20k–40k
+
+40k+
+
+🔹 Company Type
+
+Startup
+
+Corporate
+
+Agency
+
+👉 Bootstrap:
+
+card
+
+form-check
+
+accordion (optional)
+
+list-group
+
+6️⃣ Job Listings Section (Right Panel)
+
+This is the heart ❤️
+
+Job Card Structure:
+[ Company Logo ]   Job Title
+                   Company Name
+                   Location | Job Type
+                   Salary
+[ Apply Now ] [ View Details ]
+
+Each Job Card Contains:
+
+Company logo (image)
+
+Job title (heading)
+
+Company name
+
+Location + Job type (badges)
+
+Salary
+
+Posted time (e.g. 2 days ago)
+
+Buttons:
+
+Apply Now (opens modal)
+
+Details
+
+👉 Bootstrap:
+
+card
+
+badge
+
+d-flex
+
+btn
+
+shadow-sm
+
+7️⃣ Apply Job Modal (Popup)
+
+Purpose: Apply without leaving page
+
+Modal Fields:
+
+Full Name
+
+Email
+
+Phone
+
+Upload CV (UI only)
+
+Cover Letter (textarea)
+
+Submit button
+
+👉 Bootstrap:
+
+modal
+
+modal-header
+
+modal-body
+
+form-control
+
+8️⃣ Job Details (Optional Page / Modal)
+
+If extra polish চাও:
+
+Contains:
+
+Job description
+
+Responsibilities
+
+Requirements
+
+Benefits
+
+Company info
+
+👉 Bootstrap:
+
+list-group
+
+accordion
+
+table
+
+9️⃣ Footer
+Elements:
+
+About JobPortal
+
+Quick links
+
+Contact info
+
+Social icons
+
+👉 Bootstrap:
+
+bg-dark
+
+text-light
+
+row + col
+
+🔁 Page Flow Diagram (User Journey)
+User enters site
+   ↓
+Search job
+   ↓
+Apply filters
+   ↓
+Browse job cards
+   ↓
+Click "Apply"
+   ↓
+Apply Modal opens
+
+🎯 What You Will Learn from This Project
+
+Bootstrap Grid system (real use)
+
+Responsive layout
+
+Cards & Modals
+
+Form UI design
+
+Professional dashboard-style UI

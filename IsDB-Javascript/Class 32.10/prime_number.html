@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Prime Step-by-Step Checker</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      input,
+      button {
+        padding: 5px 10px;
+        margin: 5px;
+      }
+      .step {
+        margin: 3px 0;
+      }
+      .prime {
+        color: green;
+        font-weight: bold;
+      }
+      .not-prime {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Prime Number Checker (Step by Step)</h2>
+
+    <input type="number" id="numberInput" placeholder="Enter a number" />
+    <button onclick="checkPrime()">Check</button>
+
+    <div id="steps"></div>
+    <p id="result"></p>
+
+    <!-- Advance -->
+    <!-- <script>
+      const checkPrime = () => {
+        const num = +document.getElementById('numberInput').value;
+        const result = document.getElementById('result');
+
+        result.innerText =
+          num > 1 &&
+          [...Array(Math.floor(Math.sqrt(num)) - 1)].every(
+            (_, i) => num % (i + 2) !== 0
+          )
+            ? 'Prime Number ✅'
+            : 'Not Prime';
+      };
+    </script> -->
+
+    <!-- Meadum -->
+    <script>
+      function checkPrime() {
+        let num = parseInt(document.getElementById('numberInput').value);
+        let result = document.getElementById('result');
+
+        if (num <= 1) {
+          result.innerText = 'Not Prime';
+          return;
+        }
+
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) {
+            result.innerText = 'Not Prime';
+            return;
+          }
+        }
+
+        result.innerText = 'Prime Number ✅';
+      }
+    </script>
+
+    <!-- <script>
+      function checkPrime() {
+        let num = parseInt(document.getElementById('numberInput').value);
+        let stepsDiv = document.getElementById('steps');
+        let resultP = document.getElementById('result');
+
+        stepsDiv.innerHTML = ''; // Clear previous steps
+        resultP.innerHTML = '';
+
+        if (num <= 1) {
+          resultP.innerHTML = "<span class='not-prime'>Not Prime</span>";
+          return;
+        }
+
+        let isPrime = true;
+
+        for (let i = 2; i <= num; i++) {
+          let remainder = num % i;
+          let stepText = `${num} ÷ ${i} = ${Math.floor(num / i)}, remainder = ${remainder}`;
+
+          let stepDiv = document.createElement('div');
+          stepDiv.className = 'step';
+          stepDiv.innerText = stepText;
+          stepsDiv.appendChild(stepDiv);
+
+          if (i !== num && remainder === 0) {
+            isPrime = false;
+          }
+        }
+
+        if (isPrime) {
+          resultP.innerHTML = "<span class='prime'>Prime Number ✅</span>";
+        } else {
+          resultP.innerHTML = "<span class='not-prime'>Not Prime ❌</span>";
+        }
+      }
+    </script> -->
+  </body>
+</html>

@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="shortcut icon"
+      href="./assets/img/favicon.png"
+      type="image/x-icon"
+    />
+    <title>Nagad</title>
+
+    <!-- Offline Bootstrap (from your bootstrap-5.3.8-dist.zip) -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="./assets/bootstrap-icons/bootstrap-icons.css"
+    />
+
+    <!-- Your styles -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header class="topbar">
+      <div class="nav-shell">
+        <nav class="navbar navbar-expand-lg nav-pill">
+          <div class="container-fluid px-0">
+            <a
+              class="navbar-brand d-flex align-items-center gap-2"
+              href="./index.html"
+            >
+              <img src="assets/img/logo.png" alt="Logo" style="height: 34px" />
+            </a>
+
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mainNav"
+              aria-controls="mainNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+              <!-- MENU -->
+              <ul class="navbar-nav menu-list" role="list">
+                <li class="nav-item dropdown">
+                  <a
+                    class="menu-link dropdown-toggle"
+                    href="#"
+                    data-bs-toggle="dropdown"
+                  >
+                    Services
+                    <span class="ms-1" style="font-size: 12px">▾</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Service 1</a></li>
+                    <li><a class="dropdown-item" href="#">Service 2</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a class="menu-link" href="#">Offers</a>
+                </li>
+                <li class="nav-item">
+                  <a class="menu-link" href="./about.html">About Us</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="menu-link dropdown-toggle"
+                    href="#"
+                    data-bs-toggle="dropdown"
+                  >
+                    Help <span class="ms-1" style="font-size: 12px">▾</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">FAQ</a></li>
+                    <li><a class="dropdown-item" href="#">Support</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="menu-link dropdown-toggle"
+                    href="#"
+                    data-bs-toggle="dropdown"
+                  >
+                    Career <span class="ms-1" style="font-size: 12px">▾</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Jobs</a></li>
+                    <li><a class="dropdown-item" href="#">Internships</a></li>
+                  </ul>
+                </li>
+              </ul>
+
+              <!-- RIGHT -->
+              <div
+                class="search-and-lang d-flex align-items-center ms-auto h-100"
+              >
+                <form class="search-form" action="#" method="get">
+                  <button class="search-btn" type="submit" aria-label="Search">
+                    🔍
+                  </button>
+                  <input
+                    class="search-input"
+                    type="search"
+                    name="q"
+                    placeholder="Search"
+                  />
+                </form>
+
+                <div class="lang-wrap">
+                  <button class="lang-btn active" type="button" data-lang-btn>
+                    English
+                  </button>
+                  <button class="lang-btn" type="button" data-lang-btn>
+                    বাংলা
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- HERO (AUTO CAROUSEL, NO LEFT/RIGHT BUTTON) -->
+    <section class="hero-card">
+      <div
+        id="heroCarousel"
+        class="carousel slide"
+        data-bs-ride="carousel"
+        data-bs-interval="2800"
+        data-bs-touch="true"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="0"
+            class="active"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/img/hero_banner.jpg" alt="Hero 1" />
+          </div>
+          <div class="carousel-item">
+            <img src="assets/img/we_are_nagad.jpg" alt="Hero 2" />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="assets/img/safety_tips.jpg"
+              style="width: 100%"
+              alt="Hero 3"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="page-wrap">
+      <!-- SERVICE STRIP -->
+      <section class="service-strip">
+        <div class="service-wrapper">
+          <!-- Left Arrow -->
+          <div class="arrows">
+            <span class="arrow_prev" onclick="scrollServices(-200)">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.8"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
+                />
+              </svg>
+            </span>
+          </div>
+          <div class="service-row">
+            <a class="service-item" href="/services/?service=send-money">
+              <div class="service-icon">
+                <img
+                  src="./assets/img/1.png"
+                  alt="Send Money"
+                  style="width: 50px; height: 50px"
+                />
+              </div>
+              <div>Send Money</div>
+            </a>
+
+            <a class="service-item" href="/services/?service=cash-out">
+              <div class="service-icon">
+                <img
+                  src="https://backend.nagad.com.bd:8080/storage/uploads/service/LeKNR0LgffHb6yDWmmUq2bD352JhmQERcCla4kbt.png"
+                  alt="Cash Out"
+                />
+              </div>
+              <div>Cash Out</div>
+            </a>
+
+            <a class="service-item" href="/services/?service=emi-payment">
+              <div class="service-icon">
+                <img
+                  src="https://backend.nagad.com.bd:8080/storage/uploads/service/5WPlzfRL0BiAUFr55DZFxIHs7gi2Uc3eRVuZ5GBE.png"
+                  alt="EMI Payment"
+                  style="width: 50px; height: 50px"
+                />
+              </div>
+              <div>EMI Payment</div>
+            </a>
+
+            <a
+              class="service-item"
+              href="/services/?service=add-money-from-card"
+            >
+              <div class="service-icon">
+                <img
+                  src="https://backend.nagad.com.bd:8080/storage/uploads/service/BdR3psO0WMR2QIzSJBjxUBkkn3PPG9JCd0aULqdP.png"
+                  alt="Add Money from Card"
+                  style="width: 50px; height: 50px"
+                />
+              </div>
+              <div>Add Money from Card</div>
+            </a>
+
+            <a
+              class="service-item"
+              href="/services/?service=add-money-from-bank"
+            >
+              <div class="service-icon">
+                <img
+                  src="https://backend.nagad.com.bd:8080/storage/uploads/service/Z5iH2dB0mGn3kXiRiKU6cWM7UetqFzh3kIYj9EKL.png"
+                  alt="Add Money from Bank"
+                  style="width: 50px; height: 50px"
+                />
+              </div>
+              <div>Add Money from Bank</div>
+            </a>
+
+            <a class="service-item" href="/services/?service=merchant-pay">
+              <div class="service-icon">
+                <img
+                  src="https://backend.nagad.com.bd:8080/storage/uploads/service/OpAhqSZOIqUqet38lwOtOwgjQLlrMJwDPPl5VgzW.png"
+                  alt="Merchant Pay"
+                  style="width: 50px; height: 50px"
+                />
+              </div>
+              <div>Merchant Pay</div>
+            </a>
+
+            <a class="service-item" href="/services/?service=cash-in">
+              <div class="service-icon">
+                <img
+                  src="https://backend.nagad.com.bd:8080/storage/uploads/service/4kD5w34XxS3sy9j1jt1p8qLeO5TKH5y6DHT8WyIj.png"
+                  alt="Cash In"
+                  style="width: 50px; height: 50px"
+                />
+              </div>
+              <div>Cash In</div>
+            </a>
+
+            <a class="service-item" href="/services/?service=bill-pay">
+              <div class="service-icon">
+                <img
+                  src="https://backend.nagad.com.bd:8080/storage/uploads/service/loM2giIOANX8LJtQpqkuNzHkmxKg05o6mqXM5j8y.png"
+                  alt="Bill Pay"
+                  style="width: 50px; height: 50px"
+                />
+              </div>
+              <div>Bill Pay</div>
+            </a>
+
+            <a class="service-item" href="/services/?service=remittance">
+              <div class="service-icon">
+                <img
+                  src="https://backend.nagad.com.bd:8080/storage/uploads/service/9VNXaECVassnwmYHs1CnVu6rZ1CzFpXc9g3AIcze.png"
+                  alt="Remittance"
+                  style="width: 50px; height: 50px"
+                />
+              </div>
+              <div>Remittance</div>
+            </a>
+
+            <a class="service-item" href="/services/?service=transfer-money">
+              <div class="service-icon">
+                <img
+                  src="https://backend.nagad.com.bd:8080/storage/uploads/service/NvYNB1eqP0ZH4gHeq5CJJdqA5D6c1ZpqV1qetAD7.png"
+                  alt="Transfer Money"
+                  style="width: 50px; height: 50px"
+                />
+              </div>
+              <div>Transfer Money</div>
+            </a>
+
+            <a class="service-item" href="/services/?service=nagad-islamic">
+              <div class="service-icon">
+                <img
+                  src="https://backend.nagad.com.bd:8080/storage/uploads/service/BR9dlylhYQ54MxCKBSVYghQMdFgWjEsF819QsLdr.png"
+                  alt="Nagad Islamic"
+                  style="width: 50px; height: 50px"
+                />
+              </div>
+              <div>Nagad Islamic</div>
+            </a>
+          </div>
+          <!-- Right Arrow -->
+          <div class="arrows">
+            <span class="arrow_next" onclick="scrollServices(200)">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.8"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CURRENT OFFERS -->
+      <h3 class="section-title">Current Offers</h3>
+
+      <section class="offers-wrap">
+        <div class="offer-card">
+          <div class="offer-thumb">
+            <img src="assets/img/card.jpg" alt="Offer 1" />
+          </div>
+          <div class="text-center mt-3">
+            <button class="btn btn-brand">Offer Details</button>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <div class="offer-thumb">
+            <img src="assets/img/card2.jpg" alt="Offer 2" />
+          </div>
+          <div class="text-center mt-3">
+            <button class="btn btn-brand">Offer Details</button>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <div class="offer-thumb">
+            <img src="assets/img/card.jpg" alt="Offer 3" />
+          </div>
+          <div class="text-center mt-3">
+            <button class="btn btn-brand">Offer Details</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="text-center mt-3">
+        <button class="btn btn-outline-brand">All Offers</button>
+      </div>
+
+      <!-- OPEN ACCOUNT -->
+      <h3 class="section-title mt-4">Open Nagad Account</h3>
+      <div
+        class="text-center"
+        style="
+          margin-top: 10px;
+          font-size: 24px;
+          max-width: unset;
+          color: #f24f41;
+        "
+      >
+        3 easy steps to open your Nagad Account
+      </div>
+
+      <div class="text-center mt-3">
+        <div class="pill-tab">
+          <button class="pill-btn active" type="button">
+            <img src="./assets/img/download.png" alt="Download Icon" />
+            <samp
+              style="
+                font-size: 18px;
+                padding-right: 5px;
+                align-items: center;
+                justify-content: center;
+              "
+              >App</samp
+            >
+          </button>
+        </div>
+      </div>
+
+      <section class="steps-grid">
+        <div class="step-card">
+          <div class="step-ico">
+            <img
+              src="./assets/img/8iN2u0zw8tj5WEEPyPLHwZMwUbzjmUcm50zXSmi9.png"
+              alt="Step 1"
+            />
+          </div>
+          <div class="step-title">Step 1</div>
+          <div class="step-text">
+            Scan your NID and share necessary information
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-ico">
+            <img
+              src="./assets/img/E6qHnbEucYVJvAom34NCbbFZugSLalLofPgokX5w.png"
+              alt="Step 2"
+            />
+          </div>
+          <div class="step-title">Step 2</div>
+          <div class="step-text">
+            Take a selfie and put your digital signature
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-ico">
+            <img
+              src="./assets/img/Z4u3sXSgjt1DT39wiVW8DHyLl6Xn6RxH8398t2NW.png"
+              alt="Step 3"
+            />
+          </div>
+          <div class="step-title">Step 3</div>
+          <div class="step-text">Set your 4-digit PIN</div>
+        </div>
+      </section>
+
+      <div class="text-center mt-3">
+        <button class="btn btn-brand me-2">Download App</button>
+        <button class="btn btn-outline-brand">Learn More</button>
+      </div>
+
+      <!-- BIG BANNER -->
+      <h3 class="section-title mt-4">
+        Nagad - A DFS of the Bangladesh Post Office
+      </h3>
+      <section class="big-banner">
+        <img src="assets/img/g.jpg" alt="Banner" />
+      </section>
+
+      <div
+        class="text-center mt-3 small-muted"
+        style="font-size: 16px; color: black; padding: 0px 120px"
+      >
+        Nagad is an innovative and promising digital financial service of
+        Bangladesh Post Office that embarked upon a glorious journey on March
+        26, 2019. After its inception, Nagad has financially included more than
+        9 crore people only in five years.
+      </div>
+
+      <div class="text-center mt-3">
+        <button class="btn btn-brand">Learn More</button>
+      </div>
+
+      <!-- SAFETY + FRAUD -->
+      <section class="info-grid mt-4">
+        <div class="info-left">
+          <img src="assets/img/s.jpg" alt="Safety tips" />
+        </div>
+        <div class="info-right">
+          <h5>Beware of Frauds</h5>
+          <p style="font-size: 16px">
+            Do not share your PIN or account balance with anyone. Fraudsters can
+            take advantage of your vulnerability to steal your hard-earned
+            money. Even by pretending to help you.
+          </p>
+          <button class="btn btn-brand">Learn More</button>
+        </div>
+      </section>
+
+      <!-- LIFE GRID -->
+      <h3 class="section-title mt-4">Nagad in Everyday Life</h3>
+      <section class="life-grid">
+        <div class="container">
+          <div class="row g-3">
+            <div class="col-12 col-sm-6 col-md-4">
+              <img
+                src="assets/img/life_0_0.jpg"
+                class="img-fluid rounded"
+                alt="Img 1"
+              />
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+              <img
+                src="assets/img/life_0_1.jpg"
+                class="img-fluid rounded"
+                alt="Img 2"
+              />
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+              <img
+                src="assets/img/life_0_2.jpg"
+                class="img-fluid rounded"
+                alt="Img 3"
+              />
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+              <img
+                src="assets/img/life_1_0.jpg"
+                class="img-fluid rounded"
+                alt="Img 4"
+              />
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+              <img
+                src="assets/img/life_1_1.jpg"
+                class="img-fluid rounded"
+                alt="Img 5"
+              />
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+              <img
+                src="assets/img/life_1_2.jpg"
+                class="img-fluid rounded"
+                alt="Img 6"
+              />
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+              <img
+                src="assets/img/life_2_0.jpg"
+                class="img-fluid rounded"
+                alt="Img 7"
+              />
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+              <img
+                src="assets/img/life_2_1.jpg"
+                class="img-fluid rounded"
+                alt="Img 8"
+              />
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+              <img
+                src="assets/img/life_2_2.jpg"
+                class="img-fluid rounded"
+                alt="Img 9"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <p style="padding: 5px 160px">
+          Nagad’s services are designed to facilitate convenience and maximum
+          benefit of its users. Nagad is making people's lives easier as they
+          are now making all their transactions with the best benefits.
+        </p>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer
+      class="pt-4"
+      style="
+        background: linear-gradient(180deg, #fff5f2 0%, #fcdad7 100%);
+        border-radius: 60px 60px 0 0;
+        box-shadow: 0 -4px 17px rgba(0, 0, 0, 0.15);
+        margin-top: 20px;
+      "
+    >
+      <div class="container">
+        <div
+          class="d-flex flex-column flex-md-row align-items-center justify-content-between py-3"
+        >
+          <!-- Left Logo -->
+          <img
+            src="./assets/img/dakLogo.5e37448.jpg"
+            alt="Bangladesh Post Logo"
+            style="width: 80px"
+          />
+
+          <!-- Social Icons -->
+          <div class="d-flex gap-3 my-3 my-md-0">
+            <a href="#" class="text-dark fs-5" aria-label="Facebook"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a href="#" class="text-dark fs-5" aria-label="Instagram"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a href="#" class="text-dark fs-5" aria-label="YouTube"
+              ><i class="bi bi-youtube"></i
+            ></a>
+            <a href="#" class="text-dark fs-5" aria-label="LinkedIn"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+            <a href="#" class="text-dark fs-5" aria-label="TikTok"
+              ><i class="bi bi-tiktok"></i
+            ></a>
+          </div>
+
+          <!-- Right Nagad Logo -->
+          <img
+            src="./assets/img/new-logo.14fe8a5.png"
+            alt="Nagad Logo"
+            style="width: 140px"
+          />
+        </div>
+        <hr />
+        <div>
+          <p class="show-on-small" style="font-size: 13px">
+            To make your life easier Download Nagad app and access all our
+            services from a single touchpoint.
+          </p>
+        </div>
+
+        <div class="container my-4">
+          <div class="row">
+            <!-- প্রথম কলাম -->
+            <div class="col-6 col-md-4 mb-3">
+              <ul class="list-unstyled">
+                <li>
+                  <a href="/terms-of-use" class="text-decoration-none text-dark"
+                    >Terms of Use</a
+                  >
+                </li>
+                <li>
+                  <a href="/media-center" class="text-decoration-none text-dark"
+                    >Media Center</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- দ্বিতীয় কলাম -->
+            <div class="col-6 col-md-4 mb-3">
+              <ul class="list-unstyled">
+                <li>
+                  <a href="/contact" class="text-decoration-none text-dark"
+                    >Contact Us</a
+                  >
+                </li>
+                <li>
+                  <a href="/faq" class="text-decoration-none text-dark">FAQ</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- তৃতীয় কলাম -->
+            <div class="col-12 col-md-4 mb-3">
+              <ul class="list-unstyled">
+                <li>
+                  <a
+                    href="/pg/?n=privacy-policy"
+                    class="text-decoration-none text-dark"
+                    >Privacy Policy</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="d-flex flex-column flex-md-row align-items-center justify-content-between mt-4 mb-2"
+        >
+          <small class="text-muted">© 2026 Nagad All rights reserved</small>
+
+          <div class="text-md-end mt-3 mt-md-0">
+            <p class="mb-1 fw-semibold">Download Nagad App</p>
+            <p
+              class="mb-2"
+              style="max-width: 280px; font-size: 0.9rem; color: #555"
+            >
+              To make your life easier Download Nagad app and access all our
+              services from a single touchpoint.
+            </p>
+            <button class="btn btn-danger px-4 py-2 rounded-pill fw-semibold">
+              Download App
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Offline Bootstrap JS -->
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+      function scrollServices(amount) {
+        document
+          .getElementById('serviceRow')
+          .scrollBy({ left: amount, behavior: 'smooth' });
+      }
+    </script>
+  </body>
+</html>

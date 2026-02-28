@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Form (Small)</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #eef1f4;
+        font-size: 13px;
+      }
+
+      .wrap {
+        padding: 12px;
+        max-width: 560px;
+      }
+
+      h1 {
+        font-size: 26px;
+        margin: 0 0 12px;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 8px 0;
+      }
+
+      .row label {
+        width: 140px;
+        font-size: 13px;
+      }
+
+      .row input {
+        width: 220px;
+        height: 28px;
+        border: none;
+        border-radius: 6px;
+        background: #9fa1a4;
+        padding: 0 8px;
+        font-size: 13px;
+      }
+
+      .buttons {
+        margin-top: 14px;
+        display: flex;
+        gap: 10px;
+      }
+
+      .buttons button {
+        border: none;
+        background: #9fa1a4;
+        border-radius: 6px;
+        padding: 6px 14px;
+        font-size: 13px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <h1>HTML Form</h1>
+
+      <form>
+        <div class="row">
+          <label>First Name :</label>
+          <input type="text" />
+        </div>
+
+        <div class="row">
+          <label>Last Name :</label>
+          <input type="text" />
+        </div>
+
+        <div class="row">
+          <label>Date of Birth :</label>
+          <input type="text" />
+        </div>
+
+        <div class="row">
+          <label>Email id :</label>
+          <input type="text" />
+        </div>
+
+        <div class="row">
+          <label>Mobile Number :</label>
+          <input type="text" />
+        </div>
+
+        <div class="buttons">
+          <button type="submit">SUBMIT</button>
+          <button type="reset">RESET</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

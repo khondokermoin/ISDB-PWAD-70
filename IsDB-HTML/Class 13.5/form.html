@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Input Types Form</title>
+  </head>
+  <body>
+    <h2>HTML Input Types Demo Form</h2>
+
+    <form action="#" method="post">
+      <label>Text:</label>
+      <input type="text" name="username" placeholder="Enter your name" /><br />
+
+      <label>Password:</label>
+      <input
+        type="password"
+        name="password"
+        placeholder="Enter password"
+      /><br />
+
+      <label>Email:</label>
+      <input type="email" name="email" placeholder="Enter your email" /><br />
+
+      <label>Tel:</label>
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Enter your phone number"
+      /><br />
+
+      <label>URL:</label>
+      <input type="url" name="website" placeholder="Enter your website" /><br />
+
+      <label>Number:</label>
+      <input type="number" name="age" min="1" max="100" value="25" /><br />
+
+      <label>Range:</label>
+      <input type="range" name="volume" min="0" max="100" value="50" /><br />
+
+      <label>Date:</label>
+      <input type="date" name="dob" /><br />
+
+      <label>Time:</label>
+      <input type="time" name="appt" /><br />
+
+      <label>Datetime-local:</label>
+      <input type="datetime-local" name="meeting" /><br />
+
+      <label>Month:</label>
+      <input type="month" name="bmonth" /><br />
+
+      <label>Week:</label>
+      <input type="week" name="weeknum" /><br />
+
+      <label>Color:</label>
+      <input type="color" name="favcolor" value="#ff0000" /><br />
+
+      <label>Checkbox:</label>
+      <input type="checkbox" name="subscribe" value="newsletter" /> Subscribe to
+      newsletter<br />
+
+      <label>Radio buttons:</label>
+      <input type="radio" name="gender" value="male" /> Male<br />
+      <input type="radio" name="gender" value="female" /> Female<br />
+
+      <label>File:</label>
+      <input type="file" name="resume" /><br />
+
+      <input type="hidden" name="hiddenInput" value="secretValue" /><br />
+
+      <label>Image Button:</label>
+      <input
+        type="image"
+        src="https://via.placeholder.com/100x50.png?text=Submit"
+        alt="Submit Image"
+      /><br />
+
+      <input
+        type="button"
+        value="Click Me"
+        onclick="alert('Button clicked!')"
+      /><br />
+      <input type="reset" value="Reset Form" /><br />
+      <input type="submit" value="Submit Form" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // সাধারণ Anonymous Function
+      let greet = function () {
+        console.log("Hello World");
+      };
+      greet();
+
+      // Callback হিসেবে Anonymous Function
+      setTimeout(function () {
+        console.log("Hello after 2 seconds");
+      }, 2000);
+
+      // প্যারামিটারসহ Anonymous Function
+      let add = function (a, b) {
+        return a + b;
+      };
+      console.log(add(5, 3));
+    </script>
+  </body>
+</html>

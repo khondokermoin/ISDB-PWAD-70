@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khondoker Moin Hossain | Creative Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Syne:wght@800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+
+    <style>
+      :root {
+        --bg: #050505;
+        --accent: #fff;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg);
+        color: var(--accent);
+        overflow-x: hidden;
+        user-select: none; /* টেক্সট কপি করা বন্ধ */
+      }
+      h1 {
+        font-family: 'Syne', sans-serif;
+      }
+
+      /* Mouse Glow Effect */
+      #glow {
+        position: fixed;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.05) 0%,
+          rgba(0, 0, 0, 0) 70%
+        );
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+        transform: translate(-50%, -50%);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -2px;
+        left: 0;
+        background: white;
+        transition: 0.3s;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body oncontextmenu="return false;">
+    <div id="glow"></div>
+
+    <nav
+      class="fixed w-full z-50 flex justify-between items-center p-8 mix-blend-difference"
+    >
+      <div class="text-xl font-black tracking-tighter uppercase">KMH.</div>
+      <div
+        class="flex gap-10 text-[10px] uppercase tracking-[0.3em] font-light"
+      >
+        <a href="#work" class="nav-link relative transition">Works</a>
+        <a href="mailto:hello@moin.com" class="nav-link relative transition"
+          >Contact</a
+        >
+      </div>
+    </nav>
+
+    <section
+      class="relative h-screen flex flex-col justify-center px-8 md:px-24 z-10"
+    >
+      <div class="reveal">
+        <p class="text-xs tracking-[0.6em] text-zinc-500 mb-6 uppercase">
+          Available for freelance
+        </p>
+        <h1
+          class="text-[12vw] md:text-[8vw] leading-[0.9] tracking-tighter mb-8"
+        >
+          KHONDOKER <br />
+          <span class="text-zinc-800 italic">MOIN</span> HOSSAIN.
+        </h1>
+        <p
+          class="max-w-xl text-zinc-400 text-lg md:text-xl font-light leading-relaxed"
+        >
+          আমি আধুনিক ডিজিটাল অভিজ্ঞতা ডিজাইন করি। কোড এবং ক্রিয়েটিভিটির
+          সংমিশ্রণে আপনার আইডিয়াকে বাস্তবে রূপান্তর করাই আমার কাজ।
+        </p>
+      </div>
+    </section>
+
+    <section
+      id="work"
+      class="py-40 px-8 md:px-24 bg-zinc-100 text-black rounded-t-[60px] relative z-10"
+    >
+      <div class="reveal mb-24">
+        <h2
+          class="text-6xl md:text-8xl tracking-tighter font-extrabold italic uppercase"
+        >
+          Selected <br />
+          Works
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-16">
+        <div class="reveal group cursor-none">
+          <div
+            class="overflow-hidden rounded-3xl bg-zinc-200 aspect-[16/10] mb-6"
+          >
+            <div
+              class="w-full h-full bg-zinc-300 group-hover:scale-110 transition-transform duration-1000"
+            ></div>
+          </div>
+          <h3 class="text-2xl font-bold italic">REDEFINING MINIMALISM</h3>
+          <p class="text-zinc-500 uppercase text-[10px] tracking-widest mt-2">
+            Web Experience / 2026
+          </p>
+        </div>
+
+        <div class="reveal mt-20 group">
+          <div
+            class="overflow-hidden rounded-3xl bg-zinc-200 aspect-[16/10] mb-6"
+          >
+            <div
+              class="w-full h-full bg-zinc-900 group-hover:scale-110 transition-transform duration-1000"
+            ></div>
+          </div>
+          <h3 class="text-2xl font-bold italic">THE DARK AESTHETIC</h3>
+          <p class="text-zinc-500 uppercase text-[10px] tracking-widest mt-2">
+            Product Design / 2026
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-32 text-center relative z-10">
+      <p class="text-zinc-600 mb-4 uppercase tracking-widest text-xs">
+        Let's talk
+      </p>
+      <a
+        href="mailto:contact@moin.com"
+        class="text-4xl md:text-7xl font-bold hover:text-zinc-500 transition duration-500 underline decoration-1 underline-offset-8"
+        >Get In Touch</a
+      >
+      <p class="mt-20 text-zinc-800 text-[10px] uppercase tracking-widest">
+        © 2026 Khondoker Moin Hossain. All rights protected.
+      </p>
+    </footer>
+
+    <script>
+      // Lenis Smooth Scroll
+      const lenis = new Lenis();
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+
+      // Mouse Glow Follower
+      const glow = document.getElementById('glow');
+      window.addEventListener('mousemove', e => {
+        gsap.to(glow, {
+          x: e.clientX,
+          y: e.clientY,
+          duration: 1,
+          ease: 'power3.out',
+        });
+      });
+
+      // Reveal on Scroll
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+          });
+        },
+        { threshold: 0.1 }
+      );
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // DISABLE INSPECT & SHORTCUTS
+      document.onkeydown = function (e) {
+        if (event.keyCode == 123) return false; // F12
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0))
+          return false; // Ctrl+Shift+I
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0))
+          return false; // Ctrl+Shift+C
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0))
+          return false; // Ctrl+Shift+J
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U
+      };
+    </script>
+  </body>
+</html>

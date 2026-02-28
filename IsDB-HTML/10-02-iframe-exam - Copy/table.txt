@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table</title>
+  </head>
+  <body>
+    <table
+      border="1"
+      style="
+        border-collapse: collapse;
+        width: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+      "
+    >
+      <tr>
+        <th rowspan="2" style="font-weight: bold">Id</th>
+        <th rowspan="2" style="font-weight: bold">Name</th>
+        <th rowspan="2" style="font-weight: bold">Round</th>
+        <th colspan="2" style="font-weight: bold">Marks</th>
+      </tr>
+      <tr>
+        <td style="font-weight: bold">MCQ</td>
+        <td style="font-weight: bold">Desc</td>
+      </tr>
+      <tr>
+        <td>5675</td>
+        <td>sumi</td>
+        <td rowspan="3">70</td>
+        <td>45</td>
+        <td>60</td>
+      </tr>
+      <tr>
+        <td>234234</td>
+        <td>Rakib</td>
+
+        <td>65</td>
+        <td>80</td>
+      </tr>
+      <tr>
+        <td>234234</td>
+        <td>Ayan</td>
+
+        <td>80</td>
+        <td>90</td>
+      </tr>
+      <tr>
+        <td colspan="3" style="font-weight: bold">Total Marks</td>
+        <td>180</td>
+        <td>230</td>
+      </tr>
+    </table>
+  </body>
+</html>

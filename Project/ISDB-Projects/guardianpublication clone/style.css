@@ -1,0 +1,154 @@
+.top-bar {
+    background-color: #e9e9e9;
+    /* Simaler image pro Background */
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-right-items {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+/* Toggle Switch Design */
+.form-check-input {
+    cursor: pointer;
+    width: 40px;
+    height: 20px;
+}
+
+#store {
+    width: 25px;
+}
+
+#notification {
+    width: 25px;
+}
+
+.nav-link-custom {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* End Notification bar */
+
+/* Start Search Bar */
+body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.top-header {
+    background: #fff;
+    padding: 10px 0;
+}
+
+.logo img {
+    height: 90px;
+}
+
+.search-box {
+    position: relative;
+   
+   
+}
+
+.search-box input {
+    border-radius: 5px;
+    padding-right: 50px;
+    border: 1px #ff6b6b solid;
+     height: 40px;
+ font-size: 14px;
+}
+
+.search-box button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 0 5px 5px 0;
+    background: #ff696c;
+    border: none;
+    color: white;
+    width: 50px;
+}
+
+.icon-box {
+    text-align: center;
+    font-size: 14px;
+}
+
+.icon-box i {
+    font-size: 20px;
+    display: block;
+}
+
+.phone {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .right-section {
+        justify-content: center !important;
+        margin-top: 10px;
+    }
+}
+
+ .search-box input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #ff696c !important; /* default border color */
+}
+
+.search-box input:hover {
+    box-shadow: none !important;
+}
+#search-icon{
+    font-size: 17px;
+    font-weight: 900;
+}
+
+#support-icon{
+    max-width: 33px;
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+/* End Search Bar */
+
+/*Carousel Static Ads */
+.carousel-item,
+.carousel-item img {
+    height: 100%;
+}
+
+.carousel-item img {
+    object-fit: cover;
+}
+
+/* Card  */ 
+
+.card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 14px;
+  min-height: 40px;
+}
+
+.bi-heart-fill {
+  cursor: pointer;
+  font-size: 18px;
+}

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UL & OL Layout</title>
+
+    <style>
+      .container {
+        width: 100%;
+      }
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .left,
+      .right {
+        width: 45%;
+      }
+
+      .divider {
+        width: 2px;
+        background-color: black;
+      }
+
+      .bottom {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .one,
+      .two,
+      .three,
+      .four {
+        width: 22%;
+        min-height: 80px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="top">
+        <div class="left">
+          <h2>Circle</h2>
+          <ul style="list-style-type: circle">
+            <li>Rahim</li>
+            <li>Karim</li>
+            <li>Sakim</li>
+            <li>Lakim</li>
+            <li>Nakim</li>
+          </ul>
+          <h2>Disc</h2>
+          <ul style="list-style-type: disc">
+            <li>Rahim</li>
+            <li>Karim</li>
+            <li>Sakim</li>
+            <li>Lakim</li>
+            <li>Nakim</li>
+          </ul>
+          <h2>Square</h2>
+          <ul style="list-style-type: square">
+            <li>Rahim</li>
+            <li>Karim</li>
+            <li>Sakim</li>
+            <li>Lakim</li>
+            <li>Nakim</li>
+          </ul>
+        </div>
+        <div class="divider"></div>
+
+        <div class="right">
+          <h2>Ordered List</h2>
+          <ol type="A">
+            <li>Name</li>
+            <li>Roll</li>
+            <li>Age</li>
+          </ol>
+          <dl>
+            <dt><dfn>director</dfn></dt>
+            <dd>one who directs</dd>
+          </dl>
+          <ol type="1">
+            <li>alu</li>
+            <li>murgi</li>
+            <li>ruti</li>
+          </ol>
+          <ol type="a">
+            <li>goro</li>
+            <li>halim</li>
+            <li>laban</li>
+          </ol>
+          <ol type="I">
+            <li>read</li>
+            <li>bole</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="bottom">
+        <div class="one">
+          <ol type="a">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ol>
+        </div>
+
+        <div class="two">
+          <ol type="A">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ol>
+        </div>
+
+        <div class="three">
+          <ol type="I">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ol>
+        </div>
+
+        <div class="four">
+          <ol type="i">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

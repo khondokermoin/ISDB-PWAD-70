@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // JavaScript-এ constructor function ব্যবহার করা হয় একই টাইপের একাধিক object বানানোর জন্য।
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      const p1 = new Person('Rahim', 25);
+      const p2 = new Person('Karim', 30);
+
+      console.log(p1.name);
+      console.log(p2.age);
+
+      //Method যোগ করা
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+
+        this.info = function () {
+          console.log(this.name + ' is ' + this.age + ' Years Old.');
+        };
+      }
+
+      const p3 = new Person('Rahim', 25);
+      p3.info();
+
+      // Best Practice (Prototype ব্যবহার)
+      // Memory বাঁচানোর জন্য method prototype-এ দেওয়া ভালো:
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      const p4 = new Person('Rahim', 25);
+      Person.prototype.greet = function () {
+        console.log('Hello ' + this.name);
+      };
+
+      p4.greet();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" /> -->
+    <title>Job Portal UI</title>
+    <!-- Optional: Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <style>
+      /* Search button alignment fix */
+      .bd-search {
+        max-width: 320px;
+        width: 100%;
+      }
+      @media (max-width: 991px) {
+        .bd-search {
+          max-width: 100%;
+        }
+
+        .auth-buttons {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .auth-buttons .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ================== NAVBAR ================== -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light border-bottom shadow-sm py-1 sticky-top"
+    >
+      <div class="container">
+        <!-- LEFT: Brand -->
+        <a class="navbar-brand fw-bold" href="#">
+          Job<span class="text-primary">Portal</span>
+        </a>
+
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarJobPortal"
+          aria-controls="navbarJobPortal"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible Content -->
+        <div class="collapse navbar-collapse" id="navbarJobPortal">
+          <!-- LEFT MENU -->
+          <ul class="navbar-nav me-lg-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Jobs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Companies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+
+          <!-- CENTER SEARCH -->
+          <div class="bd-search mx-lg-auto">
+            <button
+              type="button"
+              class="btn btn-outline-secondary w-100 d-flex align-items-center gap-2"
+            >
+              🔍 <span class="text-muted">Search jobs...</span>
+            </button>
+          </div>
+
+          <!-- RIGHT BUTTONS -->
+          <div
+            class="d-flex align-items-center gap-3 ms-lg-4 mt-3 mt-lg-0 auth-buttons"
+          >
+            <a href="#" class="btn btn-outline-primary px-4">Login</a>
+            <a href="#" class="btn btn-primary px-4">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Just for spacing – remove in real project or replace with your hero -->
+
+    <!-- <script src="./bootstrap/js/bootstrap.bundle.min.js"></script> -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

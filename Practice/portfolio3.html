@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khondoker Moin Hossain | Ultra Modern</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+      :root {
+        --bg: #000;
+        --accent: #fff;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--bg);
+        color: var(--accent);
+        overflow-x: hidden;
+        user-select: none;
+        line-height: 1.5;
+      }
+
+      /* Fixed Noise Error */
+      .noise {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://grainy-gradients.vercel.app/noise.svg');
+        opacity: 0.05;
+        pointer-events: none;
+        z-index: 9999;
+      }
+
+      #preloader {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .magnetic-wrap {
+        display: inline-block;
+        transition: transform 0.3s ease-out;
+      }
+
+      #canvas-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+      }
+
+      .reveal {
+        opacity: 0;
+        filter: blur(10px);
+        transform: translateY(50px);
+      }
+
+      /* Smooth Scroll Requirement */
+      html.lenis {
+        height: auto;
+      }
+      .lenis.lenis-smooth {
+        scroll-behavior: auto;
+      }
+      .lenis.lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+      }
+    </style>
+  </head>
+  <body oncontextmenu="return false;">
+    <div class="noise"></div>
+
+    <div id="preloader">
+      <h1 id="load-text" class="text-3xl font-bold tracking-tighter italic">
+        KMH
+      </h1>
+    </div>
+
+    <div id="canvas-container"></div>
+
+    <nav
+      class="fixed w-full z-50 flex justify-between items-center p-8 mix-blend-difference"
+    >
+      <div class="text-xl font-black uppercase tracking-tighter">KMH.</div>
+      <div class="magnetic-wrap">
+        <a
+          href="mailto:contact@moin.com"
+          class="text-[10px] uppercase tracking-[0.4em] border border-white/20 px-6 py-3 rounded-full hover:bg-white hover:text-black transition duration-500"
+          >Let's Talk</a
+        >
+      </div>
+    </nav>
+
+    <main id="main">
+      <section class="h-screen flex flex-col justify-center px-10 md:px-24">
+        <div class="reveal">
+          <p class="text-[10px] uppercase tracking-[0.5em] text-zinc-500 mb-6">
+            Digital Portfolio 2026
+          </p>
+          <h1
+            class="text-[10vw] leading-[0.8] font-black tracking-tighter uppercase mb-6"
+            style="font-family: 'Syne'"
+          >
+            Khondoker <br />
+            <span class="italic text-zinc-800">Moin</span> <br />
+            Hossain
+          </h1>
+          <p class="max-w-md text-zinc-400 font-light text-lg">
+            ইমারসিভ ডিজিটাল এক্সপেরিয়েন্স এবং আধুনিক ওয়েব আর্কিটেকচারের কারিগর।
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="horizontal-wrap"
+        class="overflow-hidden bg-white text-black rounded-t-[50px] md:rounded-t-[100px]"
+      >
+        <div
+          id="horizontal-content"
+          class="flex items-center px-10 gap-20 py-20"
+          style="width: fit-content"
+        >
+          <div class="w-[80vw] md:w-[50vw] shrink-0">
+            <h2
+              class="text-[15vw] font-black leading-none tracking-tighter italic"
+              style="font-family: 'Syne'"
+            >
+              WORKS.
+            </h2>
+          </div>
+          <div
+            class="w-[80vw] md:w-[60vw] h-[60vh] bg-zinc-200 rounded-3xl shrink-0 overflow-hidden relative group"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1000"
+              class="w-full h-full object-cover group-hover:scale-110 transition duration-1000"
+            />
+            <div
+              class="absolute bottom-10 left-10 text-white font-bold text-3xl mix-blend-difference"
+            >
+              INTERFACE DESIGN
+            </div>
+          </div>
+          <div
+            class="w-[80vw] md:w-[60vw] h-[60vh] bg-zinc-900 rounded-3xl shrink-0 overflow-hidden relative group"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?auto=format&fit=crop&q=80&w=1000"
+              class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition duration-1000"
+            />
+            <div
+              class="absolute bottom-10 left-10 text-white font-bold text-3xl mix-blend-difference"
+            >
+              BRAND IDENTITY
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="h-screen flex flex-col justify-center items-center text-center px-6"
+      >
+        <h2
+          class="text-5xl md:text-9xl tracking-tighter italic mb-10 reveal"
+          style="font-family: 'Syne'"
+        >
+          Available for <br />
+          New Story.
+        </h2>
+        <div class="magnetic-wrap reveal">
+          <a
+            href="mailto:hello@moin.com"
+            class="text-2xl md:text-4xl underline underline-offset-8 decoration-1 hover:text-zinc-500 transition duration-500"
+            >Email Me.</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      // 1. Lenis Smooth Scroll Fixed
+      const lenis = new Lenis();
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(time => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+
+      // 2. Preloader Animation
+      window.addEventListener('load', () => {
+        const tl = gsap.timeline();
+        tl.to('#load-text', { opacity: 0, duration: 0.5 })
+          .to('#preloader', { y: '-100%', duration: 1, ease: 'expo.inOut' })
+          .to(
+            '.reveal',
+            {
+              opacity: 1,
+              filter: 'blur(0px)',
+              y: 0,
+              duration: 1.2,
+              stagger: 0.2,
+              ease: 'power4.out',
+            },
+            '-=0.5'
+          );
+      });
+
+      // 3. Three.js - Responsive Particles
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        2000
+      );
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+      });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document
+        .getElementById('canvas-container')
+        .appendChild(renderer.domElement);
+
+      const geometry = new THREE.BufferGeometry();
+      const vertices = [];
+      for (let i = 0; i < 3000; i++) {
+        vertices.push(
+          THREE.MathUtils.randFloatSpread(2000),
+          THREE.MathUtils.randFloatSpread(2000),
+          THREE.MathUtils.randFloatSpread(2000)
+        );
+      }
+      geometry.setAttribute(
+        'position',
+        new THREE.Float32BufferAttribute(vertices, 3)
+      );
+      const particles = new THREE.Points(
+        geometry,
+        new THREE.PointsMaterial({ color: 0x555555, size: 2 })
+      );
+      scene.add(particles);
+      camera.position.z = 1000;
+
+      // Resize Listener added
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        particles.rotation.x += 0.0003;
+        particles.rotation.y += 0.0003;
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // 4. Horizontal Scroll Fix
+      const scrollContent = document.querySelector('#horizontal-content');
+      gsap.to(scrollContent, {
+        x: () => -(scrollContent.scrollWidth - window.innerWidth),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#horizontal-wrap',
+          pin: true,
+          scrub: 1,
+          start: 'top top',
+          end: () => '+=' + scrollContent.scrollWidth,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      // 5. Magnetic Button
+      document.querySelectorAll('.magnetic-wrap').forEach(wrap => {
+        wrap.addEventListener('mousemove', e => {
+          const rect = wrap.getBoundingClientRect();
+          const x = (e.clientX - rect.left - rect.width / 2) * 0.4;
+          const y = (e.clientY - rect.top - rect.height / 2) * 0.4;
+          gsap.to(wrap, { x: x, y: y, duration: 0.4, ease: 'power2.out' });
+        });
+        wrap.addEventListener('mouseleave', () => {
+          gsap.to(wrap, {
+            x: 0,
+            y: 0,
+            duration: 0.8,
+            ease: 'elastic.out(1, 0.3)',
+          });
+        });
+      });
+
+      // 6. Security - Full Inspect Block
+      document.onkeydown = e => {
+        if (
+          e.keyCode == 123 ||
+          (e.ctrlKey &&
+            e.shiftKey &&
+            (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) ||
+          (e.ctrlKey && e.keyCode == 85)
+        )
+          return false;
+      };
+    </script>
+  </body>
+</html>

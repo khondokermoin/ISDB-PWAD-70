@@ -1,0 +1,86 @@
+📐 Layout (Structure)
+container
+container-fluid
+row
+col
+col-6
+col-md-4
+col-lg-3
+
+🎯 Spacing (Margin & Padding)
+m-1   m-3   m-5
+mt-3  mb-4
+p-2   p-3
+pt-3  pb-4
+mx-auto
+
+🎨 Color & Background
+bg-dark
+bg-primary
+bg-success
+bg-danger
+bg-light
+
+text-dark
+text-light
+text-primary
+text-danger
+text-center
+
+🔘 Buttons
+btn
+btn-primary
+btn-secondary
+btn-success
+btn-danger
+btn-warning
+btn-dark
+btn-outline-primary
+
+📋 Forms
+form-control
+form-label
+form-check
+form-check-input
+form-check-label
+
+📦 Components
+navbar
+navbar-expand-md
+navbar-dark
+bg-dark
+
+card
+card-body
+card-title
+card-text
+
+alert
+alert-success
+alert-danger
+
+📐 Flexbox (VERY IMPORTANT 🔥)
+d-flex
+justify-content-center
+justify-content-between
+align-items-center
+flex-column
+flex-row
+
+👁️ Display & Visibility
+d-none
+d-block
+d-md-none
+d-md-block
+
+📏 Sizing
+w-100
+h-100
+
+🔤 Text & Font
+fw-bold
+fw-normal
+fs-1
+fs-3
+text-uppercase
+text-muted

@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Date Example</title>
+  </head>
+  <body>
+    <h1 id="greeting"></h1>
+    <p id="date"></p>
+    <p id="time"></p>
+
+    <script>
+      // Current date and time
+      var now = new Date();
+
+      // Get hours, minutes, seconds
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+
+      // Greeting based on time
+      var greet;
+      if (hours < 12) {
+        greet = 'Good Morning!';
+      } else if (hours < 18) {
+        greet = 'Good Afternoon!';
+      } else {
+        greet = 'Good Evening!';
+      }
+
+      // Day and Month names
+      var days = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+      ];
+      var months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ];
+
+      // Display greeting
+      document.getElementById('greeting').innerText = greet;
+
+      // Display date
+      document.getElementById('date').innerText =
+        'Today is ' +
+        days[now.getDay()] +
+        ', ' +
+        months[now.getMonth()] +
+        ' ' +
+        now.getDate() +
+        ', ' +
+        now.getFullYear();
+
+      // Display time
+      document.getElementById('time').innerText =
+        'Current Time: ' + hours + ':' + minutes + ':' + seconds;
+    </script>
+  </body>
+</html>

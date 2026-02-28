@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="number" id="num" placeholder="Enter Number" />
+    <button onclick="getData()">Submit</button>
+    <script>
+      //   var num = 25;
+      //   if (num > 10) {
+      //     document.write('condition mile gasay');
+      //   }
+
+      // use prompt
+      //   var num = prompt('enter your number');
+      //   if (num > 10) {
+      //     document.write('condition mile gasay');
+      //   }
+
+      // use
+      //   var num = prompt('enter your number');
+      //   num = Number(num);
+      //   if (num % 2 === 0) {
+      //     document.write('Even');
+      //   } else {
+      //     document.write('Odd');
+      //   }
+      function getData() {
+        var value = document.getElementById('num').value;
+        if (value % 2 === 0) {
+          document.write('Even');
+        } else {
+          document.write('Odd');
+        }
+      }
+    </script>
+  </body>
+</html>

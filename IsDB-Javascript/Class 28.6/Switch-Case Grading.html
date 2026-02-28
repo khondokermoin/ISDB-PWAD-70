@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var marks = Number(prompt('Enter your marks (0-100)'));
+      var result;
+
+      switch (true) {
+        case marks >= 80 && marks <= 100:
+          result = 'A+';
+          break;
+
+        case marks >= 70 && marks < 80:
+          result = 'A';
+          break;
+
+        case marks >= 60 && marks < 70:
+          result = 'A-';
+          break;
+
+        case marks >= 50 && marks < 60:
+          result = 'B';
+          break;
+
+        case marks >= 40 && marks < 50:
+          result = 'C';
+          break;
+
+        case marks >= 33 && marks < 40:
+          result = 'D';
+          break;
+
+        case marks >= 0 && marks < 33:
+          result = 'F';
+          break;
+
+        default:
+          result = 'Invalid Marks!';
+      }
+
+      document.write('Grade: ' + result);
+    </script>
+  </body>
+</html>
