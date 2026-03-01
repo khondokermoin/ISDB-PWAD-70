@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Employee Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/public/assets/style.css" rel="stylesheet">
+  <script>
+  // === GLOBAL HELPERS (must be first) ===
+  window.fmtTime12hFromDateTime = function (dtStr) {
+    if (!dtStr) return "—";
+    const str = String(dtStr);
+    const time = str.includes(" ") ? str.split(" ")[1] : str;
+    const parts = time.split(":");
+    if (parts.length < 2) return dtStr;
+
+    const hh = Number(parts[0]);
+    const mm = Number(parts[1] || 0);
+    const ss = Number(parts[2] || 0);
+
+    const isPM = hh >= 12;
+    let h = hh % 12;
+    if (h === 0) h = 12;
+
+    return `${h}:${String(mm).padStart(2,"0")}:${String(ss).padStart(2,"0")} ${isPM ? "PM" : "AM"}`;
+  };
+
+  window.fmtDurationFromMinutes = function (mins) {
+    mins = Number(mins ?? 0);
+    const totalSeconds = Math.round(mins * 60);
+    const m = Math.floor(totalSeconds / 60);
+    const s = totalSeconds % 60;
+    return `${m}m ${String(s).padStart(2,"0")}s`;
+  };
+</script>
+
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<nav class="navbar navbar-expand-lg bg-white border-bottom">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="#">Attendance</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+      aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMain">
+      <div class="ms-auto d-flex gap-2 align-items-center">
+        <span class="badge badge-soft" id="empName"></span>
+        <button class="btn btn-outline-primary btn-sm" onclick="openPwdModal()">Change password</button>
+        <button class="btn btn-outline-secondary btn-sm" onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-4">
+  <div class="row g-3">
+    <!-- Today -->
+    <div class="col-12 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="mb-1">Today</h5>
+          <div class="text-muted small mb-3" id="todayLabel"></div>
+
+          <div class="alert alert-danger d-none" id="err"></div>
+          <div class="alert alert-success d-none" id="ok"></div>
+
+          <div class="d-flex gap-2">
+            <button class="btn btn-success" id="btnIn">Check-in</button>
+            <button class="btn btn-danger" id="btnOut">Check-out</button>
+          </div>
+
+          <!-- Optional: device MAC (used only if admin configured MAC restriction) -->
+          <div class="mt-3 small">
+            <label class="form-label small mb-1">Device MAC (optional)</label>
+            <div class="input-group">
+              <input class="form-control" id="device_mac" placeholder="AA:BB:CC:DD:EE:FF" />
+              <button class="btn btn-outline-primary" id="btnSaveMac" type="button">Save</button>
+            </div>
+            <div class="form-text">
+              Note: Browsers can't read your hardware MAC automatically. Enter it only if your company requires it.
+            </div>
+          </div>
+
+          <hr>
+          <div class="row g-2 small">
+            <div class="col-6"><div class="text-muted">Check-in</div><div id="vIn" class="fw-semibold">—</div></div>
+            <div class="col-6"><div class="text-muted">Check-out</div><div id="vOut" class="fw-semibold">—</div></div>
+            <div class="col-6"><div class="text-muted">Total</div><div id="vTotal" class="fw-semibold">—</div></div>
+            <div class="col-6"><div class="text-muted">Status</div><div id="vStatus" class="fw-semibold">—</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly report + chart + table -->
+    <div class="col-12 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="mb-1">Monthly Report</h5>
+
+          <div class="d-flex gap-2 align-items-end mb-3">
+            <div>
+              <label class="form-label small">Month</label>
+              <input type="month" class="form-control" id="month" />
+            </div>
+            <button class="btn btn-primary" id="btnLoad">Load</button>
+          </div>
+
+          <div class="row g-2 small mb-3">
+            <div class="col-6"><div class="text-muted">Present days</div><div id="sPresent" class="fw-semibold">—</div></div>
+            <div class="col-6"><div class="text-muted">Late days</div><div id="sLate" class="fw-semibold">—</div></div>
+            <div class="col-6"><div class="text-muted">Absent days</div><div id="sAbsent" class="fw-semibold">—</div></div>
+            <div class="col-6"><div class="text-muted">Total hours</div><div id="sHours" class="fw-semibold">—</div></div>
+          </div>
+
+          <!-- Chart -->
+          <div class="mb-3">
+            <div class="text-muted small mb-2">Daily working time (hours)</div>
+            <div style="height: 260px;">
+              <canvas id="workChart"></canvas>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-sm align-middle">
+              <thead>
+                <tr>
+                  <th>Date</th><th>Status</th><th>In</th><th>Out</th><th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="border-top bg-white mt-auto">
+  <div class="container py-3 d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <div class="text-muted small">© <span id="yy"></span> Western Watch BD • HR Attendance</div>
+    <div class="text-muted small">Support: admin@yourcompany.com</div>
+  </div>
+</footer>
+
+<!-- IMPORTANT ORDER: app.js FIRST so helpers exist -->
+<script src="/public/assets/app.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Change Password Modal -->
+<div class="modal fade" id="pwdModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Change Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger d-none" id="pwdErr"></div>
+        <div class="alert alert-success d-none" id="pwdOk"></div>
+        <div class="mb-2">
+          <label class="form-label small">Current password</label>
+          <input type="password" class="form-control" id="pwdCurrent">
+        </div>
+        <div class="mb-2">
+          <label class="form-label small">New password</label>
+          <input type="password" class="form-control" id="pwdNew" placeholder="Minimum 6 chars">
+        </div>
+        <div>
+          <label class="form-label small">Confirm new password</label>
+          <input type="password" class="form-control" id="pwdConfirm">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="pwdSaveBtn">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // footer year
+  (function(){
+    const y = new Date().getFullYear();
+    const el = document.getElementById('yy');
+    if(el) el.textContent = y;
+  })();
+
+  const err = qs("#err"), ok = qs("#ok");
+
+  function showErr(msg){ ok.classList.add("d-none"); err.textContent = msg; err.classList.remove("d-none"); }
+  function showOk(msg){ err.classList.add("d-none"); ok.textContent = msg; ok.classList.remove("d-none"); }
+
+  // Local date helpers (avoid UTC toISOString() date drift)
+  function isoLocalDate(d = new Date()){
+    const tz = d.getTimezoneOffset() * 60000;
+    return new Date(d.getTime() - tz).toISOString().slice(0,10);
+  }
+  function isoLocalMonth(d = new Date()){
+    return isoLocalDate(d).slice(0,7);
+  }
+
+  function setTodayUI(checkin, checkout, total, status){
+    qs("#vIn").textContent = checkin ? fmtTime12hFromDateTime(checkin) : "—";
+    qs("#vOut").textContent = checkout ? fmtTime12hFromDateTime(checkout) : "—";
+    qs("#vTotal").textContent = (total != null) ? fmtDurationFromMinutes(total) : "—";
+    qs("#vStatus").textContent = status || "—";
+  }
+
+  // Chart instance
+  let chart;
+
+  function renderChart(rows){
+    // labels: day number (01,02...) for compact view
+    const labels = rows.map(r => r.work_date.slice(8,10));
+    const hours = rows.map(r => {
+      const mins = (r.total_minutes == null) ? 0 : Number(r.total_minutes);
+      return +(mins / 60).toFixed(2); // decimal hours
+    });
+
+    const ctx = document.getElementById("workChart");
+
+    if (!chart) {
+      chart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels,
+          datasets: [{
+            label: "Hours",
+            data: hours
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: { beginAtZero: true }
+          },
+          plugins: {
+            tooltip: {
+              callbacks: {
+                title: (items) => {
+                  const idx = items?.[0]?.dataIndex ?? 0;
+                  const d = rows[idx]?.work_date || "";
+                  return d;
+                },
+                label: (item) => `Hours: ${item.raw}`
+              }
+            }
+          }
+        }
+      });
+    } else {
+      chart.data.labels = labels;
+      chart.data.datasets[0].data = hours;
+      chart.update();
+    }
+  }
+
+  async function openPwdModal(){
+    const m = new bootstrap.Modal(document.getElementById('pwdModal'));
+    qs("#pwdErr").classList.add("d-none");
+    qs("#pwdOk").classList.add("d-none");
+    qs("#pwdCurrent").value = "";
+    qs("#pwdNew").value = "";
+    qs("#pwdConfirm").value = "";
+    m.show();
+  }
+
+  (function(){
+    const btn = document.getElementById("pwdSaveBtn");
+    if(!btn) return;
+    btn.addEventListener("click", async ()=>{
+      const e1 = qs("#pwdErr"), s1 = qs("#pwdOk");
+      e1.classList.add("d-none"); s1.classList.add("d-none");
+      const current = qs("#pwdCurrent").value;
+      const nw = qs("#pwdNew").value;
+      const cf = qs("#pwdConfirm").value;
+
+      if(!current || !nw) { e1.textContent="Current and new password required"; e1.classList.remove("d-none"); return; }
+      if(nw.length < 6) { e1.textContent="New password too short"; e1.classList.remove("d-none"); return; }
+      if(nw !== cf) { e1.textContent="New password does not match"; e1.classList.remove("d-none"); return; }
+
+      try{
+        await api("/auth/change_password", { method:"POST", body:{ current_password: current, new_password: nw }});
+        s1.textContent="Password updated successfully"; s1.classList.remove("d-none");
+      }catch(ex){
+        e1.textContent=ex.message; e1.classList.remove("d-none");
+      }
+    });
+  })();
+
+  async function loadMonth(){
+    const m = qs("#month").value;
+    const r = await api(`/attendance/month?month=${encodeURIComponent(m)}`);
+    const s = r.summary;
+
+    qs("#sPresent").textContent = s.present_days;
+    qs("#sLate").textContent = s.late_days;
+    qs("#sAbsent").textContent = s.absent_days;
+    qs("#sHours").textContent = s.total_hours;
+
+    const tbody = qs("#rows");
+    tbody.innerHTML = "";
+
+    r.rows.forEach(x => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${x.work_date}</td>
+        <td><span class="badge text-bg-light">${x.status}</span></td>
+        <td>${x.check_in ? fmtTime12hFromDateTime(x.check_in) : "—"}</td>
+        <td>${x.check_out ? fmtTime12hFromDateTime(x.check_out) : "—"}</td>
+        <td>${x.total_minutes != null ? fmtDurationFromMinutes(x.total_minutes) : "—"}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    // chart update
+    renderChart(r.rows);
+
+    // today box from today's row
+    const today = isoLocalDate();
+    const todayRow = r.rows.find(x => x.work_date === today);
+    if (todayRow) setTodayUI(todayRow.check_in, todayRow.check_out, todayRow.total_minutes, todayRow.status);
+    else setTodayUI(null, null, null, null);
+  }
+
+  function getDeviceMac(){
+    return (localStorage.getItem("device_mac") || "").trim();
+  }
+
+  function validateMacJs(mac){
+    const s = String(mac || "").trim();
+    if(!s) return true;
+    const hex12 = s.replace(/[^0-9a-fA-F]/g, "");
+    return hex12.length === 12 && /^[0-9a-fA-F]{12}$/.test(hex12);
+  }
+
+  (async function init(){
+    const u = await meOrRedirect("employee");
+    qs("#empName").textContent = u.employee?.name || "Employee";
+
+    // If admin configured MAC restriction for this user, require a saved device MAC
+    if (u.allowed_mac && !getDeviceMac()) {
+      showErr("Your admin requires a Device MAC for attendance. Please enter it and click 'Save MAC' before checking in/out.");
+    }
+
+
+    const d = new Date();
+    qs("#month").value = isoLocalMonth(d);
+    qs("#todayLabel").textContent = "Date: " + isoLocalDate(d);
+
+    await loadMonth();
+
+    // Device MAC local setting
+    const macInp = qs("#device_mac");
+    const macBtn = qs("#btnSaveMac");
+    if (macInp) macInp.value = getDeviceMac();
+    if (macBtn) {
+      macBtn.addEventListener("click", () => {
+        const v = (macInp?.value || "").trim();
+        if (!validateMacJs(v)) {
+          showErr("Invalid MAC. Use format AA:BB:CC:DD:EE:FF");
+          return;
+        }
+        if (v) localStorage.setItem("device_mac", v);
+        else localStorage.removeItem("device_mac");
+        showOk("Device MAC saved");
+      });
+    }
+
+    qs("#btnIn").addEventListener("click", async ()=>{
+      try {
+        const r = await api("/attendance/checkin", {method:"POST", body:{ device_mac: getDeviceMac() }});
+        showOk(`Checked in (${r.status}). Late: ${r.late_minutes} min`);
+        await loadMonth();
+      } catch(ex){ showErr(ex.message); }
+    });
+
+    qs("#btnOut").addEventListener("click", async ()=>{
+      try {
+        const r = await api("/attendance/checkout", {method:"POST", body:{ device_mac: getDeviceMac() }});
+        showOk(`Checked out. Total: ${fmtDurationFromMinutes(r.total_minutes)}`);
+        await loadMonth();
+      } catch(ex){ showErr(ex.message); }
+    });
+
+    qs("#btnLoad").addEventListener("click", async ()=>{
+      try { await loadMonth(); }
+      catch(ex){ showErr(ex.message); }
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const numbers = [4, 5, 68, 3]; // একটি array তৈরি করলাম
+
+      let smallest = numbers[0]; // প্রথম সংখ্যাকে শুরুতে smallest ধরলাম
+      let largest = numbers[0]; // প্রথম সংখ্যাকে শুরুতে largest ধরলাম
+      let sum = 0; // sum শুরুতে 0
+
+      for (let i = 0; i < numbers.length; i++) {
+        // loop চালালাম পুরো array জুড়ে
+        sum += numbers[i]; // প্রতিটি সংখ্যা sum এর সাথে যোগ করছি
+
+        if (numbers[i] < smallest) {
+          // যদি বর্তমান সংখ্যা ছোট হয়
+          smallest = numbers[i]; // তাহলে smallest আপডেট করলাম
+        }
+
+        if (numbers[i] > largest) {
+          // যদি বর্তমান সংখ্যা বড় হয়
+          largest = numbers[i]; // তাহলে largest আপডেট করলাম
+        }
+      }
+
+      console.log('Smallest:', smallest);
+      console.log('Largest:', largest);
+      console.log('Sum:', sum);
+    </script>
+  </body>
+</html>

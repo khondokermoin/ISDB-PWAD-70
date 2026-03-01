@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Constructor Object মানে এমন একটি function বা class, যেটা দিয়ে আমরা একাধিক object তৈরি করতে পারি।
+
+      // new keyword ব্যবহার করে object বানানো হয়।
+
+      //Constructor = object বানানোর বিশেষ function, | Person হলো constructor function
+      //new Person() → নতুন object তৈরি করে | new keyword ব্যবহার করতে হয়
+      //this → নতুন object কে বোঝায়
+
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      const p1 = new Person('Rahim', 25);
+      const p2 = new Person('Karim', 30);
+
+      console.log(p1.name + ' is ' + p1.age + ' years old');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // ব্যবহারকারীর থেকে সংখ্যা নেওয়া
+      let num = parseInt(prompt('Enter a number:'));
+
+      if (num <= 1) {
+        console.log(num + ' is Not Prime');
+      } else {
+        let prime = true;
+
+        for (let i = 2; i <= num; i++) {
+          if (num % i === 0) {
+            prime = false;
+            break;
+          }
+        }
+
+        if (prime) {
+          console.log(num + ' is Prime');
+        } else {
+          console.log(num + ' is Not Prime');
+        }
+      }
+    </script>
+  </body>
+</html>
