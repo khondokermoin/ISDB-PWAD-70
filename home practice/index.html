@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* let age = parseInt(prompt("Enter your age:"));
+      if (age > 10 && age < 20) {
+        console.log("your age is between in 10 and 20");
+      } else {
+        console.log("your age is not between in 10 and 20");
+      } */
+
+      /*  const sentence = "The quick brown fox jumps over the lazy dog.";
+      const word = "fox";
+      console.log(
+        `The word "${word}"${
+          sentence.includes(word) ? " is " : " is not "
+        }in the sentence`
+      ); */
+      /* let num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      console.log(num.length); */
+
+      /* let Descending = (a, b) => {
+        return b - a;
+      };
+      let num = [30, 6, 99, 655, 179, 7, 32];
+      num.sort(Descending);
+      num.reverse();
+      console.log(num); */
+
+      /*  let num = [30, 6, 99, 655, 179, 7, 32];
+
+      console.log(num);
+      let dv = num.splice(2, 2, 100, 700);
+      console.log(num);
+      console.log(dv); */
+
+      let num = [50, 6, 8, 89, 47, 2, 12];
+      // forEach loop
+      num.forEach((element) => {
+        // console.log(element * element);
+      });
+
+      // array.from
+      let name = "moin";
+      let arr = Array.from(name);
+      //   console.log(arr);
+
+      // for ...of
+      for (let item of num) {
+        // console.log(item);
+      }
+
+      // for .. in
+      for (let i in num) {
+        // console.log(num[i]);
+      }
+
+      let sum = 0;
+      for (let i = 1; i <= 5; i++) {
+        sum += i;
+      }
+      //   console.log(sum);
+
+      let student = {
+        name: "moin",
+        role: 2565,
+        isPass: true,
+      };
+      for (let key in student) {
+        // console.log("key", key, "value", student[key]);
+      }
+      for (let i = 0; i <= 100; i += 2) {
+        // console.log(i);
+      }
+      // game
+      /* let usernumbr = +prompt("Guessing Number");
+      let gnumber = 500;
+      while (usernumbr !== gnumber) {
+        usernumbr = +prompt("again Guessing Number");
+      }
+        console.log("sucess", usernumbr); */
+
+      // qs - prompt the user to enter their full name. generate a username for then based on the input start username with @, followed by their full name and ending with the fullname lenghth
+
+      /* let userName = prompt("Enter your full name");
+      if (userName === null) {
+        console.log("cancelled by user");
+      } else {
+        userName = userName.trim().replaceAll(" ", "");
+        console.log(`@${userName}${userName.length}`.toLowerCase());
+      } */
+    </script>
+  </body>
+</html>
