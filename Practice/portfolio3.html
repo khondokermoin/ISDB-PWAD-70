@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -27,7 +27,7 @@
       }
 
       body {
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         background: var(--bg);
         color: var(--accent);
         overflow-x: hidden;
@@ -42,7 +42,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: url('https://grainy-gradients.vercel.app/noise.svg');
+        background: url("https://grainy-gradients.vercel.app/noise.svg");
         opacity: 0.05;
         pointer-events: none;
         z-index: 9999;
@@ -205,28 +205,28 @@
 
       // 1. Lenis Smooth Scroll Fixed
       const lenis = new Lenis();
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add(time => {
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((time) => {
         lenis.raf(time * 1000);
       });
       gsap.ticker.lagSmoothing(0);
 
       // 2. Preloader Animation
-      window.addEventListener('load', () => {
+      window.addEventListener("load", () => {
         const tl = gsap.timeline();
-        tl.to('#load-text', { opacity: 0, duration: 0.5 })
-          .to('#preloader', { y: '-100%', duration: 1, ease: 'expo.inOut' })
+        tl.to("#load-text", { opacity: 0, duration: 0.5 })
+          .to("#preloader", { y: "-100%", duration: 1, ease: "expo.inOut" })
           .to(
-            '.reveal',
+            ".reveal",
             {
               opacity: 1,
-              filter: 'blur(0px)',
+              filter: "blur(0px)",
               y: 0,
               duration: 1.2,
               stagger: 0.2,
-              ease: 'power4.out',
+              ease: "power4.out",
             },
-            '-=0.5'
+            "-=0.5"
           );
       });
 
@@ -244,7 +244,7 @@
       });
       renderer.setSize(window.innerWidth, window.innerHeight);
       document
-        .getElementById('canvas-container')
+        .getElementById("canvas-container")
         .appendChild(renderer.domElement);
 
       const geometry = new THREE.BufferGeometry();
@@ -257,7 +257,7 @@
         );
       }
       geometry.setAttribute(
-        'position',
+        "position",
         new THREE.Float32BufferAttribute(vertices, 3)
       );
       const particles = new THREE.Points(
@@ -268,7 +268,7 @@
       camera.position.z = 1000;
 
       // Resize Listener added
-      window.addEventListener('resize', () => {
+      window.addEventListener("resize", () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -283,40 +283,49 @@
       animate();
 
       // 4. Horizontal Scroll Fix
-      const scrollContent = document.querySelector('#horizontal-content');
+      const scrollContent = document.querySelector("#horizontal-content");
       gsap.to(scrollContent, {
         x: () => -(scrollContent.scrollWidth - window.innerWidth),
-        ease: 'none',
+        ease: "none",
         scrollTrigger: {
-          trigger: '#horizontal-wrap',
+          trigger: "#horizontal-wrap",
           pin: true,
           scrub: 1,
-          start: 'top top',
-          end: () => '+=' + scrollContent.scrollWidth,
+          start: "top top",
+          end: () => "+=" + scrollContent.scrollWidth,
           invalidateOnRefresh: true,
         },
       });
 
       // 5. Magnetic Button
-      document.querySelectorAll('.magnetic-wrap').forEach(wrap => {
-        wrap.addEventListener('mousemove', e => {
+      document.querySelectorAll(".magnetic-wrap").forEach((wrap) => {
+        wrap.addEventListener("mousemove", (e) => {
           const rect = wrap.getBoundingClientRect();
           const x = (e.clientX - rect.left - rect.width / 2) * 0.4;
           const y = (e.clientY - rect.top - rect.height / 2) * 0.4;
-          gsap.to(wrap, { x: x, y: y, duration: 0.4, ease: 'power2.out' });
+          gsap.to(wrap, { x: x, y: y, duration: 0.4, ease: "power2.out" });
         });
-        wrap.addEventListener('mouseleave', () => {
+        wrap.addEventListener("mouseleave", () => {
           gsap.to(wrap, {
             x: 0,
             y: 0,
             duration: 0.8,
-            ease: 'elastic.out(1, 0.3)',
+            ease: "elastic.out(1, 0.3)",
           });
         });
       });
 
       // 6. Security - Full Inspect Block
-      document.onkeydown = e => {
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.key === "F12" ||
+          (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
+          (e.ctrlKey && e.key === "u")
+        ) {
+          e.preventDefault();
+        }
+      });
+      /* document.onkeydown = e => {
         if (
           e.keyCode == 123 ||
           (e.ctrlKey &&
@@ -325,7 +334,7 @@
           (e.ctrlKey && e.keyCode == 85)
         )
           return false;
-      };
+      }; */
     </script>
   </body>
 </html>

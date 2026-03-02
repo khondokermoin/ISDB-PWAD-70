@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM Practice Website</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        transition: 0.3s;
+      }
+
+      .dark {
+        background-color: #222;
+        color: white;
+      }
+
+      button {
+        padding: 8px 15px;
+        margin: 5px;
+        cursor: pointer;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        background: lightgray;
+        margin: 5px;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">Welcome to DOM Practice</h1>
+    <button onclick="changeText()">Change Title</button>
+    <button onclick="changeColor()">Change Background</button>
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+    <hr />
+
+    <h2>Todo List</h2>
+    <input type="text" id="todoInput" placeholder="Enter item" />
+    <button onclick="addItem()">Add Item</button>
+    <button onclick="removeItem()">Remove Last Item</button>
+
+    <ul id="todoList">
+      <li>Learn HTML</li>
+      <li>Learn CSS</li>
+    </ul>
+
+    <script>
+      function changeText() {
+        document.getElementById("title").innerText = "DOM is Fun!";
+      }
+
+      function changeColor() {
+        document.body.style.backgroundColor =
+          document.body.style.backgroundColor === "lightblue"
+            ? "white"
+            : "lightblue";
+      }
+
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark");
+      }
+
+      function addItem() {
+        const input = document.getElementById("todoInput");
+        const newItem = document.createElement("li");
+        newItem.innerText = input.value;
+
+        if (input.value !== "") {
+          document.getElementById("todoList").appendChild(newItem);
+          input.value = "";
+        }
+      }
+
+      function removeItem() {
+        const list = document.getElementById("todoList");
+        if (list.lastElementChild) {
+          list.removeChild(list.lastElementChild);
+        }
+      }
+    </script>
+  </body>
+</html>

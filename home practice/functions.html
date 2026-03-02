@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <pre>
+Method      | কী রিটার্ন করে     | কবে ব্যবহার করবেন
+------------|------------------|-------------------------
+forEach()   | কিছু না           | শুধু কাজ করার জন্য
+map()       | নতুন array       | সব element পরিবর্তন করতে
+filter()    | নতুন array       | condition অনুযায়ী বাছাই করতে
+some()      | true/false       | একটাও মিলছে কিনা দেখতে
+every()     | true/false       | সবগুলো মিলছে কিনা দেখতে
+find()      | প্রথম element     | প্রথম matching element পেতে
+    </pre>
+    <script>
+      /* function sum(x, y) {
+        s = x + y;
+        return s;
+      }
+      let val = sum(3, 4);
+      console.log(val); */
+
+      // ---------arrow function-------------
+      /* const sum = (a, b) => {
+        console.log(console);
+        return a + b;
+      }; */
+
+      //-------------------------------------
+      /* function countVowels(str) {
+        let cont = 0;
+        str = str.toLowerCase();
+        for (const char of str) {
+          if (
+            char === "a" ||
+            char === "e" ||
+            char === "i" ||
+            char === "o" ||
+            char === "u"
+          ) {
+            cont++;
+          }
+        }
+        return cont;
+      } */
+
+      /* function countVowels(str) {
+        const vowels = "aeiou";
+        let count = 0;
+
+        for (const char of str.toLowerCase()) {
+          if (vowels.includes(char)) {
+            count++;
+          }
+        }
+        return count;
+      } */
+      /* const countVowels = (str) => {
+        let cont = 0;
+        str = str.toLowerCase();
+        for (const char of str) {
+          if (
+            char === "a" ||
+            char === "e" ||
+            char === "i" ||
+            char === "o" ||
+            char === "u"
+          ) {
+            cont++;
+          }
+        }
+        return cont;
+      }; */
+
+      // (value, index, array )যেসব মেথডে ব্যবহার করা যায় forEach()| map()| filter()| some()| every()| find()
+      //------------forEach-------------------
+      //   let arr = [1, 2, 3, 4, 5];
+      //   let str = ["dhaka", "barisha"];
+      /* arr.forEach(function print(valu) {
+        console.log(valu);
+      }); */
+      //   --------------------------
+      /* str.forEach((city) => {
+        console.log(city);
+      }); */
+
+      /* যদি কোনো function:
+        অন্য function নেয় → Higher Order Function
+        বা function return করে → Higher Order Function */
+
+      /* let num = [2, 3, 4, 6];
+      num.forEach((num) => {
+        console.log(num * num);
+      }); */
+
+      /* let num = [2, 3, 4, 6];
+      const output = num.reduce((prev, curr) => {
+        return prev > curr ? prev : curr;
+      });
+      console.log(output); */
+
+      /* let marks = [97, 98, 65, 47, 95, 34];
+      let topstu = marks.filter((val) => {
+        return val > 90;
+      });
+      console.log(topstu); */
+
+      let n = +prompt("Enter your number");
+      let arr = [];
+      for (let i = 1; i <= n; i++) {
+        arr[i - 1] = i;
+      }
+      console.log(arr);
+      let sum = arr.reduce((res, cur) => {
+        return res + cur;
+      });
+      console.log("Sum = ", sum);
+      let factroial = arr.reduce((res, cur) => {
+        return res * cur;
+      });
+      console.log("Factroial = ", factroial);
+    </script>
+  </body>
+</html>
