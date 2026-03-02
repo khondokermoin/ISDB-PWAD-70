@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Happy Birthday Mim 💜</title>
+    <meta name="color-scheme" content="dark light" />
+    <title>Happy Birthday 💜</title>
     <meta
       name="description"
-      content="Premium romantic birthday site for Mim."
+      content="A fresh, premium birthday microsite — single-file, no external libraries."
     />
+
     <style>
       :root {
         --bg: #070711;
@@ -22,6 +24,10 @@
         --p2: #8b5cf6;
         --p3: #22c55e;
         --p4: #60a5fa;
+
+        /* FIX: previously referenced but not defined */
+        --accent: var(--p1);
+        --accent2: var(--p2);
 
         --shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
         --r: 22px;
@@ -46,11 +52,11 @@
         overflow-x: hidden;
       }
 
-      /* ===== Romantic Aurora Background (CSS) ===== */
+      /* ===== Romantic Aurora Background ===== */
       .aurora {
         position: fixed;
         inset: -40px;
-        z-index: -5;
+        z-index: -6;
         background: radial-gradient(
             900px 500px at 15% 10%,
             rgba(255, 79, 216, 0.24),
@@ -121,18 +127,17 @@
         inset: 0;
         width: 100%;
         height: 100%;
-        z-index: -4;
+        z-index: -5;
       }
       #confettiCanvas {
-        z-index: 50;
+        z-index: 60;
         pointer-events: none;
       }
 
-      /* Top nav */
       header {
         position: sticky;
         top: 0;
-        z-index: 20;
+        z-index: 30;
         backdrop-filter: blur(12px);
         background: linear-gradient(
           180deg,
@@ -192,6 +197,10 @@
       button:active {
         transform: translateY(1px);
       }
+      button:focus-visible {
+        outline: 2px solid rgba(96, 165, 250, 0.55);
+        outline-offset: 2px;
+      }
 
       .primary {
         border-color: rgba(255, 79, 216, 0.35);
@@ -205,6 +214,7 @@
         border-color: rgba(96, 165, 250, 0.3);
         background: rgba(96, 165, 250, 0.1);
       }
+
       /* Preloader */
       .preload {
         position: fixed;
@@ -300,7 +310,6 @@
         margin: 0 auto;
         padding: 22px 0 70px;
       }
-
       .card {
         background: var(--glass);
         border: 1px solid var(--stroke);
@@ -414,7 +423,7 @@
         margin-top: 14px;
       }
 
-      /* Right panel: gallery */
+      /* Right panel: countdown + gallery */
       .hero-right {
         padding: 16px;
         display: flex;
@@ -433,6 +442,30 @@
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
+      .countdown {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .cd {
+        padding: 12px;
+        border-radius: 18px;
+        background: rgba(0, 0, 0, 0.22);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+      }
+      .cd b {
+        display: block;
+        font-size: 26px;
+        letter-spacing: -0.02em;
+      }
+      .cd span {
+        display: block;
+        margin-top: 2px;
+        font-family: var(--mono);
+        font-size: 11px;
+        color: rgba(243, 241, 255, 0.7);
+      }
       .gallery {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -445,6 +478,7 @@
         overflow: hidden;
         background: rgba(0, 0, 0, 0.22);
         position: relative;
+        cursor: pointer;
       }
       .ph img {
         width: 100%;
@@ -512,7 +546,7 @@
         flex-wrap: wrap;
       }
 
-      /* Developer terminal (romantic edition) */
+      /* Terminal */
       .term {
         border-radius: 18px;
         background: rgba(0, 0, 0, 0.28);
@@ -520,7 +554,7 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        min-height: 240px;
+        min-height: 260px;
       }
       .out {
         flex: 1;
@@ -556,11 +590,11 @@
         font-size: 12px;
       }
 
-      /* Modal (Love Letter) */
+      /* Modal */
       .modal {
         position: fixed;
         inset: 0;
-        z-index: 200;
+        z-index: 220;
         display: none;
         align-items: center;
         justify-content: center;
@@ -572,7 +606,7 @@
         display: flex;
       }
       .modal-card {
-        width: min(820px, 92vw);
+        width: min(860px, 92vw);
         border-radius: 24px;
         background: rgba(12, 12, 26, 0.92);
         border: 1px solid rgba(255, 255, 255, 0.12);
@@ -608,6 +642,20 @@
         color: rgba(243, 241, 255, 0.7);
       }
 
+      /* Photo modal */
+      .imgbox {
+        margin-top: 12px;
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.25);
+      }
+      .imgbox img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
       /* Toast */
       .toast {
         position: fixed;
@@ -621,7 +669,7 @@
         color: rgba(243, 241, 255, 0.92);
         font-family: var(--mono);
         font-size: 12px;
-        z-index: 500;
+        z-index: 550;
         backdrop-filter: blur(12px);
         opacity: 0;
         transition: opacity 0.18s ease;
@@ -665,25 +713,88 @@
       body.light .out {
         color: rgba(12, 14, 29, 0.86);
       }
+
+      /* Modal sizing fixes (better on mobile + small screens) */
+      .modal-card {
+        max-height: calc(100vh - 40px);
+        display: flex;
+        flex-direction: column;
+      }
+      .modal-body {
+        overflow: auto;
+        max-height: calc(100vh - 120px);
+      }
+
+      /* Age panel */
+      .agegrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .ageclock {
+        margin-top: 8px;
+        text-align: center;
+        font-family: var(--mono);
+        color: rgba(243, 241, 255, 0.72);
+      }
+
+      /* Light mode modal readability FIX */
+      body.light .modal-head {
+        color: rgba(12, 14, 29, 0.88);
+        background: rgba(15, 23, 42, 0.03);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+      }
+      body.light .modal-body {
+        color: rgba(12, 14, 29, 0.88);
+      }
+      body.light .letter {
+        color: rgba(12, 14, 29, 0.92);
+        background: rgba(15, 23, 42, 0.04);
+        border: 1px solid rgba(15, 23, 42, 0.1);
+      }
+      body.light .tiny {
+        color: rgba(12, 14, 29, 0.65);
+      }
+      body.light .ageclock {
+        color: rgba(12, 14, 29, 0.65);
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .aurora::before,
+        .aurora::after {
+          animation: none !important;
+        }
+        .caret {
+          animation: none !important;
+          opacity: 1;
+        }
+      }
     </style>
   </head>
 
   <body>
-    <div class="aurora"></div>
-    <canvas id="bgCanvas"></canvas>
-    <canvas id="confettiCanvas"></canvas>
+    <div class="aurora" aria-hidden="true"></div>
+    <canvas id="bgCanvas" aria-hidden="true"></canvas>
+    <canvas id="confettiCanvas" aria-hidden="true"></canvas>
 
     <!-- Preloader -->
-    <div class="preload" id="preload">
+    <div
+      class="preload"
+      id="preload"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading"
+    >
       <div class="pre-card">
         <div class="pre-top">
-          <div class="dots">
+          <div class="dots" aria-hidden="true">
             <span class="dot"></span><span class="dot"></span
             ><span class="dot"></span>
           </div>
           <div class="pre-title" id="preTitle">booting birthday.app</div>
         </div>
-        <div class="bar"><i id="preBar"></i></div>
+        <div class="bar" aria-hidden="true"><i id="preBar"></i></div>
         <div class="pre-log" id="preLog">→ Starting...\n</div>
       </div>
     </div>
@@ -691,15 +802,23 @@
     <header>
       <div class="nav">
         <div class="brand">
-          <span class="pill">💜 love.birthday</span>
-          <span class="pill" id="navTo">to: Mim</span>
-          <span class="pill" id="navDate">release: </span>
+          <span class="pill">💜 birthday.app</span>
+          <span class="pill" id="navTo">to:</span>
+          <span class="pill" id="navDate">release:</span>
         </div>
         <div class="btns">
-          <button id="btnTheme" class="soft">🌓 Theme</button>
-          <button id="btnMusic" class="soft">🎵 Music</button>
-          <button id="btnLetter" class="primary">💌 Love Letter</button>
-          <button id="btnCelebrate" class="primary">🎉 Celebrate</button>
+          <button id="btnTheme" class="soft" aria-label="Toggle theme">
+            🌓 Theme
+          </button>
+          <button id="btnMusic" class="soft" aria-label="Toggle music">
+            🎵 Music
+          </button>
+          <button id="btnLetter" class="primary" aria-label="Open Poetry">
+            💌 Poetry
+          </button>
+          <button id="btnCelebrate" class="primary" aria-label="Celebrate">
+            🎉 Celebrate
+          </button>
         </div>
       </div>
     </header>
@@ -708,24 +827,23 @@
       <section class="hero">
         <div class="card hero-left">
           <div class="kicker">
-            <span class="badge">romantic build ✅</span>
+            <span class="badge" id="buildBadge">bestie build ✅</span>
             <span class="tiny" id="kickerLine"
-              >for a web application developer ✨</span
+              >for a web application developer</span
             >
           </div>
 
-          <h1 id="title">Happy Birthday, Mim 💜</h1>
-          <p class="sub" id="subtitle">
-            তোমার presenceটা আমার জন্য soft, safe, আর সুন্দর—একটা perfect UI-এর
-            মতো। আজ শুধু তোমার দিন: love, calm, আর infinite happiness.
-          </p>
+          <h1 id="title">Happy Birthday 💜</h1>
+          <p class="sub" id="subtitle"></p>
 
-          <div class="type">
-            <span id="typeText"></span><span class="caret"></span>
+          <div class="type" aria-label="Typewriter message">
+            <span id="typeText"></span
+            ><span class="caret" aria-hidden="true"></span>
           </div>
 
           <div class="hero-actions">
-            <button class="primary" id="btnStart">✨ Start Surprise</button>
+            <button class="primary" id="btnStart">Start Surprise</button>
+            <button class="soft" id="btnWish">Generate Wish</button>
             <button class="soft" id="btnCopy">📋 Copy Cute Line</button>
             <button class="soft" id="btnSecret">🫶 Secret</button>
           </div>
@@ -733,13 +851,24 @@
 
         <div class="card hero-right">
           <div class="panel-title">
+            <span>countdown — next birthday</span>
+            <span class="tiny" id="cdLabel">set CONFIG.birthdayISO</span>
+          </div>
+
+          <div class="countdown" aria-label="Countdown">
+            <div class="cd"><b id="cdD">—</b><span>days</span></div>
+            <div class="cd"><b id="cdH">—</b><span>hours</span></div>
+            <div class="cd"><b id="cdM">—</b><span>minutes</span></div>
+            <div class="cd"><b id="cdS">—</b><span>seconds</span></div>
+          </div>
+
+          <div class="panel-title" style="margin-top: 2px">
             <span>memories — gallery</span>
-            <span class="tiny">add photos in CONFIG.photos</span>
+            <span class="tiny">click to open</span>
           </div>
           <div class="gallery" id="gallery"></div>
           <div class="tiny">
-            Tip: photos না থাকলে placeholder দেখাবে—assets/ এ ছবি দিলে এটা
-            instantly premium লাগবে।
+            <!-- Tip: assets/ এ ছবি দিলে instantly premium লাগবে ✨ -->
           </div>
         </div>
       </section>
@@ -752,9 +881,9 @@
         </div>
 
         <div class="card sec">
-          <h2>💻 Terminal (romantic dev mode)</h2>
+          <h2>💻 Terminal (bestie dev mode)</h2>
           <p class="muted">
-            Mim developer—তাই dev vibe রাখলাম, কিন্তু romantic 😄
+            Try: help, deploy, love, note, kiss, status, clear
           </p>
           <div class="term">
             <div class="out" id="termOut"></div>
@@ -764,9 +893,9 @@
                 id="termIn"
                 autocomplete="off"
                 spellcheck="false"
-                placeholder="try: help, deploy, love, kiss, note"
+                placeholder="type a command..."
               />
-              <button id="termRun">Run</button>
+              <button id="termRun" class="soft">Run</button>
             </div>
           </div>
         </div>
@@ -781,21 +910,32 @@
         </div>
       </section>
 
-      <footer id="footerLine">made with 💜 — by you</footer>
+      <footer id="footerLine">made with 💜</footer>
     </main>
 
     <!-- Music (optional) -->
     <audio id="bgm" preload="auto" loop></audio>
 
-    <!-- Love Letter Modal -->
-    <div class="modal" id="modal">
+    <!-- Modal -->
+    <div
+      class="modal"
+      id="modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+    >
       <div class="modal-card">
         <div class="modal-head">
-          <span id="modalTitle">💌 Love Letter</span>
-          <button id="modalClose" class="soft">Close ✖</button>
+          <span id="modalTitle">💌 Poetry for you</span>
+          <button id="modalClose" class="soft" aria-label="Close">
+            Close ✖
+          </button>
         </div>
         <div class="modal-body">
           <div class="letter" id="letterBox"></div>
+          <div class="imgbox" id="imgBox" style="display: none">
+            <img id="imgFull" alt="Selected memory" />
+          </div>
           <div class="tiny" style="margin-top: 12px">
             Terminal-এ <b>kiss</b> লিখলে cute surprise 😉
           </div>
@@ -803,32 +943,43 @@
       </div>
     </div>
 
-    <div class="toast" id="toast"></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <script>
       /* =========================
-       CONFIG — এখানে বদলাও
-    ========================== */
+        CONFIG — এখানে বদলাও
+      ========================== */
       const CONFIG = {
-        toName: "Mim",
-        fromName: "Moin", // <-- তোমার নাম
-        dateText: "Happy Birthday 🎂",
-        roleLine: "web application developer",
+        toName: "Yeaty Sinthia Meem",
+        fromName: "Khondoker Moin Hossain",
+        dateText: "14-04-2003 🎂",
 
-        // Romantic typewriter lines
+        // Set the birthday date for the countdown (YYYY-MM-DD). Example: "2026-07-20"
+        birthdayISO: "2003-04-14",
+
+        roleLine: "web application developer",
+        subtitle:
+          "তোমার presence টা আমার জন্য soft, safe, আর সুন্দর একটা perfect UI-এর মতো। আজকের দিনটা পুরো তোমার: claim loves && infinite happiness.",
+
         typewriterLines: [
           "Loading soft moments… 💜",
           "Rendering your smile… ✨",
           "Compiling love… (no errors) ✅",
           "Deploying hugs to: Mim 🫶",
-          "Happy Birthday, my favorite human. 🌙",
+          "Happy Birthday, my favorite বান্ধুবী.",
         ],
 
-        // Short message under the page
         shortMsg:
-          "Mim, তোমার সাথে কথা বললেই মনে হয়—সবকিছু একটু সুন্দর হয়ে যায়। আজ তোমার দিন। 💜",
+          "Meem, তোমার সাথে কথা বললেই মনে হয়—সবকিছু একটু সুন্দর হয়ে যায়। 💜",
 
-        // Love letter (multiline)
+        wishes: [
+          "আজকের দিনটা তোমার জন্য gentle + magical হোক ✨",
+          "Happy Birthday! তোমার হাসিটা always safe place 💜",
+          "May your life be full of calm, love, and good surprises 🌙",
+          "তুমি যেভাবে shine করো—সেটা rare, beautiful, and real ✨",
+          "Hugs + happiness deployed ✅",
+        ],
+
         note: [
           "Mim,",
           "",
@@ -843,7 +994,6 @@
           "— " + "Moin",
         ].join("\n"),
 
-        // Timeline moments
         moments: [
           {
             when: "01",
@@ -864,22 +1014,45 @@
 
         // Photos (put files in assets/ folder)
         photos: [
-          "assets/photo1.jpg",
-          "assets/photo2.jpg",
-          "assets/photo3.jpg",
-          "assets/photo4.jpg",
+          "assets/photo1.png",
+          "assets/photo2.png",
+          "assets/photo3.png",
+          "assets/photo4.png",
         ],
 
         // Optional music (local file recommended): "assets/song.mp3"
         musicUrl: "assets/song.mp3",
       };
+
       /* =========================
-       Preloader
-    ========================== */
-      const preload = document.getElementById("preload");
-      const preBar = document.getElementById("preBar");
-      const preLog = document.getElementById("preLog");
-      const preTitle = document.getElementById("preTitle");
+        Helpers
+      ========================== */
+      const $ = (id) => document.getElementById(id);
+      const prefersReduced =
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function escapeHtml(s) {
+        return String(s).replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            }[c])
+        );
+      }
+
+      /* =========================
+        Preloader (FIXED: progress now reaches 100%)
+      ========================== */
+      const preload = $("preload");
+      const preBar = $("preBar");
+      const preLog = $("preLog");
+      const preTitle = $("preTitle");
 
       const steps = [
         "Loading assets… (0 external libs)",
@@ -888,7 +1061,6 @@
         "Hydrating UI…",
         "Ready ✅",
       ];
-      let p = 0;
 
       function logLine(s) {
         preLog.textContent += "→ " + s + "\n";
@@ -896,9 +1068,13 @@
       }
 
       function runPreload() {
+        // FIX: show real line breaks (not a literal \\n)
+        preLog.textContent = "→ Starting...\n";
         preTitle.textContent = "booting birthday.app — for " + CONFIG.toName;
+
+        let p = 0;
         const timer = setInterval(() => {
-          const pct = Math.min(50, Math.round(((p + 1) / steps.length) * 50));
+          const pct = Math.round(((p + 1) / steps.length) * 100); // FIX
           preBar.style.width = pct + "%";
           logLine(steps[p]);
           p++;
@@ -910,39 +1086,268 @@
               setTimeout(() => preload.remove(), 380);
             }, 350);
           }
-        }, 360);
+        }, 340);
       }
 
       /* =========================
-       Bind text
-    ========================== */
-      const navTo = document.getElementById("navTo");
-      const navDate = document.getElementById("navDate");
-      const title = document.getElementById("title");
-      const kickerLine = document.getElementById("kickerLine");
-      const letterBox = document.getElementById("letterBox");
-      const modalTitle = document.getElementById("modalTitle");
-      const shortMsg = document.getElementById("shortMsg");
-      const footerLine = document.getElementById("footerLine");
-
+        Bind text
+      ========================== */
       function initText() {
-        navTo.textContent = "to: " + CONFIG.toName;
-        navDate.textContent = "release: " + CONFIG.dateText;
-        title.textContent = "Happy Birthday, " + CONFIG.toName + " 💜";
-        kickerLine.textContent = "for a " + CONFIG.roleLine + " ✨";
-        modalTitle.textContent = "💌 Love Letter for " + CONFIG.toName;
-        letterBox.textContent = CONFIG.note;
-        shortMsg.textContent = CONFIG.shortMsg;
-        footerLine.textContent = "made with 💜 — " + CONFIG.fromName;
+        $("navTo").textContent = "to: " + CONFIG.toName;
+        $("navDate").textContent = "release: " + CONFIG.dateText;
+
+        $("title").textContent = "Happy Birthday, " + CONFIG.toName + " 💜";
+        $("subtitle").textContent = CONFIG.subtitle;
+        $("kickerLine").textContent = "for a " + CONFIG.roleLine;
+
+        $("modalTitle").textContent = "💌 Poetry for " + CONFIG.toName;
+        $("letterBox").textContent = CONFIG.note;
+
+        $("shortMsg").textContent = CONFIG.shortMsg;
+        $("footerLine").textContent = "made with 💜 — " + CONFIG.fromName;
+
         document.title = "Happy Birthday " + CONFIG.toName + " 💜";
       }
 
       /* =========================
-       Gallery
-    ========================== */
+        Theme persistence
+      ========================== */
+      const THEME_KEY = "birthday_theme";
+      function applyTheme() {
+        const saved = localStorage.getItem(THEME_KEY);
+        if (saved === "light") document.body.classList.add("light");
+      }
+      $("btnTheme").addEventListener("click", () => {
+        document.body.classList.toggle("light");
+        localStorage.setItem(
+          THEME_KEY,
+          document.body.classList.contains("light") ? "light" : "dark"
+        );
+        toast(
+          document.body.classList.contains("light")
+            ? "Light mode ☀️"
+            : "Dark mode 🌙"
+        );
+      });
+
+      /* =========================
+        Toast
+      ========================== */
+      const toastEl = $("toast");
+      let toastTimer;
+      function toast(msg) {
+        toastEl.textContent = msg;
+        toastEl.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toastEl.classList.remove("show"), 1300);
+      }
+
+      /* =========================
+        Modal (Love Letter + Photo viewer)
+      ========================== */
+      const modal = $("modal");
+      const imgBox = $("imgBox");
+      const imgFull = $("imgFull");
+
+      function openModal() {
+        modal.classList.add("show");
+        modal.setAttribute("aria-hidden", "false");
+        burstHearts(140);
+      }
+      function closeModal() {
+        modal.classList.remove("show");
+        modal.setAttribute("aria-hidden", "true");
+        imgBox.style.display = "none";
+        imgFull.src = "";
+      }
+      function showPhoto(src) {
+        openModal();
+        imgFull.src = src;
+        imgBox.style.display = "block";
+      }
+
+      $("btnLetter").addEventListener("click", openModal);
+      $("btnLetter2").addEventListener("click", openModal);
+      $("modalClose").addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("show"))
+          closeModal();
+      });
+
+      /* =========================
+        Copy line + wish generator
+      ========================== */
+      function copyText(text) {
+        navigator.clipboard
+          ?.writeText(text)
+          .then(() => toast("Copied ✅"))
+          .catch(() => {
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            ta.remove();
+            toast("Copied ✅");
+          });
+      }
+
+      $("btnCopy").addEventListener("click", () => {
+        copyText(
+          `Meem, you are my favorite notification 💜 — ${CONFIG.fromName}`
+        );
+      });
+
+      $("btnWish").addEventListener("click", () => {
+        const w =
+          CONFIG.wishes[Math.floor(Math.random() * CONFIG.wishes.length)];
+        toast("Wish generated ✨");
+        copyText(w + " 💜");
+      });
+      document.getElementById("btnSecret").addEventListener("click", () => {
+        burstHearts(220);
+        copyText(`If (you == smiles) { my.day++ } 💜`);
+        toast("Secret copied 🫶");
+      });
+
+      /* =========================
+        Music
+      ========================== */
+      const bgm = $("bgm");
+      let musicOn = false;
+
+      function initMusic() {
+        if (CONFIG.musicUrl) {
+          bgm.src = CONFIG.musicUrl;
+          bgm.volume = 0.35;
+        }
+      }
+
+      async function toggleMusic() {
+        if (!CONFIG.musicUrl) {
+          toast("CONFIG.musicUrl সেট করো 🎵");
+          return;
+        }
+        try {
+          if (!musicOn) {
+            await bgm.play();
+            musicOn = true;
+            $("btnMusic").textContent = "🔊 Music";
+            toast("Music ON 🎵");
+          } else {
+            bgm.pause();
+            musicOn = false;
+            $("btnMusic").textContent = "🎵 Music";
+            toast("Music OFF");
+          }
+        } catch {
+          toast("Tap again to allow audio 🎵");
+        }
+      }
+      $("btnMusic").addEventListener("click", toggleMusic);
+
+      /* =========================
+        Countdown
+      ========================== */
+
+      function nextBirthdayTarget() {
+        // Accepts "YYYY-MM-DD" or "MM-DD"
+        const raw = (CONFIG.birthdayISO || "").trim();
+        const parts = raw
+          .split("-")
+          .map((s) => s.trim())
+          .filter(Boolean);
+
+        let m, d;
+        if (parts.length === 3) {
+          m = Number(parts[1]) - 1;
+          d = Number(parts[2]);
+        } else if (parts.length === 2) {
+          m = Number(parts[0]) - 1;
+          d = Number(parts[1]);
+        } else {
+          return null;
+        }
+
+        // Validate month/day
+        if (
+          !Number.isFinite(m) ||
+          !Number.isFinite(d) ||
+          m < 0 ||
+          m > 11 ||
+          d < 1 ||
+          d > 31
+        )
+          return null;
+
+        const now = new Date();
+
+        // IMPORTANT FIX:
+        // Ignore the birth year (e.g., 2003) and count down to the next occurrence of month/day.
+        let target = new Date(now.getFullYear(), m, d, 0, 0, 0, 0);
+
+        // If invalid (e.g., Feb 30), Date will roll over; detect by checking month/day
+        if (target.getMonth() !== m || target.getDate() !== d) return null;
+
+        if (target.getTime() < now.getTime()) {
+          target = new Date(now.getFullYear() + 1, m, d, 0, 0, 0, 0);
+          $("cdLabel").textContent = "auto → next year";
+        } else {
+          $("cdLabel").textContent =
+            parts.length === 2
+              ? raw
+              : `${now.getFullYear()}-${String(m + 1).padStart(
+                  2,
+                  "0"
+                )}-${String(d).padStart(2, "0")}`;
+        }
+        return target;
+      }
+
+      function pad2(n) {
+        return String(n).padStart(2, "0");
+      }
+
+      function updateCountdown() {
+        const t = nextBirthdayTarget();
+        if (!t) {
+          $("cdLabel").textContent = "invalid date";
+          $("cdD").textContent =
+            $("cdH").textContent =
+            $("cdM").textContent =
+            $("cdS").textContent =
+              "—";
+          return;
+        }
+        const now = new Date();
+        let diff = Math.max(0, t.getTime() - now.getTime());
+
+        const sec = Math.floor(diff / 1000);
+        const days = Math.floor(sec / 86400);
+        const hours = Math.floor((sec % 86400) / 3600);
+        const mins = Math.floor((sec % 3600) / 60);
+        const secs = sec % 60;
+
+        $("cdD").textContent = String(days);
+        $("cdH").textContent = pad2(hours);
+        $("cdM").textContent = pad2(mins);
+        $("cdS").textContent = pad2(secs);
+
+        if (diff === 0) {
+          $("buildBadge").textContent = "birthday mode 🎂✅";
+        }
+      }
+      /* =========================
+        Gallery
+      ========================== */
       function renderGallery() {
-        const host = document.getElementById("gallery");
+        const host = $("gallery");
         host.innerHTML = "";
+
         const fallback = (i) => {
           const svg = encodeURIComponent(`
           <svg xmlns='http://www.w3.org/2000/svg' width='800' height='800'>
@@ -967,200 +1372,88 @@
             ? CONFIG.photos.slice(0, 6)
             : [];
         const count = Math.max(4, Math.min(6, arr.length || 4));
+
         for (let i = 0; i < count; i++) {
           const url = arr[i] || fallback(i);
+
           const div = document.createElement("div");
           div.className = "ph";
+
           const img = document.createElement("img");
           img.src = url;
           img.alt = "memory " + (i + 1);
+          img.loading = "lazy";
           img.onerror = () => (img.src = fallback(i));
+
+          div.addEventListener("click", () => showPhoto(img.src));
+
           div.appendChild(img);
           host.appendChild(div);
         }
       }
 
       /* =========================
-       Timeline
-    ========================== */
+        Timeline
+      ========================== */
       function renderTimeline() {
-        const host = document.getElementById("timeline");
+        const host = $("timeline");
         host.innerHTML = "";
-        CONFIG.moments.forEach((m) => {
+        (CONFIG.moments || []).forEach((m) => {
           const d = document.createElement("div");
           d.className = "titem";
           d.innerHTML = `
-          <div class="tmeta"><span>moment</span><span>#${m.when}</span></div>
-          <div style="font-weight:800; margin-bottom:4px;">${escapeHtml(
-            m.title
-          )}</div>
-          <div style="color: rgba(243,241,255,.80); line-height:1.7;">${escapeHtml(
-            m.text
-          )}</div>
-        `;
+            <div class="tmeta"><span>moment</span><span>#${escapeHtml(
+              m.when
+            )}</span></div>
+            <div style="font-weight:900; margin-bottom:4px;">${escapeHtml(
+              m.title
+            )}</div>
+            <div style="color: rgba(243,241,255,.80); line-height:1.7;">${escapeHtml(
+              m.text
+            )}</div>
+          `;
           host.appendChild(d);
         });
       }
 
-      function escapeHtml(s) {
-        return String(s).replace(
-          /[&<>"']/g,
-          (c) =>
-            ({
-              "&": "&amp;",
-              "<": "&lt;",
-              ">": "&gt;",
-              '"': "&quot;",
-              "'": "&#39;",
-            }[c])
-        );
-      }
-
       /* =========================
-       Typewriter
-    ========================== */
-      const typeText = document.getElementById("typeText");
+        Typewriter
+      ========================== */
+      const typeText = $("typeText");
       let twLine = 0,
         twChar = 0,
         twDir = 1;
       function tickType() {
-        const lines = CONFIG.typewriterLines;
-        const current = lines[twLine];
+        if (prefersReduced) {
+          typeText.textContent = CONFIG.typewriterLines[0] || "";
+          return;
+        }
+        const lines = CONFIG.typewriterLines || [];
+        if (!lines.length) return;
+
+        const current = String(lines[twLine]);
         twChar += twDir;
 
-        if (twDir === 1) {
-          typeText.textContent = current.slice(0, twChar);
-          if (twChar >= current.length) {
-            twDir = -1;
-            setTimeout(tickType, 900);
-            return;
-          }
-        } else {
-          typeText.textContent = current.slice(0, twChar);
-          if (twChar <= 0) {
-            twDir = 1;
-            twLine = (twLine + 1) % lines.length;
-          }
+        typeText.textContent = current.slice(0, Math.max(0, twChar));
+
+        if (twDir === 1 && twChar >= current.length) {
+          twDir = -1;
+          setTimeout(tickType, 3500);
+          return;
+        }
+        if (twDir === -1 && twChar <= 0) {
+          twDir = 1;
+          twLine = (twLine + 1) % lines.length;
         }
         setTimeout(tickType, twDir === 1 ? 22 : 12);
       }
 
       /* =========================
-       Toast
-    ========================== */
-      const toastEl = document.getElementById("toast");
-      let toastTimer;
-      function toast(msg) {
-        toastEl.textContent = msg;
-        toastEl.classList.add("show");
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => toastEl.classList.remove("show"), 1200);
-      }
-
-      /* =========================
-       Modal
-    ========================== */
-      const modal = document.getElementById("modal");
-      function openLetter() {
-        modal.classList.add("show");
-        burstHearts(140);
-      }
-      function closeLetter() {
-        modal.classList.remove("show");
-      }
-
-      document
-        .getElementById("btnLetter")
-        .addEventListener("click", openLetter);
-      document
-        .getElementById("btnLetter2")
-        .addEventListener("click", openLetter);
-      document
-        .getElementById("modalClose")
-        .addEventListener("click", closeLetter);
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) closeLetter();
-      });
-
-      /* =========================
-       Copy line + secret
-    ========================== */
-      function copyText(text) {
-        navigator.clipboard
-          ?.writeText(text)
-          .then(() => toast("Copied ✅"))
-          .catch(() => {
-            const ta = document.createElement("textarea");
-            ta.value = text;
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand("copy");
-            ta.remove();
-            toast("Copied ✅");
-          });
-      }
-
-      document.getElementById("btnCopy").addEventListener("click", () => {
-        copyText(
-          `Mim, you are my favorite notification 💜 — ${CONFIG.fromName}`
-        );
-      });
-
-      document.getElementById("btnSecret").addEventListener("click", () => {
-        burstHearts(220);
-        copyText(`If (${CONFIG.toName} smiles) { my.day++ } 💜`);
-        toast("Secret copied 🫶");
-      });
-
-      /* =========================
-       Theme + Music
-    ========================== */
-      document.getElementById("btnTheme").addEventListener("click", () => {
-        document.body.classList.toggle("light");
-        toast(
-          document.body.classList.contains("light")
-            ? "Light mode ☀️"
-            : "Dark mode 🌙"
-        );
-      });
-
-      const bgm = document.getElementById("bgm");
-      let musicOn = false;
-      function initMusic() {
-        if (CONFIG.musicUrl) {
-          bgm.src = CONFIG.musicUrl;
-          bgm.volume = 0.35;
-        }
-      }
-      async function toggleMusic() {
-        if (!CONFIG.musicUrl) {
-          toast("CONFIG.musicUrl সেট করো 🎵");
-          return;
-        }
-        try {
-          if (!musicOn) {
-            await bgm.play();
-            musicOn = true;
-            toast("Music ON 🎵");
-          } else {
-            bgm.pause();
-            musicOn = false;
-            toast("Music OFF");
-          }
-        } catch {
-          toast("Tap again to allow audio 🎵");
-        }
-      }
-      document
-        .getElementById("btnMusic")
-        .addEventListener("click", toggleMusic);
-
-      /* =========================
-       Terminal (romantic)
-    ========================== */
-      const termOut = document.getElementById("termOut");
-      const termIn = document.getElementById("termIn");
-      const termRun = document.getElementById("termRun");
+        Terminal
+      ========================== */
+      const termOut = $("termOut");
+      const termIn = $("termIn");
+      const termRun = $("termRun");
 
       function writeOut(s) {
         termOut.textContent += s + "\n";
@@ -1176,19 +1469,18 @@
       function runCmd(raw) {
         const cmd = (raw || "").trim();
         if (!cmd) return;
+
         writeOut(`$ ${cmd}`);
         const lower = cmd.toLowerCase();
 
         if (lower === "help") {
-          writeOut(
-            `commands:
+          writeOut(`commands:
   deploy   → hearts celebration
   love    → sweet dev line
-  note    → open love letter
+  note    → open Poetry
   kiss    → cute surprise
-  status  → romantic build status
-  clear   → clear terminal`
-          );
+  status  → bestie build status
+  clear   → clear terminal`);
         } else if (lower === "deploy") {
           writeOut("Deploying romance… 💜");
           burstHearts(220);
@@ -1198,15 +1490,15 @@
           writeOut(`console.log("Happy Birthday 💜", love);`);
           burstHearts(120);
         } else if (lower === "note") {
-          openLetter();
-          writeOut("Opened love letter 💌");
+          openModal();
+          writeOut("Opened Poetry 💌");
         } else if (lower === "kiss") {
           writeOut("Sending a tiny virtual kiss… 💋");
           burstHearts(260);
           writeOut(`delivered ✅`);
         } else if (lower === "status") {
           writeOut("build: romantic ✅");
-          writeOut("bugs: 0 (only butterflies 🦋)");
+          writeOut("bugs: fixed ✅ (only butterflies 🦋)");
           writeOut("happiness: ∞");
         } else if (lower === "clear") {
           termOut.textContent = "";
@@ -1229,28 +1521,25 @@
       });
 
       /* =========================
-       Celebrate buttons
-    ========================== */
+        Celebrate buttons
+      ========================== */
       function celebrate() {
         burstHearts(260);
         toast("Happy Birthday 💜");
-        // Try start music softly (if allowed)
         if (CONFIG.musicUrl && !musicOn) {
           bgm
             .play()
             .then(() => {
               musicOn = true;
+              $("btnMusic").textContent = "🔊 Music";
             })
             .catch(() => {});
         }
       }
-      document
-        .getElementById("btnCelebrate")
-        .addEventListener("click", celebrate);
-      document
-        .getElementById("btnCelebrate2")
-        .addEventListener("click", celebrate);
-      document.getElementById("btnStart").addEventListener("click", () => {
+      $("btnCelebrate").addEventListener("click", celebrate);
+      $("btnCelebrate2").addEventListener("click", celebrate);
+
+      $("btnStart").addEventListener("click", () => {
         celebrate();
         document
           .querySelector(".grid")
@@ -1258,14 +1547,16 @@
       });
 
       /* =========================
-       Background Canvas: bokeh + floating hearts (romantic)
-    ========================== */
-      const bgCanvas = document.getElementById("bgCanvas");
+        Background Canvas: bokeh + floating hearts
+      ========================== */
+      const bgCanvas = $("bgCanvas");
       const bctx = bgCanvas.getContext("2d");
+
       let bw = 0,
-        bh = 0,
-        bokeh = [],
-        floatHearts = [];
+        bh = 0;
+      let bokeh = [];
+      let floatHearts = [];
+
       const DPR = () => Math.max(1, Math.min(2, window.devicePixelRatio || 1));
 
       function resizeBg() {
@@ -1274,15 +1565,15 @@
         bh = bgCanvas.height = Math.floor(window.innerHeight * d);
 
         const bCount = Math.min(
-          48,
-          Math.floor((window.innerWidth * window.innerHeight) / 22000)
+          52,
+          Math.floor((window.innerWidth * window.innerHeight) / 21000)
         );
         bokeh = Array.from({ length: bCount }, () => ({
           x: Math.random() * bw,
           y: Math.random() * bh,
-          r: (30 + Math.random() * 80) * d,
-          vx: (Math.random() * 2 - 1) * 0.1 * d,
-          vy: (Math.random() * 2 - 1) * 0.1 * d,
+          r: (28 + Math.random() * 86) * d,
+          vx: (Math.random() * 2 - 1) * 0.11 * d,
+          vy: (Math.random() * 2 - 1) * 0.11 * d,
           a: 0.05 + Math.random() * 0.07,
           hue: [320, 270, 210, 150][Math.floor(Math.random() * 4)],
         }));
@@ -1336,7 +1627,6 @@
       function bgLoop() {
         bctx.clearRect(0, 0, bw, bh);
 
-        // bokeh
         for (const p of bokeh) {
           p.x += p.vx;
           p.y += p.vy;
@@ -1354,7 +1644,6 @@
           bctx.restore();
         }
 
-        // floating hearts
         for (const h of floatHearts) {
           h.y -= h.vy;
           h.phase += 0.012;
@@ -1374,29 +1663,28 @@
 
         requestAnimationFrame(bgLoop);
       }
-      window.addEventListener("resize", resizeBg);
 
       /* =========================
-       Heart Confetti (Celebrate)
-    ========================== */
-      const confCanvas = document.getElementById("confettiCanvas");
+        Heart Confetti
+      ========================== */
+      const confCanvas = $("confettiCanvas");
       const cctx = confCanvas.getContext("2d");
       let cw = 0,
-        ch = 0,
-        hearts = [];
+        ch = 0;
+      let hearts = [];
 
       function resizeConf() {
         const d = DPR();
         cw = confCanvas.width = Math.floor(window.innerWidth * d);
         ch = confCanvas.height = Math.floor(window.innerHeight * d);
       }
-      window.addEventListener("resize", resizeConf);
 
       function burstHearts(count = 200) {
         resizeConf();
         const d = DPR();
         const ox = cw * (0.35 + Math.random() * 0.3);
         const oy = ch * 0.22;
+
         for (let i = 0; i < count; i++) {
           hearts.push({
             x: ox,
@@ -1443,20 +1731,32 @@
         requestAnimationFrame(confLoop);
       }
 
+      window.addEventListener("resize", () => {
+        resizeBg();
+        resizeConf();
+      });
+
       /* =========================
-       Boot
-    ========================== */
+        Boot
+      ========================== */
+      applyTheme();
       initText();
       initMusic();
       renderGallery();
       renderTimeline();
       runPreload();
+
       resizeBg();
       resizeConf();
       initTerminal();
       setTimeout(tickType, 650);
+
       bgLoop();
       confLoop();
+
+      // Countdown tick
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
 
       // subtle first sparkle
       setTimeout(() => burstHearts(90), 900);
