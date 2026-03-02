@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let n = +prompt('Enter how many Fibonacci numbers you want:');
+      let a = 0,
+        b = 1;
+
+      document.write('Fibonacci series: ');
+      for (let i = 0; i < n; i++) {
+        document.write(a);
+        if (i !== n - 1) {
+          document.write(' , ');
+        }
+        [a, b] = [b, a + b];
+      }
+    </script>
+  </body>
+</html>

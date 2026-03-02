@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Factorial</title>
+  </head>
+  <body>
+    <script>
+      let number = +prompt('Enter Your Number');
+      let fac = 1;
+      let i = 1;
+      let prev = 1;
+      while (i <= number) {
+        fac = prev * i;
+        document.write(`${i} * ${prev} = ${fac} <br>`);
+        prev = fac;
+        i++;
+      }
+      document.write(`Factorial of ${number} is ${fac}`);
+    </script>
+  </body>
+</html>

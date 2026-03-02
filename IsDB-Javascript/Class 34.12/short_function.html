@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Stylish Counter</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f0f4f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .counter-card {
+        background: #ffffff;
+        padding: 40px 60px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 30px;
+        color: #333;
+      }
+
+      #counterOutput {
+        font-size: 48px;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 30px;
+        display: block;
+      }
+
+      button {
+        margin: 10px;
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+        color: #fff;
+      }
+
+      button:hover {
+        transform: scale(1.1);
+      }
+
+      .increment {
+        background-color: #27ae60;
+      }
+
+      .decrement {
+        background-color: #c0392b;
+      }
+
+      .reset {
+        background-color: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="counter-card">
+      <h2>Stylish Counter</h2>
+      <span id="counterOutput">0</span>
+      <div>
+        <button class="increment" onclick="increment()">Increment</button>
+        <button class="decrement" onclick="decrement()">Decrement</button>
+        <button class="reset" onclick="resetCounter()">Reset</button>
+      </div>
+    </div>
+
+    <script>
+      let counter = 0;
+
+      function updateDisplay() {
+        document.getElementById('counterOutput').innerText = counter;
+
+        // Optional: color change based on positive/negative
+        const output = document.getElementById('counterOutput');
+        if (counter > 0) {
+          output.style.color = '#27ae60'; // green
+        } else if (counter < 0) {
+          output.style.color = '#c0392b'; // red
+        } else {
+          output.style.color = '#2c3e50'; // default
+        }
+      }
+
+      function increment() {
+        counter++;
+        updateDisplay();
+      }
+
+      function decrement() {
+        counter--;
+        updateDisplay();
+      }
+
+      function resetCounter() {
+        counter = 0;
+        updateDisplay();
+      }
+    </script>
+  </body>
+</html>

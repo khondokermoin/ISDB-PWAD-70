@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prime</title>
+  </head>
+  <body>
+    <script>
+      let number = +prompt('Enter Your Number');
+      let result;
+      if (number <= 1) {
+        result = ' Invaild Numer';
+      } else {
+        for (let i = 2; i < number; i++) {
+          if (number % i == 0) {
+            result = ' not prime';
+            break;
+          } else {
+            result = ' prime';
+          }
+        }
+      }
+      document.write(`your number ${number} is ${result}`);
+    </script>
+  </body>
+</html>

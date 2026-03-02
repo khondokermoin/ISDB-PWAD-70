@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grade</title>
+  </head>
+  <body>
+    <p id="g"></p>
+    <script>
+      let marks = +prompt('Enter Marks');
+      let result;
+
+      if (marks >= 0 && marks <= 60) {
+        result = 'B';
+      } else if (marks >= 60 && marks < 70) {
+        result = 'A';
+      } else if (marks >= 70 && marks <= 80) {
+        result = 'A+';
+      } else if (marks > 80 && marks <= 100) {
+        result = 'A++';
+      } else {
+        result = 'Invalid Marks';
+      }
+
+      document.write(`Your result is ${result}`);
+    </script>
+  </body>
+</html>
