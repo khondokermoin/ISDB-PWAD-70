@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="dom"></p>
+    <script>
+      let a = +prompt('Entern 1st Number');
+      let b = +prompt('Entern 2nd Number');
+      let c = +prompt('Entern 3rd Number');
+
+      if (a > b) [a, b] = [b, a];
+      if (a > c) [a, c] = [c, a];
+      if (b > c) [b, c] = [c, b];
+
+      document.getElementById('dom').innerHTML = `${a}, ${b}, ${c}`;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maximum</title>
+  </head>
+  <body>
+    <script>
+      let num1 = +prompt('Enter 1st Number');
+      let num2 = +prompt('Enter 2nd Number');
+      let num3 = +prompt('Enter 3rd Number');
+
+      if (num1 < num2) {
+        [num1, num2] = [num2, num1];
+      }
+
+      if (num1 < num3) {
+        [num1, num3] = [num3, num1];
+      }
+
+      document.write(`Maximum number is ${num1}`);
+    </script>
+  </body>
+</html>

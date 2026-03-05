@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <form action="" method="post" name="forms">
+      <fieldset>
+        <legend>Student Information</legend>
+
+        <label>Name:</label><br />
+        <input type="text" name="name" /><br /><br />
+
+        <label>ID:</label><br />
+        <input type="text" name="id" /><br /><br />
+
+        <label>Email:</label><br />
+        <input type="email" name="email" /><br /><br />
+
+        <label>Address:</label><br />
+        <textarea name="address"></textarea><br /><br />
+
+        <label>City:</label><br />
+        <select name="city">
+          <option value="Dhaka">Dhaka</option>
+          <option value="CTG">CTG</option>
+          <option value="Sylhet">Sylhet</option>
+        </select>
+        <br /><br />
+
+        <label>Gender:</label><br />
+        <input type="radio" name="gender" value="Male" /> Male
+        <input type="radio" name="gender" value="Female" /> Female
+        <input type="radio" name="gender" value="Others" /> Others <br /><br />
+
+        <label>Subject:</label><br />
+        <input type="checkbox" name="subject[]" value="HTML" /> HTML
+        <input type="checkbox" name="subject[]" value="CSS" /> CSS
+        <input type="checkbox" name="subject[]" value="JavaScript" /> JavaScript
+        <br /><br />
+
+        <input type="submit" value="Submit" onclick="data()" />
+        <input type="reset" value="Reset" />
+      </fieldset>
+    </form>
+
+    <script>
+      function data() {
+        let name = document.forms.name.value;
+        let id = document.forms.id.value;
+        let email = document.forms.email.value;
+
+        let sex = '';
+        for (i = 0; i < document.forms.gender.length; i++) {
+          if (document.forms.gender[i].checked) {
+            sex += document.forms.gender[i].value;
+          }
+        }
+
+        let store = window.open('', '', 'width=500,height=650');
+        with (store.document) {
+          write('Name:' + name + '<br/>');
+          write('Id:' + id + '<br/>');
+          write('Email:' + email + '<br/>');
+          write('Sex:' + sex + '<br/>');
+          write(
+            "<input type='button' value='Close me' onclick='self.close();' />"
+          );
+          write(
+            "<input type='button' value='Print' onclick='self.print();' />"
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

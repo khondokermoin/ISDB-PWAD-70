@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grade</title>
+  </head>
+  <body>
+    <script>
+      let marks = +prompt('Enter Marks');
+      let result;
+
+      if (marks >= 70 && 80 <= marks) {
+        result = 'A+';
+      } else if (marks >= 60 && 70 <= marks) {
+        result = 'A';
+      } else if (marks >= 0 && 60 <= marks) {
+        result = 'B';
+      }
+      document.write(`Your Grade is: ${result}`);
+    </script>
+  </body>
+</html>
