@@ -1,8 +1,0 @@
-RewriteEngine On
-
-# security
-RewriteRule ^config\.php$ - [F,L]
-
-# IMPORTANT: route EVERYTHING (even folders) to index.php
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [QSA,L]
