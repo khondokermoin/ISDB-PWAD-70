@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Image → ASCII / Pixels / Particles (Vanilla JS)</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="title">
+        <h1>Image → ASCII / Pixel / Particle</h1>
+        <p>Vanilla JavaScript • Canvas • Colorful • Interactive</p>
+      </div>
+
+      <div class="controls">
+        <label class="btn">
+          Upload Image
+          <input id="file" type="file" accept="image/*" hidden />
+        </label>
+
+        <label>
+          Mode
+          <select id="mode">
+            <option value="particles" selected>
+              Particles (pict2pix vibe)
+            </option>
+            <option value="dots">Dots / LED Matrix</option>
+            <option value="ascii">Color ASCII</option>
+          </select>
+        </label>
+
+        <label>
+          Detail (lower = more)
+          <input id="step" type="range" min="3" max="14" value="7" />
+        </label>
+
+        <label>
+          Size
+          <input id="size" type="range" min="1" max="6" value="2" />
+        </label>
+
+        <label class="row">
+          <input id="invert" type="checkbox" />
+          Invert ASCII brightness
+        </label>
+
+        <button id="shuffle" class="btn ghost">Scatter</button>
+        <button id="download" class="btn ghost">Download PNG</button>
+      </div>
+    </header>
+
+    <main class="stage">
+      <canvas id="c"></canvas>
+      <div class="hint">
+        <span>Tip:</span> Upload a clear face photo • Use Detail ~ 6–9 • Move
+        mouse on canvas
+      </div>
+    </main>
+
+    <!-- <script src="script.js"></script> -->
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
