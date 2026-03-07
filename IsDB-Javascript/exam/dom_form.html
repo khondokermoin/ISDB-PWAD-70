@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Form with Window Open</title>
+  </head>
+
+  <body
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: top;
+      height: 100vh;
+    "
+  >
+    <form
+      style="
+        border: 1px solid black;
+        padding: 16px 8px 16px 8px;
+        width: 300px;
+        height: 40%;
+      "
+      onsubmit="
+        showData();
+        return false;
+      "
+    >
+      <label for="sid">Student ID:</label><br />
+      <input
+        type="text"
+        id="sid"
+        name="sid"
+        placeholder="Enter your ID"
+        required
+      /><br /><br />
+
+      <label for="name">Name:</label><br />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Enter your name"
+        required
+      /><br /><br />
+
+      <label for="address">Address:</label><br />
+      <textarea
+        id="address"
+        name="address"
+        placeholder="Enter your address"
+      ></textarea
+      ><br /><br />
+
+      <label for="course">Course: </label><br />
+      <select id="course" name="course">
+        <option value="">Select Course</option>
+        <option value="BBA">BBA</option>
+        <option value="MBA">MBA</option>
+        <option value="CSE">CSE</option>
+        <option value="EEE">EEE</option>
+      </select>
+      <br /><br />
+
+      <label for="">Gender: </label>
+      <label>
+        <input type="radio" name="gender" value="Male" required /> Male
+        <input type="radio" name="gender" value="Female" /> Female
+      </label>
+      <br /><br />
+
+      <label for="">Hobbies:</label><br />
+      <label>
+        <input type="checkbox" name="hobby" value="Reading" /> Reading
+      </label>
+
+      <label>
+        <input type="checkbox" name="hobby" value="Gaming" /> Gaming
+      </label>
+
+      <label>
+        <input type="checkbox" name="hobby" value="Traveling" /> Traveling
+      </label>
+      <br /><br />
+
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+    </form>
+
+    <script>
+      function showData() {
+        const sid = document.getElementById('sid').value;
+        const name = document.getElementById('name').value;
+        const address = document.getElementById('address').value;
+        const course = document.getElementById('course').value;
+
+        const gender =
+          document.querySelector('input[name="gender"]:checked')?.value ??
+          'Not selected';
+
+        const hobbiesElements = document.querySelectorAll(
+          'input[name="hobby"]:checked'
+        );
+        let hobbies = '';
+        for (const hobby of hobbiesElements) {
+          hobbies += hobby.value + ', ';
+        }
+        hobbies = hobbies ? hobbies.slice(0, -2) : 'None';
+
+        const newWindow = window.open('', 'FormData', 'width=400,height=400');
+
+        newWindow.document.write(`
+  <html>
+    <head>
+      <title>Form Data</title>
+      <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        button { margin-top: 20px; padding: 5px 10px; }
+      </style>
+    </head>
+    <body>
+      <h2>Form Data</h2>
+      <table>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>
+        <tr>
+          <td>Student ID</td>
+          <td>${sid}</td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>${name}</td>
+        </tr>
+        <tr>
+          <td>Address</td>
+          <td>${address}</td>
+        </tr>
+        <tr>
+          <td>Course</td>
+          <td>${course}</td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>${gender}</td>
+        </tr>
+        <tr>
+          <td>Hobbies</td>
+          <td>${hobbies}</td>
+        </tr>
+      </table>
+      <button onclick="window.print()">Print</button>
+      <button onclick="window.close()">Close</button>
+    </body>
+  </html>
+`);
+        newWindow.document.close();
+      }
+    </script>
+  </body>
+</html>
