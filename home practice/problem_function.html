@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* const input = prompt("Enter your words...") ?? "";
+
+      const countVowels = (str) => {
+        const vowels = "aeiou";
+        let count = 0;
+
+        for (const char of str.toLowerCase()) {
+          if (vowels.includes(char)) {
+            count++;
+          }
+        }
+
+        return count;
+      };
+
+      document.write(countVowels(input)); */
+      const input = prompt("Enter your words...") ?? "";
+
+      function viol(str) {
+        const vowels = "aeiou";
+        let count = 0;
+
+        for (const char of str.toLowerCase()) {
+          if (vowels.includes(char)) {
+            count++;
+          }
+        }
+
+        return count;
+      }
+
+      document.write(viol(input));
+    </script>
+  </body>
+</html>
